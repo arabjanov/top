@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced 3D Globe</title>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/style.css">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
+</head>
+
+<body>
+  <div class="particles" id="particles"></div>
+  <div id='map'></div>
+
+  <div class="ui-container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Shahar yoki davlat qidiring...">
+      <div id="searchResult"></div>
+    </div>
+    <button class="btn" id="locBtn" title="Mening joylashuvim">📍</button>
+    <button class="btn" id="resetBtn" title="Boshlang'ich holat">🔄</button>
+    <button class="btn" id="distanceBtn" title="Masofani o'lchash">📏</button>
+  </div>
+
+  <div class="mode-toggle">
+    <button class="btn" id="modeBtn" title="Kecha/Kunduz">🌓</button>
+  </div>
+
+  <div class="stats-panel">
+    <h3>⚡ STATISTIKA</h3>
+    <div class="stat-item">
+      <span class="stat-label">Markerlar:</span>
+      <span class="stat-value" id="markerCount">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Zoom:</span>
+      <span class="stat-value" id="zoomLevel">1.7</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Pitch:</span>
+      <span class="stat-value" id="pitchLevel">30°</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Aylanish:</span>
+      <span class="stat-value" id="rotationStatus">✓</span>
+    </div>
+  </div>
+
+  <div class="weather-panel" id="weatherPanel">
+    <h3>🌤️ Havo</h3>
+    <div class="temp-display" id="tempDisplay">--°</div>
+    <div style="text-align: center; color: #99e5ff;" id="weatherDesc">Yuklanmoqda...</div>
+  </div>
+
+  <div class="country-label" id="countryLabel"></div>
+
+  <div class="distance-tool" id="distanceTool">
+    <div style="margin-bottom: 8px;">📏 Masofa: <span id="distanceValue">0 km</span></div>
+    <button class="btn" style="width: 100%; height: auto; border-radius: 10px; padding: 8px;"
+      onclick="clearDistance()">Tozalash</button>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
