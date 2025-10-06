@@ -1,5 +1,6 @@
 import { places } from './places.js';
 
+
 mapboxgl.accessToken = 'pk.eyJ1IjoibmFqaW1vdiIsImEiOiJjbTBnbWJ3ZGwwMXdqMnFyMXlxY3FsaTJ6In0.TWo-dOdTkiREW-ugZQevpw';
 
 let map, autoRotate = true, bearing = 0;
@@ -8,7 +9,6 @@ let searchTimeout, markersList = [];
 let isDarkMode = true;
 let distanceMode = false;
 let distancePoints = [];
-let show3D = true;
 
 // Particle effektlari
 function createParticles() {
@@ -34,7 +34,7 @@ function createMap() {
     pitch: 30,
     bearing: 0,
     projection: 'globe',
-    antialias: true,
+    antialias: false,
     attributionControl: false
   });
 
@@ -57,11 +57,7 @@ function createMap() {
 
 function add3DBuildings() {
   const layers = map.getStyle().layers;
-  const labelLayerId = layers.find(layer => layer.type === 'symbol' && layer.layout['text-field'])?.id;
-
-  if (map.getLayer('3d-buildings')) {
-    map.removeLayer('3d-buildings');
-  }
+  const labelLayerId = layers.find(layer => layer.type === 'symbol' && layer.layout['text-field']).id;
 
   map.addLayer({
     'id': '3d-buildings',
@@ -88,17 +84,15 @@ function addSkyAndFog() {
     'star-intensity': 0.35
   });
 
-  if (!map.getLayer('sky')) {
-    map.addLayer({
-      'id': 'sky',
-      'type': 'sky',
-      'paint': {
-        'sky-type': 'atmosphere',
-        'sky-atmosphere-sun': getSunPosition(),
-        'sky-atmosphere-sun-intensity': 5
-      }
-    });
-  }
+  map.addLayer({
+    'id': 'sky',
+    'type': 'sky',
+    'paint': {
+      'sky-type': 'atmosphere',
+      'sky-atmosphere-sun': getSunPosition(),
+      'sky-atmosphere-sun-intensity': 5
+    }
+  });
 }
 
 function startRotation() {
@@ -142,12 +136,6 @@ function addDistancePoint(coords) {
 
 window.clearDistance = function () {
   distancePoints = [];
-  const markers = document.querySelectorAll('.mapboxgl-marker');
-  markers.forEach(marker => {
-    if (marker.querySelector('[fill="#ff00ff"]')) {
-      marker.remove();
-    }
-  });
   document.getElementById('distanceTool').style.display = 'none';
 }
 
@@ -169,11 +157,11 @@ function addPin(name, coords, color = '#ffd700', subtitle = '') {
   const marker = new mapboxgl.Marker({ color: color })
     .setLngLat(coords)
     .setPopup(new mapboxgl.Popup().setHTML(`
-      <div style="color: white; font-family: Orbitron;">
-        <h3 style="margin: 0 0 8px 0; color: #00ffe7;">${name}</h3>
-        ${subtitle ? `<p style="margin: 0; color: #99e5ff; font-size: 12px;">${subtitle}</p>` : ''}
-      </div>
-    `))
+          <div style="color: white; font-family: Orbitron;">
+            <h3 style="margin: 0 0 8px 0; color: #00ffe7;">${name}</h3>
+            ${subtitle ? `<p style="margin: 0; color: #99e5ff; font-size: 12px;">${subtitle}</p>` : ''}
+          </div>
+        `))
     .addTo(map);
 
   markersList.push(marker);
@@ -218,27 +206,6 @@ function showCountryLabel() {
   }
 }
 
-// GLOBAL KO'RINISH FUNKSIYASI
-function resetToGlobe() {
-  autoRotate = true;
-  map.flyTo({
-    center: [0, 20],
-    zoom: 1.7,
-    pitch: 30,
-    bearing: 0,
-    speed: 1.2,
-    curve: 1.5
-  });
-  updateStats();
-}
-
-// Barcha markerlarni o'chirish
-function clearAllMarkers() {
-  markersList.forEach(marker => marker.remove());
-  markersList = [];
-  updateStats();
-}
-
 // Qidiruv
 const searchInput = document.getElementById("searchInput");
 const searchResult = document.getElementById("searchResult");
@@ -262,9 +229,9 @@ searchInput.addEventListener("input", function () {
       searchResult.style.display = "block";
       searchResult.innerHTML = found.map(obj =>
         `<div><a href="#" onclick="zoomSearch('${obj.name}'); return false;">
-          <b>${obj.type === 'davlat' ? '🏳️' : '🏙️'}</b> ${obj.name}
-          ${obj.country ? ', <span style="color:#00ffe7">' + obj.country + '</span>' : ''}
-        </a></div>`
+              <b>${obj.type === 'davlat' ? '🏳️' : '🏙️'}</b> ${obj.name}
+              ${obj.country ? ', <span style="color:#00ffe7">' + obj.country + '</span>' : ''}
+            </a></div>`
       ).join('');
     } else {
       searchResult.style.display = "block";
@@ -303,9 +270,10 @@ document.getElementById('locBtn').addEventListener('click', function () {
   }, err => alert('Xatolik: ' + err.message));
 });
 
-// GLOBAL KO'RINISHGA QAYTISH TUGMASI
 document.getElementById('resetBtn').addEventListener('click', function () {
-  resetToGlobe();
+  autoRotate = true;
+  map.flyTo({ center: [0, 20], zoom: 1.7, pitch: 30, speed: 1 });
+  updateStats();
 });
 
 document.getElementById('modeBtn').addEventListener('click', function () {
@@ -313,7 +281,7 @@ document.getElementById('modeBtn').addEventListener('click', function () {
   map.setStyle('mapbox://styles/mapbox/' + (isDarkMode ? 'dark-v11' : 'light-v11'));
   setTimeout(() => {
     addSkyAndFog();
-    if (show3D) add3DBuildings();
+    add3DBuildings();
   }, 1000);
 });
 
@@ -323,7 +291,7 @@ document.getElementById('distanceBtn').addEventListener('click', function () {
   if (!distanceMode) clearDistance();
 });
 
-// Turf.js for distance
+// Turf.js for distance (simple implementation)
 const turf = {
   distance: function (from, to) {
     const R = 6371;
