@@ -34,7 +34,7 @@ function createMap() {
     pitch: 30,
     bearing: 0,
     projection: 'globe',
-    antialias: false,
+    antialias: true,
     attributionControl: false
   });
 

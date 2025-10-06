@@ -250,6 +250,15 @@
       display: none;
     }
 
+    .mapboxgl-ctrl-logo {
+      display: none !important;
+    }
+
+    .mapboxgl-ctrl-attrib {
+      display: none !important;
+    }
+
+
     .mapboxgl-popup-content {
       background: rgba(11, 29, 66, 0.98) !important;
       color: white !important;
