@@ -1,19 +1,10 @@
 const places = [
-    // Your original data
+    // O'zbekiston
+    { name: "O'zbekiston", type: "davlat", country: "O'zbekiston", center: [64.5853, 41.3775] },
     { name: "Toshkent", type: "shahar", country: "O'zbekiston", center: [69.2401, 41.2995] },
     { name: "Samarqand", type: "shahar", country: "O'zbekiston", center: [66.9597, 39.6542] },
     { name: "Buxoro", type: "shahar", country: "O'zbekiston", center: [64.4286, 39.7747] },
     { name: "Xiva", type: "shahar", country: "O'zbekiston", center: [60.3644, 41.3775] },
-    { name: "O'zbekiston", type: "davlat", country: "O'zbekiston", center: [64.5853, 41.3775] },
-    { name: "New York", type: "shahar", country: "AQSh", center: [-74.0060, 40.7128] },
-    { name: "London", type: "shahar", country: "Buyuk Britaniya", center: [-0.1278, 51.5074] },
-    { name: "Tokyo", type: "shahar", country: "Yaponiya", center: [139.6917, 35.6895] },
-    { name: "Dubay", type: "shahar", country: "BAA", center: [55.2708, 25.2048] },
-    { name: "Qozog'iston", type: "davlat", country: "Qozog'iston", center: [68.9693, 48.0196] },
-    { name: "Yaponiya", type: "davlat", country: "Yaponiya", center: [138.2529, 36.2048] },
-    { name: "Turkiya", type: "davlat", country: "Turkiya", center: [35.2433, 38.9637] },
-
-    // Previous additions
     { name: "Nukus", type: "shahar", country: "O'zbekiston", center: [59.6104, 42.4602] },
     { name: "Andijon", type: "shahar", country: "O'zbekiston", center: [72.3441, 40.7833] },
     { name: "Jizzax", type: "shahar", country: "O'zbekiston", center: [67.8424, 40.1171] },
@@ -35,8 +26,6 @@ const places = [
     { name: "Shahrisabz", type: "shahar", country: "O'zbekiston", center: [66.8333, 39.0500] },
     { name: "Koson", type: "shahar", country: "O'zbekiston", center: [65.5850, 39.0375] },
     { name: "Uchquduq", type: "shahar", country: "O'zbekiston", center: [63.5500, 42.1500] },
-
-    // 50 New additions - smaller cities and towns
     { name: "Zomin", type: "shahar", country: "O'zbekiston", center: [68.4000, 39.9600] },
     { name: "Uchqo'rg'on", type: "shahar", country: "O'zbekiston", center: [72.0833, 41.1167] },
     { name: "Poytug'", type: "shahar", country: "O'zbekiston", center: [71.9167, 40.0167] },
@@ -97,8 +86,6 @@ const places = [
     { name: "Qorasuv", type: "shahar", country: "O'zbekiston", center: [72.8667, 40.6667] },
     { name: "Xonobod", type: "shahar", country: "O'zbekiston", center: [72.3167, 40.6333] },
     { name: "Shahrixon", type: "shahar", country: "O'zbekiston", center: [72.0578, 40.7133] },
-
-    // Yangi 25 ta shahar va tumanlar
     { name: "Xo'jayli", type: "shahar", country: "O'zbekiston", center: [59.5000, 42.4000] },
     { name: "Chust", type: "shahar", country: "O'zbekiston", center: [71.2330, 41.0000] },
     { name: "Zarafshon", type: "shahar", country: "O'zbekiston", center: [64.2000, 41.5830] },
@@ -123,5 +110,52 @@ const places = [
     { name: "Quva", type: "shahar", country: "O'zbekiston", center: [72.0720, 40.5220] },
     { name: "Quvasoy", type: "shahar", country: "O'zbekiston", center: [72.0670, 40.3000] },
     { name: "Mang'it", type: "shahar", country: "O'zbekiston", center: [60.0500, 42.1170] },
-    { name: "Rishton", type: "shahar", country: "O'zbekiston", center: [71.2670, 40.3670] }
+    { name: "Rishton", type: "shahar", country: "O'zbekiston", center: [71.2670, 40.3670] },
+    { name: "Nurafshon", type: "shahar", country: "O'zbekiston", center: [69.3500, 41.0333] },
+    { name: "Bo'ka", type: "shahar", country: "O'zbekiston", center: [69.19417, 40.81108] },
+    { name: "Do'stobod", type: "shahar", country: "O'zbekiston", center: [68.92806, 40.85639] },
+    { name: "Keles", type: "shahar", country: "O'zbekiston", center: [69.2067, 41.4033] },
+    { name: "Oqqo'rg'on", type: "shahar", country: "O'zbekiston", center: [69.0453, 40.8764] },
+    { name: "Piskent", type: "shahar", country: "O'zbekiston", center: [69.35056, 40.89722] },
+    { name: "To'ytepa", type: "shahar", country: "O'zbekiston", center: [69.3583, 41.0403] },
+    { name: "Chinoz", type: "shahar", country: "O'zbekiston", center: [68.7578, 40.9375] },
+    { name: "Yangiobod", type: "shahar", country: "O'zbekiston", center: [70.0942, 41.1192] },
+    { name: "G'azalkent", type: "shahar", country: "O'zbekiston", center: [69.7750, 41.5625] },
+    { name: "Galaosiyo", type: "shahar", country: "O'zbekiston", center: [64.4500, 39.8500] },
+    { name: "Vobkent", type: "shahar", country: "O'zbekiston", center: [64.5167, 40.0333] },
+    { name: "Olot", type: "shahar", country: "O'zbekiston", center: [63.8000, 39.4167] },
+    { name: "Romitan", type: "shahar", country: "O'zbekiston", center: [64.3833, 39.9333] },
+    { name: "Shofirkon", type: "shahar", country: "O'zbekiston", center: [64.5000, 40.1167] },
+    { name: "Qorako'l", type: "shahar", country: "O'zbekiston", center: [63.8539, 39.4994] },
+    { name: "Qorovulbozor", type: "shahar", country: "O'zbekiston", center: [64.8000, 39.5000] },
+    { name: "Quvasoy", type: "shahar", country: "O'zbekiston", center: [71.96667, 40.30000] },
+    { name: "Hamza", type: "shahar", country: "O'zbekiston", center: [71.49556, 40.42639] },
+    { name: "Gagarin", type: "shahar", country: "O'zbekiston", center: [68.17722, 40.66444] },
+    { name: "Paxtakor", type: "shahar", country: "O'zbekiston", center: [67.95611, 40.31083] },
+    { name: "Zarbdor", type: "shahar", country: "O'zbekiston", center: [68.16833, 40.07472] },
+    { name: "Gʻozgʻon", type: "shahar", country: "O'zbekiston", center: [65.489448, 40.588217] },
+    { name: "Tallimarjon", type: "shahar", country: "O'zbekiston", center: [65.55333, 38.29667] },
+    { name: "Qoʻngʻirot", type: "shahar", country: "O'zbekiston", center: [58.85417, 43.04972] },
+    { name: "Taxiatosh", type: "shahar", country: "O'zbekiston", center: [60.00000, 42.50000] },
+    { name: "Moʻynoq", type: "shahar", country: "O'zbekiston", center: [59.02028, 43.75556] },
+    { name: "Boʻston", type: "shahar", country: "O'zbekiston", center: [60.93333, 41.85000] },
+    { name: "Kegeyli", type: "shahar", country: "O'zbekiston", center: [59.60778, 42.77667] },
+    { name: "Qumqoʻrgʻon", type: "shahar", country: "O'zbekiston", center: [67.81306, 37.60361] },
+    { name: "Shargʻun", type: "shahar", country: "O'zbekiston", center: [67.96694, 38.46000] },
+    { name: "Angor", type: "shahar", country: "O'zbekiston", center: [67.19306, 37.45500] },
+    { name: "Yangiyer", type: "shahar", country: "O'zbekiston", center: [68.82000, 40.28000] },
+    { name: "Hazorasp", type: "shahar", country: "O'zbekiston", center: [61.08917, 41.30028] },
+    { name: "Pitnak", type: "shahar", country: "O'zbekiston", center: [61.30667, 41.22222] },
+    { name: "Qoraoʻzak", type: "shahar", country: "O'zbekiston", center: [60.30000, 42.75000] },
+    { name: "Qo'rg'ontepa", type: "shahar", country: "O'zbekiston", center: [72.76667, 40.73333] },
+
+    // Chet el!
+
+    { name: "New York", type: "shahar", country: "AQSh", center: [-74.0060, 40.7128] },
+    { name: "London", type: "shahar", country: "Buyuk Britaniya", center: [-0.1278, 51.5074] },
+    { name: "Tokyo", type: "shahar", country: "Yaponiya", center: [139.6917, 35.6895] },
+    { name: "Dubay", type: "shahar", country: "BAA", center: [55.2708, 25.2048] },
+    { name: "Qozog'iston", type: "davlat", country: "Qozog'iston", center: [68.9693, 48.0196] },
+    { name: "Yaponiya", type: "davlat", country: "Yaponiya", center: [138.2529, 36.2048] },
+    { name: "Turkiya", type: "davlat", country: "Turkiya", center: [35.2433, 38.9637] }
 ];
