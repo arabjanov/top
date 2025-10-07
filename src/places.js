@@ -1,4 +1,4 @@
-const places = [
+export const places = [
     // O'zbekiston
     { name: "O'zbekiston", type: "davlat", country: "O'zbekiston", center: [64.5853, 41.3775] },
     { name: "Toshkent", type: "shahar", country: "O'zbekiston", center: [69.2401, 41.2995] },
