@@ -29,9 +29,9 @@ function createMap() {
   map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v11',
-    center: [0, 20],
-    zoom: 1.7,
-    pitch: 30,
+    center: [5, 80],
+    zoom: 3.0,
+    pitch: 55,
     bearing: 0,
     projection: 'globe',
     antialias: true,
@@ -45,6 +45,12 @@ function createMap() {
     addClickHandler();
     updateSunlight();
     updateStats();
+
+    // ✅ foydalanuvchi aylantirsa, autoRotate to‘xtaydi
+    map.on('mousedown', () => autoRotate = false);
+    map.on('dragstart', () => autoRotate = false);
+    map.on('touchstart', () => autoRotate = false);
+
     setInterval(updateSunlight, 100000);
   });
 
@@ -54,6 +60,7 @@ function createMap() {
   });
   map.on('pitch', updateStats);
 }
+
 
 function add3DBuildings() {
   const layers = map.getStyle().layers;
@@ -106,16 +113,28 @@ function startRotation() {
   rotate();
 }
 
+let lastClickTime = 0;
+
 function addClickHandler() {
-  map.on('click', (e) => {
+  // Double click zoomni o‘chirib qo‘yamiz
+  map.doubleClickZoom.disable();
+
+  // Endi ikki marta bosishda ishlaydigan event
+  map.on('dblclick', (e) => {
     if (distanceMode) {
       addDistancePoint(e.lngLat);
     } else {
       const coords = e.lngLat;
-      addPin(`📍 Koordinata`, coords, '#00ffe7', `${coords.lng.toFixed(4)}, ${coords.lat.toFixed(4)}`);
+      addPin(
+        '📍 Koordinata',
+        coords,
+        '#00ffe7',
+        `${coords.lng.toFixed(4)}, ${coords.lat.toFixed(4)}`
+      );
     }
   });
 }
+
 
 function addDistancePoint(coords) {
   distancePoints.push(coords);
@@ -183,7 +202,7 @@ function updateStats() {
 function showCountryLabel() {
   const label = document.getElementById('countryLabel');
 
-  if (map.getZoom() < 3.6) {
+  if (map.getZoom() < 3.5) {
     label.style.display = 'none';
     return;
   }
