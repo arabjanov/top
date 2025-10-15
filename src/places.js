@@ -854,12 +854,12 @@ export const places = [
     // -------------------------------------------------------12------------------------------------------------------ //
 
     // Davlat Argentina
-    { name: "Argentina", type: "davlat", country: "Argentina", center: [-38.4161, -63.6167] },
+    { name: "Argentina", type: "davlat", country: "Argentina", center: [-63.9554, -36.2564] },
 
     // Poytaxt
     { name: "Buenos-Ayres shahri", type: "poytaxt_hudud", country: "Argentina", region: "Buenos Aires (CABA)", center: [-34.6118, -58.4173] },
 
-    { name: "Kordova shahri", type: "shahar", country: "Argentina", region: "Córdoba", center: [-31.4201, -64.1811] },
+    { name: "Kordova shahri", type: "shahar", country: "Argentina", region: "Córdoba", center: [-64.1839, -31.4168] },
     { name: "Rosario shahri", type: "shahar", country: "Argentina", region: "Santa Fe", center: [-32.9575, -60.6393] },
     { name: "Mendoza shahri", type: "shahar", country: "Argentina", region: "Mendoza", center: [-32.8908, -68.8378] },
     { name: "La Plata shahri", type: "shahar", country: "Argentina", region: "Buenos Aires", center: [-34.9214, -57.9545] },
