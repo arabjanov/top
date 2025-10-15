@@ -781,73 +781,115 @@ export const places = [
 
     // -------------------------------------------------------9------------------------------------------------------- //
 
-    // Davlat Andorra
-    { name: "Andorra", type: "davlat", country: "Andorra", center: [42.5078, 1.5211] }, // Andorra la Vella koordinatalari
+    // Davlat: Andorra
+    { name: "Andorra", type: "davlat", country: "Andorra", center: [42.5462, 1.6016] }, // Mamlakatning geografik markazi
 
-    // Poytaxt
-    { name: "Andorra la Vella", type: "poytaxt_hudud", country: "Andorra", region: "Andorra la Vella", center: [42.5078, 1.5211] },
+    // Poytaxt (va parokiya)
+    { name: "Andorra la Vella", type: "poytaxt_parokiya", country: "Andorra", region: "Andorra la Vella", center: [42.5063, 1.5218] },
 
-    // Shaharlar (Parroquies - Ma'muriy Hududlar)
-    // Bular Andorra Respublikasining 7 ta rasmiy ma'muriy birliklari (Parroquies) hisoblanadi.
-    { name: "Canillo", type: "shahar", country: "Andorra", region: "Canillo", center: [42.5656, 1.6042] },
-    { name: "Encamp", type: "shahar", country: "Andorra", region: "Encamp", center: [42.5344, 1.5860] },
-    { name: "Escaldes-Engordany", type: "shahar", country: "Andorra", region: "Escaldes-Engordany", center: [42.5070, 1.5347] },
-    { name: "La Massana", type: "shahar", country: "Andorra", region: "La Massana", center: [42.5473, 1.5167] },
-    { name: "Ordino", type: "shahar", country: "Andorra", region: "Ordino", center: [42.5761, 1.5333] },
-    { name: "Sant Julià de Lòria", type: "shahar", country: "Andorra", region: "Sant Julià de Lòria", center: [42.4631, 1.4914] },
+    { name: "Canillo", type: "parokiya", country: "Andorra", region: "Canillo", center: [42.5667, 1.6000] },
+    { name: "Encamp", type: "parokiya", country: "Andorra", region: "Encamp", center: [42.5361, 1.5833] },
+    { name: "Escaldes-Engordany", type: "parokiya", country: "Andorra", region: "Escaldes-Engordany", center: [42.5095, 1.5404] },
+    { name: "La Massana", type: "parokiya", country: "Andorra", region: "La Massana", center: [42.5450, 1.5144] },
+    { name: "Ordino", type: "parokiya", country: "Andorra", region: "Ordino", center: [42.5562, 1.5332] },
+    { name: "Sant Julià de Lòria", type: "parokiya", country: "Andorra", region: "Sant Julià de Lòria", center: [42.4637, 1.4912] },
 
     // -------------------------------------------------------10------------------------------------------------------ //
 
     // Davlat Angola
-    { name: "Angola", type: "davlat", country: "Angola", center: [-8.8390, 13.2894] },
+    { name: "Angola", type: "davlat", country: "Angola", center: [-12.5000, 18.5000] }, // Mamlakatning geografik markaziga yaqinlashtirildi
 
     // Poytaxt
-    { name: "Luanda shahri", type: "poytaxt_hudud", country: "Angola", region: "Luanda", center: [-8.8390, 13.2894] },
+    { name: "Luanda shahri", type: "poytaxt", country: "Angola", region: "Luanda", center: [-8.8390, 13.2894] },
 
-    // Shaharlar va Hududlar
-    { name: "Lobito", type: "shahar", country: "Angola", region: "Benguela", center: [-12.3333, 13.5333] },
-    { name: "Huambo", type: "shahar", country: "Angola", region: "Huambo", center: [-12.7667, 15.7333] }, // Ikkita Huambo/Uambo birlashtirildi
-    { name: "Lubango", type: "shahar", country: "Angola", region: "Huíla", center: [-14.9248, 13.5049] },
-    { name: "Benguela", type: "shahar", country: "Angola", region: "Benguela", center: [-12.5767, 13.4078] },
-    { name: "Kuito", type: "shahar", country: "Angola", region: "Bié", center: [-12.4000, 16.9333] },
-    { name: "Malanje", type: "shahar", country: "Angola", region: "Malanje", center: [-9.5408, 16.3408] },
-    { name: "Soyo", type: "shahar", country: "Angola", region: "Zaire", center: [-6.1333, 12.3667] },
-    { name: "Cabinda", type: "shahar", country: "Angola", region: "Cabinda", center: [-5.5833, 12.2000] },
-    { name: "Namibe", type: "shahar", country: "Angola", region: "Namibe", center: [-15.2167, 12.1500] }, // Koordinata to'g'rilandi
-    // QO'SHILGAN MUHIM SHAHARLAR
-    { name: "Saurimo", type: "shahar", country: "Angola", region: "Lunda Sul", center: [-9.6600, 20.3900] },
-    { name: "Uíge", type: "shahar", country: "Angola", region: "Uíge", center: [-7.6111, 15.0333] },
-    { name: "Sumbe", type: "shahar", country: "Angola", region: "Cuanza Sul", center: [-11.2000, 13.8400] },
+    { name: "Huambo shahri", type: "shahar", country: "Angola", region: "Huambo", center: [-12.7761, 15.7389] },
+    { name: "Lobito shahri", type: "shahar", country: "Angola", region: "Benguela", center: [-12.3481, 13.5456] },
+    { name: "Benguela shahri", type: "shahar", country: "Angola", region: "Benguela", center: [-12.5763, 13.4055] },
+    { name: "Lubango shahri", type: "shahar", country: "Angola", region: "Huíla", center: [-14.9172, 13.4925] },
+    { name: "Kuito shahri", type: "shahar", country: "Angola", region: "Bié", center: [-12.3833, 16.9333] },
+    { name: "Malanje shahri", type: "shahar", country: "Angola", region: "Malanje", center: [-9.5408, 16.3408] },
+    { name: "Cabinda shahri", type: "shahar", country: "Angola", region: "Cabinda", center: [-5.5500, 12.2000] },
+    { name: "Soyo shahri", type: "shahar", country: "Angola", region: "Zaire", center: [-6.1349, 12.3689] },
+    { name: "Moçâmedes shahri", type: "shahar", country: "Angola", region: "Namibe", center: [-15.1961, 12.1522] }, // Izoh: "Namibe" shahri nomi "Moçâmedes"ga o'zgartirilgan
+    { name: "Saurimo shahri", type: "shahar", country: "Angola", region: "Lunda Sul", center: [-9.6615, 20.3916] },
+    { name: "Uíge shahri", type: "shahar", country: "Angola", region: "Uíge", center: [-7.6087, 15.0613] },
+    { name: "Sumbe shahri", type: "shahar", country: "Angola", region: "Cuanza Sul", center: [-11.2061, 13.8436] },
+    { name: "N'dalatando shahri", type: "shahar", country: "Angola", region: "Cuanza Norte", center: [-9.3000, 14.9167] },
+    { name: "Menongue shahri", type: "shahar", country: "Angola", region: "Cuando Cubango", center: [-14.6592, 17.6833] },
+    { name: "Luena shahri", type: "shahar", country: "Angola", region: "Moxico", center: [-11.7833, 19.9167] },
+    { name: "Dundo shahri", type: "shahar", country: "Angola", region: "Lunda Norte", center: [-7.3736, 20.8356] },
+    { name: "Ondjiva shahri", type: "shahar", country: "Angola", region: "Cunene", center: [-17.0667, 15.7333] },
+    { name: "M'banza-Kongo shahri", type: "shahar", country: "Angola", region: "Zaire", center: [-6.2671, 14.2401] },
+    { name: "Caxito shahri", type: "shahar", country: "Angola", region: "Bengo", center: [-8.5785, 13.6644] },
 
     // -------------------------------------------------------11------------------------------------------------------ //
 
-    // Davlat Antigua va Barbuda
-    { name: "Antigua va Barbuda", type: "davlat", country: "Antigua va Barbuda", center: [17.0608, -61.7964] }, // Kenglik va uzunlik tartibi to'g'rilandi
+    // Davlat: Antigua va Barbuda
+    { name: "Antigua va Barbuda", type: "davlat", country: "Antigua va Barbuda", center: [17.0608, -61.7964] },
 
     // Poytaxt
-    { name: "Sent-Jons shahri", type: "poytaxt_hudud", country: "Antigua va Barbuda", region: "Saint John", center: [17.1175, -61.8455] }, // Koordinatalar va nom to'g'rilandi
+    { name: "St. John's shahri", type: "poytaxt", country: "Antigua va Barbuda", region: "Saint John", center: [17.1210, -61.8447] },
 
-    // Orollar hamda yirik shaharlar
-    { name: "Antigua oroli", type: "orollar", country: "Antigua va Barbuda", center: [17.0705, -61.8195] },
-    { name: "Barbuda oroli", type: "orollar", country: "Antigua va Barbuda", center: [17.6333, -61.7900] },
-    { name: "Redonda oroli", type: "orollar", country: "Antigua va Barbuda", center: [16.9333, -62.3333] }, // Redonda uchun aniqroq koordinata
+    // Asosiy orollar va qaram hududlar
+    { name: "Antigua oroli", type: "orol", country: "Antigua va Barbuda", center: [17.0705, -61.8195] },
+    { name: "Barbuda (Qaram hudud va orol)", type: "qaram_hudud", country: "Antigua va Barbuda", region: "Barbuda", center: [17.6333, -61.7833] },
+    { name: "Redonda (Qaram hudud va orol)", type: "qaram_hudud", country: "Antigua va Barbuda", region: "Redonda", center: [16.9380, -62.3452] },
 
-    // Ma'muriy hududlar (Parishlar/Rayonlar) - Bularning har biri yirik qishloq yoki shaharchani o'z ichiga oladi
-    { name: "Saint John Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint John", center: [17.1262, -61.8510] },
-    { name: "Saint George Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint George", center: [17.1000, -61.7650] },
-    { name: "Saint Peter Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Peter", center: [17.1900, -61.8500] },
-    { name: "Saint Paul Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Paul", center: [17.0333, -61.7833] }, // Koordinata to'g'rilandi
-    { name: "Saint Mary Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Mary", center: [17.0600, -61.7600] },
-    { name: "Saint Philip Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Philip", center: [17.0200, -61.7000] },
-    { name: "Barbuda (Dependensiya)", type: "rayon", country: "Antigua va Barbuda", region: "Barbuda", center: [17.6333, -61.7900] },
+    // Ma'muriy okruglar (Parishes)
+    { name: "Saint John Parish", type: "okrug", country: "Antigua va Barbuda", region: "Saint John", center: [17.1050, -61.8450] },
+    { name: "Saint George Parish", type: "okrug", country: "Antigua va Barbuda", region: "Saint George", center: [17.1333, -61.7917] },
+    { name: "Saint Peter Parish", type: "okrug", country: "Antigua va Barbuda", region: "Saint Peter", center: [17.0917, -61.7667] },
+    { name: "Saint Philip Parish", type: "okrug", country: "Antigua va Barbuda", region: "Saint Philip", center: [17.0667, -61.7167] },
+    { name: "Saint Paul Parish", type: "okrug", country: "Antigua va Barbuda", region: "Saint Paul", center: [17.0250, -61.7833] },
+    { name: "Saint Mary Parish", type: "okrug", country: "Antigua va Barbuda", region: "Saint Mary", center: [17.0500, -61.8667] },
 
-    // Qo'shimcha eng muhim joylar (agar faqat shahar kerak bo'lsa)
-    { name: "All Saints", type: "shahar", country: "Antigua va Barbuda", region: "Saint John", center: [17.0400, -61.7800] }, // Aholi soni bo'yicha ikkinchi eng yirik shahar
-    { name: "Liberta", type: "shahar", country: "Antigua va Barbuda", region: "Saint Paul", center: [17.0347, -61.7760] },
+    // Muhim shaharlar va aholi punktlari
+    { name: "All Saints", type: "shahar", country: "Antigua va Barbuda", region: "Saint Peter", center: [17.0652, -61.7931] },
+    { name: "Liberta", type: "shahar", country: "Antigua va Barbuda", region: "Saint Paul", center: [17.0368, -61.7903] },
+    { name: "Potter's Village", type: "shahar", country: "Antigua va Barbuda", region: "Saint John", center: [17.1031, -61.8069] },
+    { name: "Bolans", type: "shahar", country: "Antigua va Barbuda", region: "Saint Mary", center: [17.0658, -61.8739] },
+    { name: "Codrington", type: "shahar", country: "Antigua va Barbuda", region: "Barbuda", center: [17.6333, -61.8333] }, // Barbudaning eng yirik aholi punkti
+    { name: "Parham", type: "shahar", country: "Antigua va Barbuda", region: "Saint Peter", center: [17.0969, -61.7712] },
 
+    // -------------------------------------------------------12------------------------------------------------------ //
+
+    // Davlat Argentina
+    { name: "Argentina", type: "davlat", country: "Argentina", center: [-38.4161, -63.6167] },
+
+    // Poytaxt
+    { name: "Buenos-Ayres shahri", type: "poytaxt_hudud", country: "Argentina", region: "Buenos Aires (CABA)", center: [-34.6118, -58.4173] },
+
+    { name: "Kordova shahri", type: "shahar", country: "Argentina", region: "Córdoba", center: [-31.4201, -64.1811] },
+    { name: "Rosario shahri", type: "shahar", country: "Argentina", region: "Santa Fe", center: [-32.9575, -60.6393] },
+    { name: "Mendoza shahri", type: "shahar", country: "Argentina", region: "Mendoza", center: [-32.8908, -68.8378] },
+    { name: "La Plata shahri", type: "shahar", country: "Argentina", region: "Buenos Aires", center: [-34.9214, -57.9545] },
+    { name: "San Miguel de Tucumán shahri", type: "shahar", country: "Argentina", region: "Tucumán", center: [-26.8083, -65.2125] },
+    { name: "Mar del Plata shahri", type: "shahar", country: "Argentina", region: "Buenos Aires", center: [-38.0000, -57.5535] },
+    { name: "Salta shahri", type: "shahar", country: "Argentina", region: "Salta", center: [-24.7851, -65.4118] },
+    { name: "Santa Fe shahri", type: "shahar", country: "Argentina", region: "Santa Fe", center: [-31.6236, -60.6956] },
+    { name: "San Juan shahri", type: "shahar", country: "Argentina", region: "San Juan", center: [-31.5375, -68.5236] },
+    { name: "Santiago del Estero shahri", type: "shahar", country: "Argentina", region: "Santiago del Estero", center: [-27.7958, -64.2614] },
+    { name: "Neuquén shahri", type: "shahar", country: "Argentina", region: "Neuquén", center: [-38.9516, -68.0594] },
+    { name: "Corrientes shahri", type: "shahar", country: "Argentina", region: "Corrientes", center: [-27.4806, -58.8306] },
+    { name: "Formosa shahri", type: "shahar", country: "Argentina", region: "Formosa", center: [-26.1828, -58.1844] },
+    { name: "Posadas shahri", type: "shahar", country: "Argentina", region: "Misiones", center: [-27.3667, -55.9000] },
+    { name: "Bahía Blanca shahri", type: "shahar", country: "Argentina", region: "Buenos Aires", center: [-38.7196, -62.2656] },
+    { name: "Resistencia shahri", type: "shahar", country: "Argentina", region: "Chaco", center: [-27.4514, -58.9866] },
+    { name: "Rawson shahri", type: "shahar", country: "Argentina", region: "Chubut", center: [-43.3000, -65.1000] },
+    { name: "Río Cuarto shahri", type: "shahar", country: "Argentina", region: "Córdoba", center: [-33.1230, -64.3490] },
+    { name: "San Salvador de Jujuy shahri", type: "shahar", country: "Argentina", region: "Jujuy", center: [-24.1833, -65.3333] },
+    { name: "Paraná shahri", type: "shahar", country: "Argentina", region: "Entre Ríos", center: [-31.7319, -60.5238] },
+    { name: "San Luis shahri", type: "shahar", country: "Argentina", region: "San Luis", center: [-33.3000, -66.3333] },
+    { name: "Catamarca shahri", type: "shahar", country: "Argentina", region: "Catamarca", center: [-28.4696, -65.7792] },
+    { name: "La Rioja shahri", type: "shahar", country: "Argentina", region: "La Rioja", center: [-29.4131, -66.8500] },
+    { name: "Santa Rosa shahri", type: "shahar", country: "Argentina", region: "La Pampa", center: [-36.6167, -64.2833] },
+    { name: "Río Gallegos shahri", type: "shahar", country: "Argentina", region: "Santa Cruz", center: [-51.6226, -69.2181] },
+    { name: "Viedma shahri", type: "shahar", country: "Argentina", region: "Río Negro", center: [-40.8135, -62.9967] },
+    { name: "Ushuaia shahri", type: "shahar", country: "Argentina", region: "Tierra del Fuego", center: [-54.8072, -68.3044] },
+    { name: "Comodoro Rivadavia shahri", type: "shahar", country: "Argentina", region: "Chubut", center: [-45.8641, -67.4969] },
+    { name: "Bariloche shahri", type: "shahar", country: "Argentina", region: "Río Negro", center: [-41.1333, -71.3000] },
 
     // Chet el!
-    { name: "Argentina", type: "davlat", country: "Argentina", center: [-63.616672, -38.416097] },
     { name: "Armaniston", type: "davlat", country: "Armaniston", center: [45.038189, 40.069099] },
     { name: "Avstraliya", type: "davlat", country: "Avstraliya", center: [133.775136, -25.274398] },
     { name: "Avstriya", type: "davlat", country: "Avstriya", center: [14.550072, 47.516231] },
