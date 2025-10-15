@@ -412,10 +412,122 @@ export const places = [
 
     // -------------------------------------------------------4------------------------------------------------------- //
 
-    { name: "Qirg'iziston", type: "davlat", country: "Qirg'iziston", center: [74.766098, 41.20438] },
+    // Davlat
+    { name: "Qirg'iziston", type: "davlat", country: "Qirg'iziston", center: [74.5853, 41.2045] },
+
+    // Poytaxt
+    { name: "Bishkek", type: "poytaxt", country: "Qirg'iziston", center: [74.5853, 42.8746] },
+
+    // Viloyatlar va shaharlar
+
+    // Chüy viloyati
+    { name: "Chüy viloyati", type: "viloyat", country: "Qirg'iziston", center: [74.5, 42.8] },
+    { name: "Tokmok", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [75.3015, 42.8419] },
+    { name: "Kara-Balta", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [73.8500, 42.8140] },
+    { name: "Kant", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [74.8500, 42.8830] },
+    { name: "Kemin", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [75.7000, 42.7833] },
+    { name: "Kayyngdy", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [76.1567, 42.7436] },
+
+    // Issyk-Kul viloyati
+    { name: "Issyk-Kul viloyati", type: "viloyat", country: "Qirg'iziston", center: [77.5, 42.5] },
+    { name: "Karakol", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [78.3936, 42.4906] },
+    { name: "Balykchy", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [76.1900, 42.4625] },
+    { name: "Cholpon-Ata", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [77.0823, 42.6494] },
+    { name: "Tyup", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [78.3600, 42.7300] },
+    { name: "Kyzyl-Suu", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [78.0047, 42.3425] },
+
+    // Naryn viloyati
+    { name: "Naryn viloyati", type: "viloyat", country: "Qirg'iziston", center: [75.5, 41.5] },
+    { name: "Naryn", type: "shahar", country: "Qirg'iziston", region: "Naryn viloyati", center: [75.9911, 41.4287] },
+    { name: "At-Bashi", type: "shahar", country: "Qirg'iziston", region: "Naryn viloyati", center: [75.8000, 41.1700] },
+
+    // Talas viloyati
+    { name: "Talas viloyati", type: "viloyat", country: "Qirg'iziston", center: [72.5, 42.5] },
+    { name: "Talas", type: "shahar", country: "Qirg'iziston", region: "Talas viloyati", center: [72.2333, 42.5167] },
+
+    // Jalal-Abad viloyati
+    { name: "Jalal-Abad viloyati", type: "viloyat", country: "Qirg'iziston", center: [72.5, 41.3] },
+    { name: "Jalal-Abad", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [73.0000, 40.9333] },
+    { name: "Kara-Köl", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [72.6686, 41.6311] },
+    { name: "Tash-Kumyr", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [72.2171, 41.3461] },
+    { name: "Toktogul", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [72.9402, 41.8708] },
+    { name: "Kochkor-Ata", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [72.4832, 41.0371] },
+    { name: "Kerben", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [71.7500, 41.5000] },
+    { name: "Bazar-Korgon", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [72.7500, 41.0333] },
+    { name: "Kök-Janggak", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [73.0000, 41.3833] },
+
+    // Osh viloyati
+    { name: "Osh viloyati", type: "viloyat", country: "Qirg'iziston", center: [72.8, 40.5] },
+    { name: "Osh", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.8000, 40.5300] },
+    { name: "Uzgen", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [73.3007, 40.7699] },
+    { name: "Kara-Suu", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.8667, 40.7046] },
+    { name: "Nookat", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.6183, 40.2660] },
+
+    // Batken viloyati
+    { name: "Batken viloyati", type: "viloyat", country: "Qirg'iziston", center: [70.5, 40.0] },
+    { name: "Batken", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [70.8167, 40.0667] },
+    { name: "Isfana", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [69.5333, 39.8372] },
+    { name: "Kyzyl-Kiya", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [72.1300, 40.2600] },
+    { name: "Suluktu", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [69.5600, 39.9400] },
+    { name: "Kadamjay", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [71.7236, 40.1267] },
+    { name: "Aydarken", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [71.3300, 39.9400] },
+    { name: "Iradan", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [72.1000, 40.2667] },
+
+    // -------------------------------------------------------5------------------------------------------------------- //
+
+    // Davlat
+    { name: "Turkmaniston", type: "davlat", country: "Turkmaniston", center: [59.5563, 38.9697] },
+
+    // Poytaxt
+    { name: "Ashgabat", type: "poytaxt", country: "Turkmaniston", center: [58.3833, 37.9500] },
+
+    // Viloyatlar va shaharlar
+
+    // Ahal viloyati
+    { name: "Ahal viloyati", type: "viloyat", country: "Turkmaniston", center: [58.5, 38.5] },
+    { name: "Annau", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.5333, 37.8833] },
+    { name: "Tejen", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [60.5054, 37.3833] },
+    { name: "Abadan", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.1972, 38.0539] },
+    { name: "Kaka", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [59.6167, 37.3500] },
+    { name: "Baharly", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [57.4333, 38.4333] },
+
+    // Mary viloyati
+    { name: "Mary viloyati", type: "viloyat", country: "Turkmaniston", center: [62.0, 37.5] },
+    { name: "Mary", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [61.8303, 37.5938] },
+    { name: "Bayramaly", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.1671, 37.6185] },
+    { name: "Yoloten", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.3500, 37.3000] },
+    { name: "Seydi", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9137, 39.4816] },
+    { name: "Saýat", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9000, 39.4667] },
+    { name: "Murgab", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [61.9714, 37.4966] },
+    { name: "Tagta", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9333, 37.3833] },
+    { name: "Serhetabat", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.3438, 35.2799] },
+
+    // Lebap viloyati
+    { name: "Lebap viloyati", type: "viloyat", country: "Turkmaniston", center: [63.5, 38.5] },
+    { name: "Turkmenabat", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.5780, 39.0733] },
+    { name: "Gowurdak", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [66.0466, 37.8124] },
+    { name: "Atamyrat", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.8833, 37.8333] },
+    { name: "Gazojak", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [61.4036, 41.1875] },
+    { name: "Farap", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.5833, 39.1667] },
+
+    // Dashoguz viloyati
+    { name: "Dashoguz viloyati", type: "viloyat", country: "Turkmaniston", center: [59.5, 41.5] },
+    { name: "Dashoguz", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.9667, 41.8368] },
+    { name: "Koneurgench", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.1500, 42.3233] },
+    { name: "Akdepe", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.3788, 42.0551] },
+    { name: "Boldumsaz", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6667, 42.1333] },
+    { name: "Yylanly", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6326, 41.8639] },
+
+    // Balkan viloyati
+    { name: "Balkan viloyati", type: "viloyat", country: "Turkmaniston", center: [55.0, 39.5] },
+    { name: "Balkanabat", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [54.3671, 39.5107] },
+    { name: "Turkmenbashi", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [52.9552, 40.0222] },
+    { name: "Bereket", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [55.5150, 39.2450] },
+    { name: "Gumdag", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [54.5906, 39.2061] },
+    { name: "Serdar", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [56.2833, 38.9833] },
+
 
     // Chet el!
-    { name: "Turkmaniston", type: "davlat", country: "Turkmaniston", center: [59.556278, 38.969719] },
     { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [67.709953, 33.93911] },
     { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [67.709953, 33.93911] },
     { name: "Albaniya", type: "davlat", country: "Albaniya", center: [20.168331, 41.153332] },
