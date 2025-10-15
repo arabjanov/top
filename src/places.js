@@ -854,7 +854,7 @@ export const places = [
     // -------------------------------------------------------12------------------------------------------------------ //
 
     // Davlat Argentina
-    { name: "Argentina", type: "davlat", country: "Argentina", center: [-38.4161, -63.6167] },
+    { name: "Argentina", type: "davlat", country: "Argentina", center: [38.4161, 63.6167] },
 
     // Poytaxt
     { name: "Buenos-Ayres shahri", type: "poytaxt_hudud", country: "Argentina", region: "Buenos Aires (CABA)", center: [-34.6118, -58.4173] },
