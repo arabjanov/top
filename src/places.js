@@ -576,6 +576,8 @@ export const places = [
 
     // -------------------------------------------------------6------------------------------------------------------- //
 
+    // Afg'oniston 
+
     // Davlat
     { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [66.0, 33.0] },
 
@@ -586,16 +588,37 @@ export const places = [
 
     // Kobul viloyati
     { name: "Kobul viloyati", type: "viloyat", country: "Afg'oniston", center: [69.1700, 34.5300] },
-    { name: "Charikar", type: "shahar", country: "Afg'oniston", region: "Kobul viloyati", center: [69.1700, 35.0100] },
-    { name: "Mehtar Lam", type: "shahar", country: "Afg'oniston", region: "Kobul viloyati", center: [70.2094, 34.6714] },
+
+    // Parwan viloyati
+    { name: "Parwan viloyati", type: "viloyat", country: "Afg'oniston", center: [69.0000, 35.0000] },
+    { name: "Charikar", type: "shahar", country: "Afg'oniston", region: "Parwan viloyati", center: [69.1700, 35.0100] },
+
+    // Laghman viloyati
+    { name: "Laghman viloyati", type: "viloyat", country: "Afg'oniston", center: [70.1500, 34.6900] },
+    { name: "Mehtar Lam", type: "shahar", country: "Afg'oniston", region: "Laghman viloyati", center: [70.2094, 34.6714] },
+
+    // Logar viloyati
+    { name: "Logar viloyati", type: "viloyat", country: "Afg'oniston", center: [69.0000, 34.0000] },
+    { name: "Pul-e-Alam", type: "shahar", country: "Afg'oniston", region: "Logar viloyati", center: [69.0000, 34.0000] },
+
+    // Kapisa viloyati
+    { name: "Kapisa viloyati", type: "viloyat", country: "Afg'oniston", center: [69.6200, 35.0000] },
+    { name: "Mahmud-e-Raqi", type: "shahar", country: "Afg'oniston", region: "Kapisa viloyati", center: [69.6200, 35.0000] },
+
+    // Wardak viloyati
+    { name: "Wardak viloyati", type: "viloyat", country: "Afg'oniston", center: [68.4500, 34.1700] },
+    { name: "Maidan Shahr", type: "shahar", country: "Afg'oniston", region: "Wardak viloyati", center: [68.4500, 34.1700] },
 
     // Kandahor viloyati
     { name: "Kandahor viloyati", type: "viloyat", country: "Afg'oniston", center: [65.7100, 31.6100] },
     { name: "Kandahor", type: "shahar", country: "Afg'oniston", region: "Kandahor viloyati", center: [65.7100, 31.6100] },
+    { name: "Spin Boldak", type: "shahar", country: "Afg'oniston", region: "Kandahor viloyati", center: [66.3833, 30.8667] },
 
     // Hirot viloyati
     { name: "Hirot viloyati", type: "viloyat", country: "Afg'oniston", center: [62.2000, 34.3500] },
     { name: "Hirot", type: "shahar", country: "Afg'oniston", region: "Hirot viloyati", center: [62.2000, 34.3500] },
+    { name: "Shindand", type: "shahar", country: "Afg'oniston", region: "Hirot viloyati", center: [62.1467, 33.3033] },
+    { name: "Islam Qala", type: "shahar", country: "Afg'oniston", region: "Hirot viloyati", center: [62.2500, 34.6500] },
 
     // Balkh viloyati
     { name: "Balkh viloyati", type: "viloyat", country: "Afg'oniston", center: [67.1100, 36.7100] },
@@ -610,6 +633,7 @@ export const places = [
     { name: "Qunduz viloyati", type: "viloyat", country: "Afg'oniston", center: [68.8600, 36.7300] },
     { name: "Qunduz", type: "shahar", country: "Afg'oniston", region: "Qunduz viloyati", center: [68.8600, 36.7300] },
     { name: "Khanabad", type: "shahar", country: "Afg'oniston", region: "Qunduz viloyati", center: [69.1200, 36.6800] },
+    { name: "Imam Sahib", type: "shahar", country: "Afg'oniston", region: "Qunduz viloyati", center: [69.2500, 37.2000] },
 
     // G'azni viloyati
     { name: "G'azni viloyati", type: "viloyat", country: "Afg'oniston", center: [68.4200, 33.5500] },
@@ -631,6 +655,8 @@ export const places = [
     // Badaxshon viloyati
     { name: "Badaxshon viloyati", type: "viloyat", country: "Afg'oniston", center: [70.5800, 37.1200] },
     { name: "Fayzabad", type: "shahar", country: "Afg'oniston", region: "Badaxshon viloyati", center: [70.5797, 37.1175] },
+    { name: "Ishkashim", type: "shahar", country: "Afg'oniston", region: "Badaxshon viloyati", center: [71.6133, 36.7183] },
+    { name: "Baharak", type: "shahar", country: "Afg'oniston", region: "Badaxshon viloyati", center: [70.6500, 36.7000] },
 
     // G'or viloyati
     { name: "G'or viloyati", type: "viloyat", country: "Afg'oniston", center: [65.2500, 34.5200] },
@@ -660,6 +686,10 @@ export const places = [
     { name: "Paktiya viloyati", type: "viloyat", country: "Afg'oniston", center: [69.2300, 33.6000] },
     { name: "Gardez", type: "shahar", country: "Afg'oniston", region: "Paktiya viloyati", center: [69.2300, 33.6000] },
 
+    // Paktika viloyati
+    { name: "Paktika viloyati", type: "viloyat", country: "Afg'oniston", center: [68.5200, 32.5200] },
+    { name: "Sharan", type: "shahar", country: "Afg'oniston", region: "Paktika viloyati", center: [68.5200, 32.5200] },
+
     // Khost viloyati
     { name: "Khost viloyati", type: "viloyat", country: "Afg'oniston", center: [69.9200, 33.3400] },
     { name: "Khost", type: "shahar", country: "Afg'oniston", region: "Khost viloyati", center: [69.9200, 33.3400] },
@@ -667,6 +697,10 @@ export const places = [
     // Kunar viloyati
     { name: "Kunar viloyati", type: "viloyat", country: "Afg'oniston", center: [71.1500, 34.8700] },
     { name: "Asadabad", type: "shahar", country: "Afg'oniston", region: "Kunar viloyati", center: [71.1538, 34.8743] },
+
+    // Nuristan viloyati
+    { name: "Nuristan viloyati", type: "viloyat", country: "Afg'oniston", center: [70.5800, 35.2000] },
+    { name: "Parun", type: "shahar", country: "Afg'oniston", region: "Nuristan viloyati", center: [70.5800, 35.2000] },
 
     // Farah viloyati
     { name: "Farah viloyati", type: "viloyat", country: "Afg'oniston", center: [62.1800, 32.3700] },
@@ -680,17 +714,139 @@ export const places = [
     { name: "Zabul viloyati", type: "viloyat", country: "Afg'oniston", center: [66.9100, 32.1000] },
     { name: "Qalat", type: "shahar", country: "Afg'oniston", region: "Zabul viloyati", center: [66.9090, 32.1046] },
 
+    // Uruzgan viloyati
+    { name: "Uruzgan viloyati", type: "viloyat", country: "Afg'oniston", center: [66.0000, 32.9300] },
+    { name: "Tarin Kot", type: "shahar", country: "Afg'oniston", region: "Uruzgan viloyati", center: [65.8800, 32.6300] },
+
+    // Daykundi viloyati
+    { name: "Daykundi viloyati", type: "viloyat", country: "Afg'oniston", center: [66.0500, 33.6700] },
+    { name: "Nili", type: "shahar", country: "Afg'oniston", region: "Daykundi viloyati", center: [66.0500, 33.6700] },
+
     // Panjsher viloyati
     { name: "Panjsher viloyati", type: "viloyat", country: "Afg'oniston", center: [69.5200, 35.3100] },
     { name: "Bazarak", type: "shahar", country: "Afg'oniston", region: "Panjsher viloyati", center: [69.5200, 35.3100] },
 
+    // -------------------------------------------------------7------------------------------------------------------- //
+
+    // Davlat Albaniya
+    { name: "Albaniya", type: "davlat", country: "Albaniya", center: [41.3275, 19.8189] }, // Tirana yaqinlari koordinatalari
+
+    // Poytaxt
+    { name: "Tirana shahri", type: "poytaxt_hudud", country: "Albaniya", center: [41.3275, 19.8189] },
+
+    // Shaharlar va Hududlar
+
+    { name: "Durres", type: "shahar", country: "Albaniya", region: "Durres", center: [41.3231, 19.4414] },
+    { name: "Vlore", type: "shahar", country: "Albaniya", region: "Vlore", center: [40.4667, 19.4899] },
+    { name: "Shkoder", type: "shahar", country: "Albaniya", region: "Shkoder", center: [42.0681, 19.5090] },
+    { name: "Elbasan", type: "shahar", country: "Albaniya", region: "Elbasan", center: [41.1167, 20.0833] },
+    { name: "Fier", type: "shahar", country: "Albaniya", region: "Fier", center: [40.7167, 19.5667] },
+    { name: "Kamez", type: "shahar", country: "Albaniya", region: "Tirana", center: [41.3857, 19.8104] },
+    { name: "Korche", type: "shahar", country: "Albaniya", region: "Korche", center: [40.6167, 20.7833] },
+    { name: "Berat", type: "shahar", country: "Albaniya", region: "Berat", center: [40.7056, 19.9522] },
+    { name: "Lushnje", type: "shahar", country: "Albaniya", region: "Lushnje", center: [40.9394, 19.705] },
+    { name: "Pogradec", type: "shahar", country: "Albaniya", region: "Pogradec", center: [40.9167, 20.6514] },
+    { name: "Kavajë", type: "shahar", country: "Albaniya", region: "Kavajë", center: [41.1731, 19.5558] },
+    { name: "Gjirokastër", type: "shahar", country: "Albaniya", region: "Gjirokastër", center: [40.0767, 20.1411] },
+    { name: "Kuçovë", type: "shahar", country: "Albaniya", region: "Berat", center: [40.8033, 19.9142] },
+    { name: "Krujë", type: "shahar", country: "Albaniya", region: "Durrës", center: [41.5139, 19.7911] },
+    { name: "Laç", type: "shahar", country: "Albaniya", region: "Lezhë", center: [41.6317, 19.7156] },
+    { name: "Patos", type: "shahar", country: "Albaniya", region: "Fier", center: [40.6867, 19.6053] },
+
+    // -------------------------------------------------------8------------------------------------------------------- //
+
+    // Davlat Jazoir
+    { name: "Jazoir", type: "davlat", country: "Jazoir", center: [36.7538, 3.0588] }, // Poytaxt Aljir koordinatalari
+
+    // Poytaxt
+    { name: "Aljir shahri", type: "poytaxt_hudud", country: "Jazoir", region: "Aljir", center: [36.7538, 3.0588] },
+
+    // Shaharlar va Hududlar
+    { name: "Oran", type: "shahar", country: "Jazoir", region: "Oran", center: [35.6971, -0.6417] },
+    { name: "Constantine", type: "shahar", country: "Jazoir", region: "Constantine", center: [36.3650, 6.6147] },
+    { name: "Annaba", type: "shahar", country: "Jazoir", region: "Annaba", center: [36.9000, 7.7667] },
+    { name: "Blida", type: "shahar", country: "Jazoir", region: "Blida", center: [36.4746, 2.8297] },
+    { name: "Batna", type: "shahar", country: "Jazoir", region: "Batna", center: [35.5533, 6.1728] },
+    { name: "Sétif", type: "shahar", country: "Jazoir", region: "Sétif", center: [36.1911, 5.4131] },
+    { name: "Tlemcen", type: "shahar", country: "Jazoir", region: "Tlemcen", center: [34.8823, -1.3161] },
+    { name: "Djelfa", type: "shahar", country: "Jazoir", region: "Djelfa", center: [34.6722, 3.2597] },
+    { name: "Biskra", type: "shahar", country: "Jazoir", region: "Biskra", center: [34.8519, 5.7366] },
+    { name: "Tizi Ouzou", type: "shahar", country: "Jazoir", region: "Tizi Ouzou", center: [36.7167, 4.0500] },
+    { name: "Boumerdès", type: "shahar", country: "Jazoir", region: "Boumerdès", center: [36.7667, 3.5000] },
+    { name: "Skikda", type: "shahar", country: "Jazoir", region: "Skikda", center: [36.8833, 6.9000] },
+    { name: "Sidi Bel Abbès", type: "shahar", country: "Jazoir", region: "Sidi Bel Abbès", center: [35.2000, -0.6333] },
+    { name: "Tebessa", type: "shahar", country: "Jazoir", region: "Tebessa", center: [35.4000, 8.1250] },
+    { name: "M'Sila", type: "shahar", country: "Jazoir", region: "M'Sila", center: [35.7000, 4.5333] },
+    { name: "Mostaganem", type: "shahar", country: "Jazoir", region: "Mostaganem", center: [35.9333, 0.0833] },
+
+    // -------------------------------------------------------9------------------------------------------------------- //
+
+    // Davlat Andorra
+    { name: "Andorra", type: "davlat", country: "Andorra", center: [42.5078, 1.5211] }, // Andorra la Vella koordinatalari
+
+    // Poytaxt
+    { name: "Andorra la Vella", type: "poytaxt_hudud", country: "Andorra", region: "Andorra la Vella", center: [42.5078, 1.5211] },
+
+    // Shaharlar (Parroquies - Ma'muriy Hududlar)
+    // Bular Andorra Respublikasining 7 ta rasmiy ma'muriy birliklari (Parroquies) hisoblanadi.
+    { name: "Canillo", type: "shahar", country: "Andorra", region: "Canillo", center: [42.5656, 1.6042] },
+    { name: "Encamp", type: "shahar", country: "Andorra", region: "Encamp", center: [42.5344, 1.5860] },
+    { name: "Escaldes-Engordany", type: "shahar", country: "Andorra", region: "Escaldes-Engordany", center: [42.5070, 1.5347] },
+    { name: "La Massana", type: "shahar", country: "Andorra", region: "La Massana", center: [42.5473, 1.5167] },
+    { name: "Ordino", type: "shahar", country: "Andorra", region: "Ordino", center: [42.5761, 1.5333] },
+    { name: "Sant Julià de Lòria", type: "shahar", country: "Andorra", region: "Sant Julià de Lòria", center: [42.4631, 1.4914] },
+
+    // -------------------------------------------------------10------------------------------------------------------ //
+
+    // Davlat Angola
+    { name: "Angola", type: "davlat", country: "Angola", center: [-8.8390, 13.2894] },
+
+    // Poytaxt
+    { name: "Luanda shahri", type: "poytaxt_hudud", country: "Angola", region: "Luanda", center: [-8.8390, 13.2894] },
+
+    // Shaharlar va Hududlar
+    { name: "Lobito", type: "shahar", country: "Angola", region: "Benguela", center: [-12.3333, 13.5333] },
+    { name: "Huambo", type: "shahar", country: "Angola", region: "Huambo", center: [-12.7667, 15.7333] }, // Ikkita Huambo/Uambo birlashtirildi
+    { name: "Lubango", type: "shahar", country: "Angola", region: "Huíla", center: [-14.9248, 13.5049] },
+    { name: "Benguela", type: "shahar", country: "Angola", region: "Benguela", center: [-12.5767, 13.4078] },
+    { name: "Kuito", type: "shahar", country: "Angola", region: "Bié", center: [-12.4000, 16.9333] },
+    { name: "Malanje", type: "shahar", country: "Angola", region: "Malanje", center: [-9.5408, 16.3408] },
+    { name: "Soyo", type: "shahar", country: "Angola", region: "Zaire", center: [-6.1333, 12.3667] },
+    { name: "Cabinda", type: "shahar", country: "Angola", region: "Cabinda", center: [-5.5833, 12.2000] },
+    { name: "Namibe", type: "shahar", country: "Angola", region: "Namibe", center: [-15.2167, 12.1500] }, // Koordinata to'g'rilandi
+    // QO'SHILGAN MUHIM SHAHARLAR
+    { name: "Saurimo", type: "shahar", country: "Angola", region: "Lunda Sul", center: [-9.6600, 20.3900] },
+    { name: "Uíge", type: "shahar", country: "Angola", region: "Uíge", center: [-7.6111, 15.0333] },
+    { name: "Sumbe", type: "shahar", country: "Angola", region: "Cuanza Sul", center: [-11.2000, 13.8400] },
+
+    // -------------------------------------------------------11------------------------------------------------------ //
+
+    // Davlat Antigua va Barbuda
+    { name: "Antigua va Barbuda", type: "davlat", country: "Antigua va Barbuda", center: [17.0608, -61.7964] }, // Kenglik va uzunlik tartibi to'g'rilandi
+
+    // Poytaxt
+    { name: "Sent-Jons shahri", type: "poytaxt_hudud", country: "Antigua va Barbuda", region: "Saint John", center: [17.1175, -61.8455] }, // Koordinatalar va nom to'g'rilandi
+
+    // Orollar hamda yirik shaharlar
+    { name: "Antigua oroli", type: "orollar", country: "Antigua va Barbuda", center: [17.0705, -61.8195] },
+    { name: "Barbuda oroli", type: "orollar", country: "Antigua va Barbuda", center: [17.6333, -61.7900] },
+    { name: "Redonda oroli", type: "orollar", country: "Antigua va Barbuda", center: [16.9333, -62.3333] }, // Redonda uchun aniqroq koordinata
+
+    // Ma'muriy hududlar (Parishlar/Rayonlar) - Bularning har biri yirik qishloq yoki shaharchani o'z ichiga oladi
+    { name: "Saint John Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint John", center: [17.1262, -61.8510] },
+    { name: "Saint George Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint George", center: [17.1000, -61.7650] },
+    { name: "Saint Peter Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Peter", center: [17.1900, -61.8500] },
+    { name: "Saint Paul Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Paul", center: [17.0333, -61.7833] }, // Koordinata to'g'rilandi
+    { name: "Saint Mary Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Mary", center: [17.0600, -61.7600] },
+    { name: "Saint Philip Parish", type: "rayon", country: "Antigua va Barbuda", region: "Saint Philip", center: [17.0200, -61.7000] },
+    { name: "Barbuda (Dependensiya)", type: "rayon", country: "Antigua va Barbuda", region: "Barbuda", center: [17.6333, -61.7900] },
+
+    // Qo'shimcha eng muhim joylar (agar faqat shahar kerak bo'lsa)
+    { name: "All Saints", type: "shahar", country: "Antigua va Barbuda", region: "Saint John", center: [17.0400, -61.7800] }, // Aholi soni bo'yicha ikkinchi eng yirik shahar
+    { name: "Liberta", type: "shahar", country: "Antigua va Barbuda", region: "Saint Paul", center: [17.0347, -61.7760] },
+
+
     // Chet el!
-    { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [67.709953, 33.93911] },
-    { name: "Albaniya", type: "davlat", country: "Albaniya", center: [20.168331, 41.153332] },
-    { name: "Jazoir", type: "davlat", country: "Jazoir", center: [1.659626, 28.033886] },
-    { name: "Andorra", type: "davlat", country: "Andorra", center: [1.601554, 42.546245] },
-    { name: "Angola", type: "davlat", country: "Angola", center: [17.873887, -11.202692] },
-    { name: "Antigua va Barbuda", type: "davlat", country: "Antigua va Barbuda", center: [-61.796428, 17.060816] },
     { name: "Argentina", type: "davlat", country: "Argentina", center: [-63.616672, -38.416097] },
     { name: "Armaniston", type: "davlat", country: "Armaniston", center: [45.038189, 40.069099] },
     { name: "Avstraliya", type: "davlat", country: "Avstraliya", center: [133.775136, -25.274398] },
