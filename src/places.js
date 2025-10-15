@@ -347,6 +347,8 @@ export const places = [
 
     // -------------------------------------------------------3------------------------------------------------------- //
 
+    // Tojikiston
+
     // Davlat
     { name: "Tojikiston", type: "davlat", country: "Tojikiston", center: [71.2762, 38.8610] },
 
@@ -375,6 +377,9 @@ export const places = [
     { name: "Nov", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.5000, 40.5000] },
     { name: "Shaydon", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.5000, 40.3000] },
     { name: "Adrasmon", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.2000, 40.4000] },
+    { name: "Kistakuz", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.4000, 40.0000] },
+    { name: "Zafarobod", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [68.7000, 40.2000] },
+    { name: "Ghonchi", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.5000, 40.5000] },
 
     // Xatlon viloyati shaharlari
     { name: "Qurg'onteppa", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.7780, 37.8370] },
@@ -390,6 +395,11 @@ export const places = [
     { name: "Vakhsh", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.8000, 37.7000] },
     { name: "Shahritus", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.5000, 37.2000] },
     { name: "Mu'minobod", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.3000, 38.2000] },
+    { name: "Sarband", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.0000, 37.9000] },
+    { name: "Qumsangir", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.5000, 37.5000] },
+    { name: "Jomi", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.2000, 37.8000] },
+    { name: "Hamadoni", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [70.0000, 38.0000] },
+    { name: "Panj", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.1000, 37.2000] },
 
     // Respublika bo'ysunuvchilik hududlari shaharlari
     { name: "Vahdat", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [69.0140, 38.5560] },
@@ -399,6 +409,11 @@ export const places = [
     { name: "Obigarm", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [69.8700, 38.7800] },
     { name: "Rasht", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [69.5000, 38.8000] },
     { name: "Shahrinav", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [68.5000, 38.7000] },
+    { name: "Rudaki", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [68.8000, 38.3000] },
+    { name: "Gharm", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [70.4000, 39.0000] },
+    { name: "Tavildara", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [70.5000, 38.6000] },
+    { name: "Jirgatal", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [70.7000, 39.2000] },
+    { name: "Nurobod", type: "shahar", country: "Tojikiston", region: "Respublika bo'ysunuvchilik hududlari", center: [69.5000, 39.0000] },
 
     // Tog'li Badaxshon mukhtor viloyati shaharlari
     { name: "Xorog", type: "shahar", country: "Tojikiston", region: "Tog'li Badaxshon mukhtor viloyati", center: [71.5500, 37.4830] },
@@ -409,8 +424,11 @@ export const places = [
     { name: "Shughnon", type: "shahar", country: "Tojikiston", region: "Tog'li Badaxshon mukhtor viloyati", center: [71.5000, 37.5000] },
     { name: "Rushan", type: "shahar", country: "Tojikiston", region: "Tog'li Badaxshon mukhtor viloyati", center: [71.8000, 37.6000] },
     { name: "Darvoz", type: "shahar", country: "Tojikiston", region: "Tog'li Badaxshon mukhtor viloyati", center: [70.8000, 37.4000] },
+    { name: "Kalai-Khumb", type: "shahar", country: "Tojikiston", region: "Tog'li Badaxshon mukhtor viloyati", center: [70.3000, 38.4000] },
 
     // -------------------------------------------------------4------------------------------------------------------- //
+
+    // Qirg'iziston 
 
     // Davlat
     { name: "Qirg'iziston", type: "davlat", country: "Qirg'iziston", center: [74.5853, 41.2045] },
@@ -427,6 +445,8 @@ export const places = [
     { name: "Kant", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [74.8500, 42.8830] },
     { name: "Kemin", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [75.7000, 42.7833] },
     { name: "Kayyngdy", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [76.1567, 42.7436] },
+    { name: "Sokuluk", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [74.0333, 42.8833] },
+    { name: "Ivanovka", type: "shahar", country: "Qirg'iziston", region: "Chüy viloyati", center: [75.0833, 42.8500] },
 
     // Issyk-Kul viloyati
     { name: "Issyk-Kul viloyati", type: "viloyat", country: "Qirg'iziston", center: [77.5, 42.5] },
@@ -435,15 +455,20 @@ export const places = [
     { name: "Cholpon-Ata", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [77.0823, 42.6494] },
     { name: "Tyup", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [78.3600, 42.7300] },
     { name: "Kyzyl-Suu", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [78.0047, 42.3425] },
+    { name: "Kaji-Say", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [76.9667, 42.1167] },
+    { name: "Ak-Suu", type: "shahar", country: "Qirg'iziston", region: "Issyk-Kul viloyati", center: [77.8833, 42.4833] },
 
     // Naryn viloyati
     { name: "Naryn viloyati", type: "viloyat", country: "Qirg'iziston", center: [75.5, 41.5] },
     { name: "Naryn", type: "shahar", country: "Qirg'iziston", region: "Naryn viloyati", center: [75.9911, 41.4287] },
     { name: "At-Bashi", type: "shahar", country: "Qirg'iziston", region: "Naryn viloyati", center: [75.8000, 41.1700] },
+    { name: "Kochkor", type: "shahar", country: "Qirg'iziston", region: "Naryn viloyati", center: [75.7833, 42.2000] },
 
     // Talas viloyati
     { name: "Talas viloyati", type: "viloyat", country: "Qirg'iziston", center: [72.5, 42.5] },
     { name: "Talas", type: "shahar", country: "Qirg'iziston", region: "Talas viloyati", center: [72.2333, 42.5167] },
+    { name: "Kyzyl-Adyr", type: "shahar", country: "Qirg'iziston", region: "Talas viloyati", center: [72.4333, 42.2000] },
+    { name: "Bakay-Ata", type: "shahar", country: "Qirg'iziston", region: "Talas viloyati", center: [71.8667, 42.2667] },
 
     // Jalal-Abad viloyati
     { name: "Jalal-Abad viloyati", type: "viloyat", country: "Qirg'iziston", center: [72.5, 41.3] },
@@ -455,6 +480,10 @@ export const places = [
     { name: "Kerben", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [71.7500, 41.5000] },
     { name: "Bazar-Korgon", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [72.7500, 41.0333] },
     { name: "Kök-Janggak", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [73.0000, 41.3833] },
+    { name: "Ala-Buka", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [71.4667, 41.4000] },
+    { name: "Suzak", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [73.2167, 40.9167] },
+    { name: "Kazarman", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [74.0167, 41.4000] },
+    { name: "Kogart", type: "shahar", country: "Qirg'iziston", region: "Jalal-Abad viloyati", center: [71.5000, 41.5000] },
 
     // Osh viloyati
     { name: "Osh viloyati", type: "viloyat", country: "Qirg'iziston", center: [72.8, 40.5] },
@@ -462,6 +491,8 @@ export const places = [
     { name: "Uzgen", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [73.3007, 40.7699] },
     { name: "Kara-Suu", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.8667, 40.7046] },
     { name: "Nookat", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.6183, 40.2660] },
+    { name: "Aravan", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.4667, 40.6167] },
+    { name: "Kuva", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.4833, 40.6167] },
 
     // Batken viloyati
     { name: "Batken viloyati", type: "viloyat", country: "Qirg'iziston", center: [70.5, 40.0] },
@@ -472,8 +503,11 @@ export const places = [
     { name: "Kadamjay", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [71.7236, 40.1267] },
     { name: "Aydarken", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [71.3300, 39.9400] },
     { name: "Iradan", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [72.1000, 40.2667] },
+    { name: "Khaidarkan", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [71.3167, 39.9500] },
 
     // -------------------------------------------------------5------------------------------------------------------- //
+
+    // Turkmaniston
 
     // Davlat
     { name: "Turkmaniston", type: "davlat", country: "Turkmaniston", center: [59.5563, 38.9697] },
@@ -490,6 +524,9 @@ export const places = [
     { name: "Abadan", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.1972, 38.0539] },
     { name: "Kaka", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [59.6167, 37.3500] },
     { name: "Baharly", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [57.4333, 38.4333] },
+    { name: "Gökdepe", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.1833, 38.1500] },
+    { name: "Sarahs", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [61.2167, 36.5333] },
+    { name: "Arçman", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.9667, 38.0833] },
 
     // Mary viloyati
     { name: "Mary viloyati", type: "viloyat", country: "Turkmaniston", center: [62.0, 37.5] },
@@ -501,6 +538,7 @@ export const places = [
     { name: "Murgab", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [61.9714, 37.4966] },
     { name: "Tagta", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9333, 37.3833] },
     { name: "Serhetabat", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.3438, 35.2799] },
+    { name: "Oguzhan", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.1000, 37.7000] },
 
     // Lebap viloyati
     { name: "Lebap viloyati", type: "viloyat", country: "Turkmaniston", center: [63.5, 38.5] },
@@ -509,6 +547,9 @@ export const places = [
     { name: "Atamyrat", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.8833, 37.8333] },
     { name: "Gazojak", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [61.4036, 41.1875] },
     { name: "Farap", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.5833, 39.1667] },
+    { name: "Darganata", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [64.3500, 38.4000] },
+    { name: "Köýtendag", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [66.2833, 37.8500] },
+    { name: "Hojambaz", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.0000, 39.5000] },
 
     // Dashoguz viloyati
     { name: "Dashoguz viloyati", type: "viloyat", country: "Turkmaniston", center: [59.5, 41.5] },
@@ -517,6 +558,9 @@ export const places = [
     { name: "Akdepe", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.3788, 42.0551] },
     { name: "Boldumsaz", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6667, 42.1333] },
     { name: "Yylanly", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6326, 41.8639] },
+    { name: "Shasenem", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [60.1167, 42.1500] },
+    { name: "Gurbansoltan eje", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.5000, 41.5000] },
+    { name: "Ruhubelent", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.5000, 42.0000] },
 
     // Balkan viloyati
     { name: "Balkan viloyati", type: "viloyat", country: "Turkmaniston", center: [55.0, 39.5] },
@@ -525,6 +569,10 @@ export const places = [
     { name: "Bereket", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [55.5150, 39.2450] },
     { name: "Gumdag", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [54.5906, 39.2061] },
     { name: "Serdar", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [56.2833, 38.9833] },
+    { name: "Esenguly", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [53.0833, 39.2333] },
+    { name: "Magtymguly", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [53.5000, 39.6000] },
+    { name: "Jebel", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [53.5000, 40.5000] },
+    { name: "Hazar", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [53.0000, 39.4500] },
 
     // -------------------------------------------------------6------------------------------------------------------- //
 
