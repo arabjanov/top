@@ -526,9 +526,117 @@ export const places = [
     { name: "Gumdag", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [54.5906, 39.2061] },
     { name: "Serdar", type: "shahar", country: "Turkmaniston", region: "Balkan viloyati", center: [56.2833, 38.9833] },
 
+    // -------------------------------------------------------6------------------------------------------------------- //
+
+    // Davlat
+    { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [66.0, 33.0] },
+
+    // Poytaxt
+    { name: "Kobul", type: "poytaxt", country: "Afg'oniston", center: [69.1700, 34.5300] },
+
+    // Viloyatlar va shaharlar
+
+    // Kobul viloyati
+    { name: "Kobul viloyati", type: "viloyat", country: "Afg'oniston", center: [69.1700, 34.5300] },
+    { name: "Charikar", type: "shahar", country: "Afg'oniston", region: "Kobul viloyati", center: [69.1700, 35.0100] },
+    { name: "Mehtar Lam", type: "shahar", country: "Afg'oniston", region: "Kobul viloyati", center: [70.2094, 34.6714] },
+
+    // Kandahor viloyati
+    { name: "Kandahor viloyati", type: "viloyat", country: "Afg'oniston", center: [65.7100, 31.6100] },
+    { name: "Kandahor", type: "shahar", country: "Afg'oniston", region: "Kandahor viloyati", center: [65.7100, 31.6100] },
+
+    // Hirot viloyati
+    { name: "Hirot viloyati", type: "viloyat", country: "Afg'oniston", center: [62.2000, 34.3500] },
+    { name: "Hirot", type: "shahar", country: "Afg'oniston", region: "Hirot viloyati", center: [62.2000, 34.3500] },
+
+    // Balkh viloyati
+    { name: "Balkh viloyati", type: "viloyat", country: "Afg'oniston", center: [67.1100, 36.7100] },
+    { name: "Mazori Sharif", type: "shahar", country: "Afg'oniston", region: "Balkh viloyati", center: [67.1100, 36.7100] },
+    { name: "Balkh", type: "shahar", country: "Afg'oniston", region: "Balkh viloyati", center: [66.8970, 36.7560] },
+
+    // Nangarhar viloyati
+    { name: "Nangarhar viloyati", type: "viloyat", country: "Afg'oniston", center: [70.4500, 34.4300] },
+    { name: "Jalalabad", type: "shahar", country: "Afg'oniston", region: "Nangarhar viloyati", center: [70.4500, 34.4300] },
+
+    // Qunduz viloyati
+    { name: "Qunduz viloyati", type: "viloyat", country: "Afg'oniston", center: [68.8600, 36.7300] },
+    { name: "Qunduz", type: "shahar", country: "Afg'oniston", region: "Qunduz viloyati", center: [68.8600, 36.7300] },
+    { name: "Khanabad", type: "shahar", country: "Afg'oniston", region: "Qunduz viloyati", center: [69.1200, 36.6800] },
+
+    // G'azni viloyati
+    { name: "G'azni viloyati", type: "viloyat", country: "Afg'oniston", center: [68.4200, 33.5500] },
+    { name: "G'azni", type: "shahar", country: "Afg'oniston", region: "G'azni viloyati", center: [68.4200, 33.5500] },
+
+    // Bag'lon viloyati
+    { name: "Bag'lon viloyati", type: "viloyat", country: "Afg'oniston", center: [68.7100, 36.1300] },
+    { name: "Bag'lon", type: "shahar", country: "Afg'oniston", region: "Bag'lon viloyati", center: [68.7080, 36.1300] },
+    { name: "Pul-e-Khumri", type: "shahar", country: "Afg'oniston", region: "Bag'lon viloyati", center: [68.7151, 35.9446] },
+
+    // Helmand viloyati
+    { name: "Helmand viloyati", type: "viloyat", country: "Afg'oniston", center: [64.3700, 31.5900] },
+    { name: "Lashkar Gah", type: "shahar", country: "Afg'oniston", region: "Helmand viloyati", center: [64.3716, 31.5938] },
+
+    // Takhor viloyati
+    { name: "Takhor viloyati", type: "viloyat", country: "Afg'oniston", center: [69.5300, 36.7400] },
+    { name: "Taloqan", type: "shahar", country: "Afg'oniston", region: "Takhor viloyati", center: [69.5345, 36.7361] },
+
+    // Badaxshon viloyati
+    { name: "Badaxshon viloyati", type: "viloyat", country: "Afg'oniston", center: [70.5800, 37.1200] },
+    { name: "Fayzabad", type: "shahar", country: "Afg'oniston", region: "Badaxshon viloyati", center: [70.5797, 37.1175] },
+
+    // G'or viloyati
+    { name: "G'or viloyati", type: "viloyat", country: "Afg'oniston", center: [65.2500, 34.5200] },
+    { name: "Chaghcharan", type: "shahar", country: "Afg'oniston", region: "G'or viloyati", center: [65.2517, 34.5225] },
+
+    // Faryob viloyati
+    { name: "Faryob viloyati", type: "viloyat", country: "Afg'oniston", center: [64.7800, 35.9200] },
+    { name: "Maymana", type: "shahar", country: "Afg'oniston", region: "Faryob viloyati", center: [64.7800, 35.9200] },
+
+    // Jowzjon viloyati
+    { name: "Jowzjon viloyati", type: "viloyat", country: "Afg'oniston", center: [65.7500, 36.6700] },
+    { name: "Sheberghan", type: "shahar", country: "Afg'oniston", region: "Jowzjon viloyati", center: [65.7500, 36.6700] },
+
+    // Sar-e Pul viloyati
+    { name: "Sar-e Pul viloyati", type: "viloyat", country: "Afg'oniston", center: [65.9300, 36.2200] },
+    { name: "Sar-e Pul", type: "shahar", country: "Afg'oniston", region: "Sar-e Pul viloyati", center: [65.9300, 36.2200] },
+
+    // Samangan viloyati
+    { name: "Samangan viloyati", type: "viloyat", country: "Afg'oniston", center: [68.0167, 36.2653] },
+    { name: "Aybak", type: "shahar", country: "Afg'oniston", region: "Samangan viloyati", center: [68.0167, 36.2653] },
+
+    // Bamyan viloyati
+    { name: "Bamyan viloyati", type: "viloyat", country: "Afg'oniston", center: [67.8300, 34.8200] },
+    { name: "Bamyan", type: "shahar", country: "Afg'oniston", region: "Bamyan viloyati", center: [67.8300, 34.8200] },
+
+    // Paktiya viloyati
+    { name: "Paktiya viloyati", type: "viloyat", country: "Afg'oniston", center: [69.2300, 33.6000] },
+    { name: "Gardez", type: "shahar", country: "Afg'oniston", region: "Paktiya viloyati", center: [69.2300, 33.6000] },
+
+    // Khost viloyati
+    { name: "Khost viloyati", type: "viloyat", country: "Afg'oniston", center: [69.9200, 33.3400] },
+    { name: "Khost", type: "shahar", country: "Afg'oniston", region: "Khost viloyati", center: [69.9200, 33.3400] },
+
+    // Kunar viloyati
+    { name: "Kunar viloyati", type: "viloyat", country: "Afg'oniston", center: [71.1500, 34.8700] },
+    { name: "Asadabad", type: "shahar", country: "Afg'oniston", region: "Kunar viloyati", center: [71.1538, 34.8743] },
+
+    // Farah viloyati
+    { name: "Farah viloyati", type: "viloyat", country: "Afg'oniston", center: [62.1800, 32.3700] },
+    { name: "Farah", type: "shahar", country: "Afg'oniston", region: "Farah viloyati", center: [62.1454, 32.4465] },
+
+    // Nimruz viloyati
+    { name: "Nimruz viloyati", type: "viloyat", country: "Afg'oniston", center: [61.8600, 30.9600] },
+    { name: "Zaranj", type: "shahar", country: "Afg'oniston", region: "Nimruz viloyati", center: [61.8604, 30.9596] },
+
+    // Zabul viloyati
+    { name: "Zabul viloyati", type: "viloyat", country: "Afg'oniston", center: [66.9100, 32.1000] },
+    { name: "Qalat", type: "shahar", country: "Afg'oniston", region: "Zabul viloyati", center: [66.9090, 32.1046] },
+
+    // Panjsher viloyati
+    { name: "Panjsher viloyati", type: "viloyat", country: "Afg'oniston", center: [69.5200, 35.3100] },
+    { name: "Bazarak", type: "shahar", country: "Afg'oniston", region: "Panjsher viloyati", center: [69.5200, 35.3100] },
 
     // Chet el!
-    { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [67.709953, 33.93911] },
     { name: "Afg'oniston", type: "davlat", country: "Afg'oniston", center: [67.709953, 33.93911] },
     { name: "Albaniya", type: "davlat", country: "Albaniya", center: [20.168331, 41.153332] },
     { name: "Jazoir", type: "davlat", country: "Jazoir", center: [1.659626, 28.033886] },
