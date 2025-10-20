@@ -902,12 +902,238 @@ export const places = [
     { name: "Villa Carlos Paz", type: "shahar", country: "Argentina", region: "Córdoba viloyati", center: [-64.4978, -31.4242] },
     { name: "Alta Gracia", type: "shahar", country: "Argentina", region: "Córdoba viloyati", center: [-64.4333, -31.65] },
 
+    // -------------------------------------------------------13------------------------------------------------------ //
+
+    { name: "Armaniston", type: "davlat", country: "Armaniston", center: [45.0382, 40.0691] },
+
+    // Poytaxt
+    { name: "Yerevan", type: "poytaxt_hudud", country: "Armaniston", center: [44.5152, 40.1811] },
+
+    // Shaharlar
+
+    { name: "Gyumri", type: "shahar", country: "Armaniston", region: "Shirak", center: [43.8453, 40.7894] },
+    { name: "Vanadzor", type: "shahar", country: "Armaniston", region: "Lori", center: [44.4939, 40.8128] },
+    { name: "Vagharshapat (Etchmiadzin)", type: "shahar", country: "Armaniston", region: "Armavir", center: [44.2898, 40.1705] },
+    { name: "Hrazdan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.7703, 40.5097] },
+    { name: "Abovyan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.6342, 40.2736] },
+    { name: "Kapan", type: "shahar", country: "Armaniston", region: "Syunik", center: [46.4059, 39.2076] },
+    { name: "Armavir", type: "shahar", country: "Armaniston", region: "Armavir", center: [43.9996, 40.1545] },
+    { name: "Gavar", type: "shahar", country: "Armaniston", region: "Gegharkunik", center: [45.1230, 40.3539] },
+    { name: "Artashat", type: "shahar", country: "Armaniston", region: "Ararat", center: [44.5447, 39.9614] },
+    { name: "Ijevan", type: "shahar", country: "Armaniston", region: "Tavush", center: [45.1463, 40.8756] },
+    { name: "Goris", type: "shahar", country: "Armaniston", region: "Syunik", center: [46.3386, 39.5111] },
+    { name: "Masis", type: "shahar", country: "Armaniston", region: "Ararat", center: [44.1889, 40.0657] },
+    { name: "Stepanavan", type: "shahar", country: "Armaniston", region: "Lori", center: [44.3872, 41.0099] },
+    { name: "Charentsavan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.6438, 40.4097] },
+    { name: "Sevan", type: "shahar", country: "Armaniston", region: "Gegharkunik", center: [44.9444, 40.5561] },
+    { name: "Ashtarak", type: "shahar", country: "Armaniston", region: "Aragatsotn", center: [44.3621, 40.2991] },
+    { name: "Hrazdan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.7703, 40.5097] },
+    { name: "Alaverdi", type: "shahar", country: "Armaniston", region: "Lori", center: [44.6543, 41.0977] },
+    { name: "Yeghvard", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.4814, 40.3226] },
+    { name: "Spitak", type: "shahar", country: "Armaniston", region: "Lori", center: [44.2676, 40.8322] },
+    { name: "Vardenis", type: "shahar", country: "Armaniston", region: "Gegharkunik", center: [45.3796, 40.1797] },
+    { name: "Martuni", type: "shahar", country: "Armaniston", region: "Gegharkunik", center: [45.2990, 40.1402] },
+    { name: "Dilijan", type: "shahar", country: "Armaniston", region: "Tavush", center: [44.8637, 40.7400] },
+    { name: "Meghri", type: "shahar", country: "Armaniston", region: "Syunik", center: [46.2381, 38.9027] },
+    { name: "Aparan", type: "shahar", country: "Armaniston", region: "Aragatsotn", center: [44.3569, 40.5920] },
+    { name: "Byureghavan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.5873, 40.3186] },
+
+    // -------------------------------------------------------14------------------------------------------------------ //
+
+    // Davlat Avstraliya
+    { name: "Avstraliya", type: "davlat", country: "Avstraliya", center: [133.7751, -25.2744] },
+
+    // Poytaxt
+    { name: "Canberra", type: "poytaxt_hudud", country: "Avstraliya", center: [149.1300, -35.2809] },
+
+    // Shtatlari va Hududlari
+
+    // New South Wales (NSW)
+    { name: "New South Wales", type: "shtat", country: "Avstraliya", center: [146.9200, -31.2532] },
+    { name: "Sydney", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [151.2093, -33.8688] },
+    { name: "Newcastle", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [151.7800, -32.9283] },
+    { name: "Wollongong", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [150.8931, -34.4278] },
+    { name: "Albury", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [146.9165, -36.0808] },
+    { name: "Broken Hill", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [141.4678, -31.9567] },
+    { name: "Wagga Wagga", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [147.3598, -35.1082] },
+    { name: "Dubbo", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [148.6011, -32.2569] },
+    { name: "Tamworth", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [150.9167, -31.0833] },
+    { name: "Orange", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [149.1013, -33.2836] },
+    { name: "Bathurst", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [149.5778, -33.4200] },
+    { name: "Lismore", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [153.2778, -28.8142] },
+    { name: "Gosford", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [151.3431, -33.4250] },
+    { name: "Parramatta", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [150.9932, -33.8151] },
+    { name: "Penrith", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [150.7054, -33.7501] },
+    { name: "Maitland", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [151.5586, -32.7331] },
+    { name: "Queanbeyan", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [149.2322, -35.3533] },
+    { name: "Armidale", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [151.6650, -30.5133] },
+    { name: "Goulburn", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [149.7197, -34.7531] },
+    { name: "Coffs Harbour", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [153.1144, -30.2986] },
+    { name: "Port Macquarie", type: "shahar", country: "Avstraliya", region: "New South Wales", center: [152.9078, -31.4333] },
+
+    // Victoria (VIC)
+    { name: "Victoria", type: "shtat", country: "Avstraliya", center: [144.9631, -36.9848] },
+    { name: "Melbourne", type: "shahar", country: "Avstraliya", region: "Victoria", center: [144.9631, -37.8136] },
+    { name: "Geelong", type: "shahar", country: "Avstraliya", region: "Victoria", center: [144.3614, -38.1499] },
+    { name: "Ballarat", type: "shahar", country: "Avstraliya", region: "Victoria", center: [143.8503, -37.5622] },
+    { name: "Bendigo", type: "shahar", country: "Avstraliya", region: "Victoria", center: [144.2794, -36.7570] },
+    { name: "Shepparton", type: "shahar", country: "Avstraliya", region: "Victoria", center: [145.3983, -36.3800] },
+    { name: "Mildura", type: "shahar", country: "Avstraliya", region: "Victoria", center: [142.1597, -34.1889] },
+    { name: "Warrnambool", type: "shahar", country: "Avstraliya", region: "Victoria", center: [142.4833, -38.3833] },
+    { name: "Frankston", type: "shahar", country: "Avstraliya", region: "Victoria", center: [145.1333, -38.1442] },
+    { name: "Wangaratta", type: "shahar", country: "Avstraliya", region: "Victoria", center: [146.3217, -36.3600] },
+
+    // Queensland (QLD)
+    { name: "Queensland", type: "shtat", country: "Avstraliya", center: [142.7028, -20.9176] },
+    { name: "Brisbane", type: "shahar", country: "Avstraliya", region: "Queensland", center: [153.0251, -27.4698] },
+    { name: "Gold Coast", type: "shahar", country: "Avstraliya", region: "Queensland", center: [153.4000, -28.0167] },
+    { name: "Sunshine Coast", type: "shahar", country: "Avstraliya", region: "Queensland", center: [153.0667, -26.6500] },
+    { name: "Townsville", type: "shahar", country: "Avstraliya", region: "Queensland", center: [146.8169, -19.2590] },
+    { name: "Cairns", type: "shahar", country: "Avstraliya", region: "Queensland", center: [145.7781, -16.9203] },
+    { name: "Toowoomba", type: "shahar", country: "Avstraliya", region: "Queensland", center: [151.9500, -27.5598] },
+    { name: "Mackay", type: "shahar", country: "Avstraliya", region: "Queensland", center: [149.1868, -21.1550] },
+    { name: "Rockhampton", type: "shahar", country: "Avstraliya", region: "Queensland", center: [150.5069, -23.3781] },
+    { name: "Bundaberg", type: "shahar", country: "Avstraliya", region: "Queensland", center: [152.3489, -24.8661] },
+    { name: "Hervey Bay", type: "shahar", country: "Avstraliya", region: "Queensland", center: [152.8693, -25.2887] },
+    { name: "Gladstone", type: "shahar", country: "Avstraliya", region: "Queensland", center: [151.2574, -23.8464] },
+    { name: "Logan City", type: "shahar", country: "Avstraliya", region: "Queensland", center: [153.1094, -27.6392] },
+
+    // South Australia (SA)
+    { name: "South Australia", type: "shtat", country: "Avstraliya", center: [135.7345, -30.0002] },
+    { name: "Adelaide", type: "shahar", country: "Avstraliya", region: "South Australia", center: [138.6007, -34.9285] },
+    { name: "Mount Gambier", type: "shahar", country: "Avstraliya", region: "South Australia", center: [140.7828, -37.8297] },
+    { name: "Whyalla", type: "shahar", country: "Avstraliya", region: "South Australia", center: [137.5833, -33.0333] },
+    { name: "Port Lincoln", type: "shahar", country: "Avstraliya", region: "South Australia", center: [135.8585, -34.7250] },
+    { name: "Port Augusta", type: "shahar", country: "Avstraliya", region: "South Australia", center: [137.7658, -32.4925] },
+    { name: "Victor Harbor", type: "shahar", country: "Avstraliya", region: "South Australia", center: [138.6167, -35.5500] },
+    { name: "Murray Bridge", type: "shahar", country: "Avstraliya", region: "South Australia", center: [139.2750, -35.1194] },
+
+    // Western Australia (WA)
+    { name: "Western Australia", type: "shtat", country: "Avstraliya", center: [122.2359, -27.6728] },
+    { name: "Perth", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [115.8605, -31.9505] },
+    { name: "Mandurah", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [115.7211, -32.5289] },
+    { name: "Bunbury", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [115.6372, -33.3267] },
+    { name: "Kalgoorlie", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [121.4681, -30.7489] },
+    { name: "Geraldton", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [114.6145, -28.7774] },
+    { name: "Albany", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [117.8836, -35.0275] },
+    { name: "Busselton", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [115.3458, -33.6478] },
+    { name: "Broome", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [122.2392, -17.9614] },
+    { name: "Port Hedland", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [118.5714, -20.3106] },
+    { name: "Karratha", type: "shahar", country: "Avstraliya", region: "Western Australia", center: [116.8467, -20.7364] },
+
+    // Tasmania (TAS)
+    { name: "Tasmania", type: "shtat", country: "Avstraliya", center: [146.3159, -42.0409] },
+    { name: "Hobart", type: "shahar", country: "Avstraliya", region: "Tasmania", center: [147.3272, -42.8821] },
+    { name: "Launceston", type: "shahar", country: "Avstraliya", region: "Tasmania", center: [147.1448, -41.4332] },
+    { name: "Burnie", type: "shahar", country: "Avstraliya", region: "Tasmania", center: [145.9003, -41.0520] },
+    { name: "Devonport", type: "shahar", country: "Avstraliya", region: "Tasmania", center: [146.3614, -41.1789] },
+
+    // Northern Territory (NT)
+    { name: "Northern Territory", type: "hudud", country: "Avstraliya", center: [133.8807, -19.4914] },
+    { name: "Darwin", type: "shahar", country: "Avstraliya", region: "Northern Territory", center: [130.8456, -12.4634] },
+    { name: "Alice Springs", type: "shahar", country: "Avstraliya", region: "Northern Territory", center: [133.8807, -23.6980] },
+    { name: "Palmerston", type: "shahar", country: "Avstraliya", region: "Northern Territory", center: [130.9833, -12.4894] },
+
+    // Australian Capital Territory (ACT)
+    { name: "Australian Capital Territory", type: "hudud", country: "Avstraliya", center: [149.1300, -35.4735] },
+
+    // -------------------------------------------------------15------------------------------------------------------ //
+
+    // Davlat Ozarbayjon
+    { name: "Ozarbayjon", type: "davlat", country: "Ozarbayjon", center: [47.5769, 40.1431] },
+
+    // Poytaxt
+    { name: "Boku", type: "poytaxt_hudud", country: "Ozarbayjon", center: [49.8920, 40.3777] },
+
+    // Shaharlar va Viloyatlar
+
+    // Boku va atrofi
+    { name: "Boku", type: "shahar", country: "Ozarbayjon", region: "Boku", center: [49.8920, 40.3777] },
+    { name: "Sumqayit", type: "shahar", country: "Ozarbayjon", region: "Abseron", center: [49.6686, 40.5897] },
+    { name: "Xirdalan", type: "shahar", country: "Ozarbayjon", region: "Abseron", center: [49.7500, 40.4500] },
+    { name: "Bakixanov", type: "shahar", country: "Ozarbayjon", region: "Boku", center: [49.9669, 40.4189] },
+    { name: "Qaracuxur", type: "shahar", country: "Ozarbayjon", region: "Boku", center: [49.9736, 40.3967] },
+    { name: "Biləcəri", type: "shahar", country: "Ozarbayjon", region: "Boku", center: [49.8057, 40.4444] },
+
+    // Ganca-Qazax iqtisodiy viloyati
+    { name: "Ganca", type: "shahar", country: "Ozarbayjon", region: "Ganca", center: [46.3606, 40.6828] },
+    { name: "Mingəçevir", type: "shahar", country: "Ozarbayjon", region: "Mingəçevir", center: [47.0595, 40.7640] },
+    { name: "Yevlax", type: "shahar", country: "Ozarbayjon", region: "Yevlax", center: [47.1501, 40.6183] },
+    { name: "Naftalan", type: "shahar", country: "Ozarbayjon", region: "Goranboy", center: [46.8250, 40.5072] },
+    { name: "Qazax", type: "shahar", country: "Ozarbayjon", region: "Qazax", center: [45.3581, 41.0910] },
+    { name: "Shamkir", type: "shahar", country: "Ozarbayjon", region: "Shamkir", center: [46.0183, 40.8292] },
+    { name: "Tovuz", type: "shahar", country: "Ozarbayjon", region: "Tovuz", center: [45.6275, 40.9928] },
+    { name: "Goranboy", type: "shahar", country: "Ozarbayjon", region: "Goranboy", center: [46.7897, 40.6103] },
+    { name: "Goygol", type: "shahar", country: "Ozarbayjon", region: "Goygol", center: [46.3194, 40.5872] },
+    { name: "Dashkasan", type: "shahar", country: "Ozarbayjon", region: "Dashkasan", center: [46.0817, 40.5236] },
+    { name: "Gadabay", type: "shahar", country: "Ozarbayjon", region: "Gadabay", center: [45.8167, 40.5700] },
+    { name: "Samux", type: "shahar", country: "Ozarbayjon", region: "Samux", center: [46.4100, 40.7625] },
+
+    // Shaki-Zaqatala iqtisodiy viloyati
+    { name: "Shaki", type: "shahar", country: "Ozarbayjon", region: "Shaki", center: [47.1706, 41.1919] },
+    { name: "Qabala", type: "shahar", country: "Ozarbayjon", region: "Qabala", center: [47.8458, 40.9814] },
+    { name: "Zaqatala", type: "shahar", country: "Ozarbayjon", region: "Zaqatala", center: [46.6450, 41.6317] },
+    { name: "Balakan", type: "shahar", country: "Ozarbayjon", region: "Balakan", center: [46.4056, 41.7272] },
+    { name: "Oguz", type: "shahar", country: "Ozarbayjon", region: "Oguz", center: [47.4656, 41.0719] },
+    { name: "Qax", type: "shahar", country: "Ozarbayjon", region: "Qax", center: [46.9194, 41.4158] },
+
+    // Quba-Xacmaz iqtisodiy viloyati
+    { name: "Quba", type: "shahar", country: "Ozarbayjon", region: "Quba", center: [48.5134, 41.3611] },
+    { name: "Qusar", type: "shahar", country: "Ozarbayjon", region: "Qusar", center: [48.4300, 41.4264] },
+    { name: "Xacmaz", type: "shahar", country: "Ozarbayjon", region: "Xacmaz", center: [48.8056, 41.4628] },
+    { name: "Shabran", type: "shahar", country: "Ozarbayjon", region: "Shabran", center: [48.8500, 41.2200] },
+    { name: "Siyazan", type: "shahar", country: "Ozarbayjon", region: "Siyazan", center: [49.1117, 41.0778] },
+    { name: "Xizi", type: "shahar", country: "Ozarbayjon", region: "Xizi", center: [49.0783, 40.9117] },
+
+    // Markaziy Aran iqtisodiy viloyati
+    { name: "Shirvan", type: "shahar", country: "Ozarbayjon", region: "Shirvan", center: [48.9290, 39.9378] },
+    { name: "Barda", type: "shahar", country: "Ozarbayjon", region: "Barda", center: [47.1267, 40.3758] },
+    { name: "Sabirabad", type: "shahar", country: "Ozarbayjon", region: "Sabirabad", center: [48.4761, 40.0108] },
+    { name: "Saatli", type: "shahar", country: "Ozarbayjon", region: "Saatli", center: [48.3689, 39.9321] },
+    { name: "Imishli", type: "shahar", country: "Ozarbayjon", region: "Imishli", center: [48.0597, 39.8703] },
+    { name: "Beylagan", type: "shahar", country: "Ozarbayjon", region: "Beylagan", center: [47.6178, 39.7756] },
+    { name: "Agcabadi", type: "shahar", country: "Ozarbayjon", region: "Agcabadi", center: [47.4597, 40.0528] },
+    { name: "Agdash", type: "shahar", country: "Ozarbayjon", region: "Agdash", center: [47.4736, 40.6450] },
+    { name: "Zardab", type: "shahar", country: "Ozarbayjon", region: "Zardab", center: [47.7167, 40.2167] },
+    { name: "Goychay", type: "shahar", country: "Ozarbayjon", region: "Goychay", center: [47.7403, 40.6544] },
+    { name: "Ucar", type: "shahar", country: "Ozarbayjon", region: "Ucar", center: [47.6511, 40.5097] },
+    { name: "Kurdamir", type: "shahar", country: "Ozarbayjon", region: "Kurdamir", center: [48.1517, 40.3422] },
+
+    // Lankaran iqtisodiy viloyati
+    { name: "Lankaran", type: "shahar", country: "Ozarbayjon", region: "Lankaran", center: [48.8506, 38.7543] },
+    { name: "Astara", type: "shahar", country: "Ozarbayjon", region: "Astara", center: [48.8753, 38.4558] },
+    { name: "Masalli", type: "shahar", country: "Ozarbayjon", region: "Masalli", center: [48.6664, 39.0353] },
+    { name: "Lerik", type: "shahar", country: "Ozarbayjon", region: "Lerik", center: [48.4153, 38.7739] },
+    { name: "Yardimli", type: "shahar", country: "Ozarbayjon", region: "Yardimli", center: [48.2428, 38.9069] },
+    { name: "Calilabad", type: "shahar", country: "Ozarbayjon", region: "Calilabad", center: [48.5014, 39.2094] },
+
+    // Shamakhi-Ismayilli hududi
+    { name: "Shamakhi", type: "shahar", country: "Ozarbayjon", region: "Shamakhi", center: [48.6414, 40.6314] },
+    { name: "Ismayilli", type: "shahar", country: "Ozarbayjon", region: "Ismayilli", center: [48.1517, 40.7875] },
+    { name: "Agsu", type: "shahar", country: "Ozarbayjon", region: "Agsu", center: [48.3989, 40.5719] },
+
+    // Naxchivan Muxtor Respublikasi
+    { name: "Naxchivan", type: "shahar", country: "Ozarbayjon", region: "Naxchivan MR", center: [45.4122, 39.2089] },
+    { name: "Ordubad", type: "shahar", country: "Ozarbayjon", region: "Ordubad", center: [46.0219, 38.9072] },
+    { name: "Julfa", type: "shahar", country: "Ozarbayjon", region: "Julfa", center: [45.6294, 38.9558] },
+    { name: "Sharur", type: "shahar", country: "Ozarbayjon", region: "Sharur", center: [44.9764, 39.5536] },
+    { name: "Babak", type: "shahar", country: "Ozarbayjon", region: "Babak", center: [45.4500, 39.1500] },
+    { name: "Shahbuz", type: "shahar", country: "Ozarbayjon", region: "Shahbuz", center: [45.5733, 39.4072] },
+
+    // Tog'li Qarabog' va Qalbacar hududi  
+    { name: "Xankandi", type: "shahar", country: "Ozarbayjon", region: "Xankandi", center: [46.7528, 39.8177] },
+    { name: "Shusha", type: "shahar", country: "Ozarbayjon", region: "Shusha", center: [46.7472, 39.7597] },
+    { name: "Xocali", type: "shahar", country: "Ozarbayjon", region: "Xocali", center: [46.7900, 39.9133] },
+    { name: "Xocavand", type: "shahar", country: "Ozarbayjon", region: "Xocavand", center: [47.1128, 39.7953] },
+    { name: "Qalbacar", type: "shahar", country: "Ozarbayjon", region: "Qalbacar", center: [46.0400, 40.1000] },
+    { name: "Lachin", type: "shahar", country: "Ozarbayjon", region: "Lachin", center: [46.5500, 39.6392] },
+    { name: "Agdam", type: "shahar", country: "Ozarbayjon", region: "Agdam", center: [46.9281, 39.9917] },
+    { name: "Fuzuli", type: "shahar", country: "Ozarbayjon", region: "Fuzuli", center: [47.1425, 39.6036] },
+    { name: "Cabrayil", type: "shahar", country: "Ozarbayjon", region: "Cabrayil", center: [47.0289, 39.4008] },
+    { name: "Qubadli", type: "shahar", country: "Ozarbayjon", region: "Qubadli", center: [46.5792, 39.3439] },
+    { name: "Zangilan", type: "shahar", country: "Ozarbayjon", region: "Zangilan", center: [46.6500, 39.0858] },
 
     // Chet el!
-    { name: "Armaniston", type: "davlat", country: "Armaniston", center: [45.038189, 40.069099] },
-    { name: "Avstraliya", type: "davlat", country: "Avstraliya", center: [133.775136, -25.274398] },
-    { name: "Avstriya", type: "davlat", country: "Avstriya", center: [14.550072, 47.516231] },
-    { name: "Ozarbayjon", type: "davlat", country: "Ozarbayjon", center: [47.576927, 40.143105] },
     { name: "Bagama orollari", type: "davlat", country: "Bagama orollari", center: [-77.39628, 25.03428] },
     { name: "Bahrayn", type: "davlat", country: "Bahrayn", center: [50.637772, 25.930414] },
     { name: "Bangladesh", type: "davlat", country: "Bangladesh", center: [90.356331, 23.684994] },
