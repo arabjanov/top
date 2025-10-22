@@ -1133,8 +1133,152 @@ export const places = [
     { name: "Qubadli", type: "shahar", country: "Ozarbayjon", region: "Qubadli", center: [46.5792, 39.3439] },
     { name: "Zangilan", type: "shahar", country: "Ozarbayjon", region: "Zangilan", center: [46.6500, 39.0858] },
 
-    // Chet el!
+    // -------------------------------------------------------16------------------------------------------------------ //
+
+    // Davlat Bagama orollari
+
     { name: "Bagama orollari", type: "davlat", country: "Bagama orollari", center: [-77.39628, 25.03428] },
+
+    // Poytaxt
+    { name: "Nassau", type: "poytaxt", country: "Bagama orollari", center: [-77.345, 25.06] },
+
+    // Asosiy orollar va shaharlar
+
+    // New Providence oroli
+    { name: "New Providence", type: "orol", country: "Bagama orollari", center: [-77.2833, 25.0333] },
+    { name: "Freetown", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-76.27, 24.77] },
+    { name: "Adelaide", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-77.52, 25.00] },
+    { name: "Cable Beach", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-77.40, 25.07] },
+    { name: "Paradise Island", type: "orol", country: "Bagama orollari", region: "New Providence", center: [-77.32, 25.08] },
+    { name: "Coral Harbour", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-77.47, 24.97] },
+    { name: "Gambier Village", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-77.50, 25.07] },
+    { name: "Fox Hill", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-77.30, 25.05] },
+    { name: "Killarney", type: "shahar", country: "Bagama orollari", region: "New Providence", center: [-77.42, 25.05] },
+
+    // Grand Bahama oroli
+    { name: "Grand Bahama", type: "orol", country: "Bagama orollari", center: [-78.317, 26.650] },
+    { name: "Freeport", type: "shahar", country: "Bagama orollari", region: "Grand Bahama", center: [-78.7, 26.533] },
+    { name: "West End", type: "shahar", country: "Bagama orollari", region: "Grand Bahama", center: [-78.97, 26.69] },
+    { name: "Lucaya", type: "shahar", country: "Bagama orollari", region: "Grand Bahama", center: [-78.667, 26.533] },
+    { name: "High Rock", type: "shahar", country: "Bagama orollari", region: "Grand Bahama", center: [-78.282, 26.627] },
+    { name: "Pelican Point", type: "shahar", country: "Bagama orollari", region: "Grand Bahama", center: [-78.38, 26.60] },
+
+    // Abaco orollari
+    { name: "Great Abaco", type: "orol", country: "Bagama orollari", center: [-77.05, 26.55] },
+    { name: "Little Abaco", type: "orol", country: "Bagama orollari", center: [-77.52, 26.87] },
+    { name: "Marsh Harbour", type: "shahar", country: "Bagama orollari", region: "Great Abaco", center: [-77.064, 26.541] },
+    { name: "Coopers Town", type: "shahar", country: "Bagama orollari", region: "Little Abaco", center: [-77.52, 26.87] },
+    { name: "Treasure Cay", type: "shahar", country: "Bagama orollari", region: "Great Abaco", center: [-77.38, 26.75] },
+    { name: "Dundas Town", type: "shahar", country: "Bagama orollari", region: "Great Abaco", center: [-77.05, 26.55] },
+    { name: "Murphy Town", type: "shahar", country: "Bagama orollari", region: "Great Abaco", center: [-77.05, 26.53] },
+    { name: "Fox Town", type: "shahar", country: "Bagama orollari", region: "Little Abaco", center: [-77.53, 26.75] },
+    { name: "Crown Haven", type: "shahar", country: "Bagama orollari", region: "Little Abaco", center: [-77.58, 26.92] },
+    { name: "Cedar Harbour", type: "shahar", country: "Bagama orollari", region: "Little Abaco", center: [-77.55, 26.80] },
+    { name: "Sandy Point", type: "shahar", country: "Bagama orollari", region: "Great Abaco", center: [-77.40, 26.05] },
+    { name: "Hope Town", type: "shahar", country: "Bagama orollari", region: "Elbow Cay", center: [-76.97, 26.53] },
+    { name: "Man-O-War Cay", type: "orol", country: "Bagama orollari", region: "Abaco", center: [-77.02, 26.60] },
+    { name: "Green Turtle Cay", type: "orol", country: "Bagama orollari", region: "Abaco", center: [-77.33, 26.77] },
+    { name: "Great Guana Cay", type: "orol", country: "Bagama orollari", region: "Abaco", center: [-77.13, 26.67] },
+    { name: "Grand Cay", type: "orol", country: "Bagama orollari", region: "Abaco", center: [-78.33, 27.00] },
+    { name: "Moore's Island", type: "orol", country: "Bagama orollari", region: "Abaco", center: [-77.05, 26.30] },
+    { name: "Spanish Cay", type: "orol", country: "Bagama orollari", region: "Abaco", center: [-77.42, 26.95] },
+    { name: "Cherokee Sound", type: "shahar", country: "Bagama orollari", region: "Great Abaco", center: [-77.15, 26.25] },
+
+    // Andros oroli
+    { name: "Andros", type: "orol", country: "Bagama orollari", center: [-77.950, 24.433] },
+    { name: "Andros Town", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-77.769, 24.705] },
+    { name: "Nicholls Town", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-78.01, 25.14] },
+    { name: "San Andros", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-78.05, 25.067] },
+    { name: "Mastic Point", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-77.90, 25.05] },
+    { name: "Lowe Sound", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-78.05, 25.20] },
+    { name: "Conch Sound", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-77.95, 25.15] },
+    { name: "Staniard Creek", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-77.85, 24.95] },
+    { name: "Red Bays", type: "shahar", country: "Bagama orollari", region: "North Andros", center: [-78.10, 25.30] },
+    { name: "Behring Point", type: "shahar", country: "Bagama orollari", region: "Central Andros", center: [-77.727, 24.479] },
+    { name: "Fresh Creek", type: "shahar", country: "Bagama orollari", region: "Central Andros", center: [-77.75, 24.70] },
+    { name: "Congo Town", type: "shahar", country: "Bagama orollari", region: "South Andros", center: [-77.58, 24.17] },
+    { name: "The Bluff", type: "shahar", country: "Bagama orollari", region: "South Andros", center: [-77.40, 23.95] },
+    { name: "Mangrove Cay", type: "orol", country: "Bagama orollari", region: "Andros", center: [-77.73, 24.20] },
+
+    // Eleuthera oroli
+    { name: "Eleuthera", type: "orol", country: "Bagama orollari", center: [-76.126, 25.078] },
+    { name: "Governor's Harbour", type: "shahar", country: "Bagama orollari", region: "Eleuthera", center: [-76.25, 25.20] },
+    { name: "Rock Sound", type: "shahar", country: "Bagama orollari", region: "South Eleuthera", center: [-76.20, 24.90] },
+    { name: "Tarpum Bay", type: "shahar", country: "Bagama orollari", region: "Central Eleuthera", center: [-76.20, 25.05] },
+    { name: "Gregory Town", type: "shahar", country: "Bagama orollari", region: "North Eleuthera", center: [-76.53, 25.40] },
+    { name: "Dunmore Town", type: "shahar", country: "Bagama orollari", region: "Harbour Island", center: [-76.636, 25.502] },
+    { name: "Harbour Island", type: "orol", country: "Bagama orollari", region: "Eleuthera", center: [-76.636, 25.502] },
+    { name: "Spanish Wells", type: "shahar", country: "Bagama orollari", region: "St. George's Cay", center: [-76.764, 25.547] },
+    { name: "Palmetto Point", type: "shahar", country: "Bagama orollari", region: "Central Eleuthera", center: [-76.22, 25.12] },
+    { name: "The Bluff", type: "shahar", country: "Bagama orollari", region: "North Eleuthera", center: [-76.767, 25.467] },
+    { name: "James Cistern", type: "shahar", country: "Bagama orollari", region: "Central Eleuthera", center: [-76.30, 25.15] },
+    { name: "Hatchet Bay", type: "shahar", country: "Bagama orollari", region: "Central Eleuthera", center: [-76.38, 25.35] },
+
+    // Exuma orollari
+    { name: "Great Exuma", type: "orol", country: "Bagama orollari", center: [-75.787, 23.517] },
+    { name: "Little Exuma", type: "orol", country: "Bagama orollari", center: [-75.75, 23.47] },
+    { name: "George Town", type: "shahar", country: "Bagama orollari", region: "Great Exuma", center: [-75.787, 23.516] },
+    { name: "Staniel Cay", type: "orol", country: "Bagama orollari", region: "Exuma Cays", center: [-76.440, 24.169] },
+    { name: "Barreterre", type: "shahar", country: "Bagama orollari", region: "Great Exuma", center: [-75.90, 23.60] },
+    { name: "Rolleville", type: "shahar", country: "Bagama orollari", region: "Great Exuma", center: [-75.80, 23.50] },
+    { name: "Williamstown", type: "shahar", country: "Bagama orollari", region: "Little Exuma", center: [-75.75, 23.45] },
+
+    // Cat Island oroli
+    { name: "Cat Island", type: "orol", country: "Bagama orollari", center: [-75.517, 24.417] },
+    { name: "Arthur's Town", type: "shahar", country: "Bagama orollari", region: "Cat Island", center: [-75.672, 24.622] },
+    { name: "New Bight", type: "shahar", country: "Bagama orollari", region: "Cat Island", center: [-75.45, 24.32] },
+    { name: "Old Bight", type: "shahar", country: "Bagama orollari", region: "Cat Island", center: [-75.42, 24.28] },
+    { name: "Orange Creek", type: "shahar", country: "Bagama orollari", region: "Cat Island", center: [-75.62, 24.55] },
+    { name: "Port Howe", type: "shahar", country: "Bagama orollari", region: "Cat Island", center: [-75.70, 24.08] },
+    { name: "Dumfries", type: "shahar", country: "Bagama orollari", region: "Cat Island", center: [-75.65, 24.60] },
+
+    // Long Island oroli
+    { name: "Long Island", type: "orol", country: "Bagama orollari", center: [-75.111, 23.217] },
+    { name: "Clarence Town", type: "shahar", country: "Bagama orollari", region: "Long Island", center: [-74.98, 23.10] },
+    { name: "Deadman's Cay", type: "shahar", country: "Bagama orollari", region: "Long Island", center: [-75.08, 23.17] },
+    { name: "Stella Maris", type: "shahar", country: "Bagama orollari", region: "Long Island", center: [-75.27, 23.58] },
+    { name: "Simms", type: "shahar", country: "Bagama orollari", region: "Long Island", center: [-75.12, 23.25] },
+
+    // San Salvador oroli
+    { name: "San Salvador", type: "orol", country: "Bagama orollari", center: [-74.483, 24.100] },
+    { name: "Cockburn Town", type: "shahar", country: "Bagama orollari", region: "San Salvador", center: [-74.531, 24.052] },
+
+    // Bimini orollari
+    { name: "Bimini", type: "orol", country: "Bagama orollari", center: [-79.250, 25.733] },
+    { name: "Alice Town", type: "shahar", country: "Bagama orollari", region: "North Bimini", center: [-79.297, 25.728] },
+    { name: "Bailey Town", type: "shahar", country: "Bagama orollari", region: "North Bimini", center: [-79.28, 25.74] },
+
+    // Inagua orollari
+    { name: "Great Inagua", type: "orol", country: "Bagama orollari", center: [-73.673, 20.950] },
+    { name: "Matthew Town", type: "shahar", country: "Bagama orollari", region: "Great Inagua", center: [-73.673, 20.950] },
+
+    // Acklins oroli
+    { name: "Acklins", type: "orol", country: "Bagama orollari", center: [-73.880, 22.560] },
+    { name: "Snug Corner", type: "shahar", country: "Bagama orollari", region: "Acklins", center: [-73.88, 22.56] },
+    { name: "Spring Point", type: "shahar", country: "Bagama orollari", region: "Acklins", center: [-73.90, 22.45] },
+
+    // Crooked Island
+    { name: "Crooked Island", type: "orol", country: "Bagama orollari", center: [-74.220, 22.770] },
+    { name: "Colonel Hill", type: "shahar", country: "Bagama orollari", region: "Crooked Island", center: [-74.207, 22.754] },
+
+    // Mayaguana oroli
+    { name: "Mayaguana", type: "orol", country: "Bagama orollari", center: [-73.080, 22.433] },
+    { name: "Abraham's Bay", type: "shahar", country: "Bagama orollari", region: "Mayaguana", center: [-72.967, 22.367] },
+
+    // Ragged Island
+    { name: "Ragged Island", type: "orol", country: "Bagama orollari", center: [-75.73, 22.20] },
+    { name: "Duncan Town", type: "shahar", country: "Bagama orollari", region: "Ragged Island", center: [-75.73, 22.18] },
+
+    // Rum Cay
+    { name: "Rum Cay", type: "orol", country: "Bagama orollari", center: [-74.83, 23.68] },
+    { name: "Port Nelson", type: "shahar", country: "Bagama orollari", region: "Rum Cay", center: [-74.83, 23.67] },
+
+    // Berry Islands
+    { name: "Berry Islands", type: "orol_guruhi", country: "Bagama orollari", center: [-77.850, 25.760] },
+    { name: "Great Harbour Cay", type: "orol", country: "Bagama orollari", region: "Berry Islands", center: [-77.850, 25.760] },
+
+
+    // Chet el!
     { name: "Bahrayn", type: "davlat", country: "Bahrayn", center: [50.637772, 25.930414] },
     { name: "Bangladesh", type: "davlat", country: "Bangladesh", center: [90.356331, 23.684994] },
     { name: "Barbados", type: "davlat", country: "Barbados", center: [-59.543198, 13.193887] },

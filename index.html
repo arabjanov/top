@@ -4,66 +4,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced 3D Globe</title>
+  <title>3D Globe Pro - O'zbekiston</title>
   <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/style.css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
 </head>
 
 <body>
-  <div class="particles" id="particles"></div>
   <div id='map'></div>
 
-  <div class="ui-container">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="🔍 Shahar yoki davlat qidiring...">
-      <div id="searchResult"></div>
-    </div>
-    <button class="btn" id="locBtn" title="Mening joylashuvim">📍</button>
-    <button class="btn" id="resetBtn" title="Boshlang'ich holat">🔄</button>
-    <button class="btn" id="distanceBtn" title="Masofani o'lchash">📏</button>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="🔍 Shahar yoki viloyat qidiring...">
+    <div id="searchResult"></div>
   </div>
 
-  <div class="mode-toggle">
-    <button class="btn" id="modeBtn" title="Kecha/Kunduz">🌓</button>
+  <div class="controls">
+    <button class="btn" id="issBtn" title="ISS Tracker">🛰️</button>
+    <button class="btn" id="terrainBtn" title="3D Terrain">⛰️</button>
+    <button class="btn" id="historyBtn" title="Tarix">📜</button>
+    <button class="btn" id="favBtn" title="Sevimlilar">⭐</button>
+    <button class="btn" id="locBtn" title="Joylashuv">📍</button>
+    <button class="btn" id="distanceBtn" title="Masofa">📏</button>
+    <button class="btn" id="clearMarkersBtn" title="Barcha markerlarni o'chirish">🗑️</button>
+    <button class="btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+    <button class="btn" id="modeBtn" title="Rejim">🌓</button>
+    <button class="btn" id="resetBtn" title="Reset">🔄</button>
   </div>
 
-  <div class="stats-panel">
-    <h3>⚡ STATISTIKA</h3>
-    <div class="stat-item">
-      <span class="stat-label">Markerlar:</span>
+  <div class="panel stats-panel">
+    <h3>📊 Statistika</h3>
+    <div class="stat-row">
+      <span class="stat-label">Markerlar</span>
       <span class="stat-value" id="markerCount">0</span>
     </div>
-    <div class="stat-item">
-      <span class="stat-label">Zoom:</span>
-      <span class="stat-value" id="zoomLevel">1.7</span>
+    <div class="stat-row">
+      <span class="stat-label">Zoom</span>
+      <span class="stat-value" id="zoomLevel">5.5</span>
     </div>
-    <div class="stat-item">
-      <span class="stat-label">Pitch:</span>
+    <div class="stat-row">
+      <span class="stat-label">Pitch</span>
       <span class="stat-value" id="pitchLevel">30°</span>
     </div>
-    <div class="stat-item">
-      <span class="stat-label">Aylanish:</span>
+    <div class="stat-row">
+      <span class="stat-label">Aylanish</span>
       <span class="stat-value" id="rotationStatus">✓</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Sevimlilar</span>
+      <span class="stat-value" id="favCount">0</span>
     </div>
   </div>
 
-  <div class="weather-panel" id="weatherPanel">
-    <h3>🌤️ Havo</h3>
-    <div class="temp-display" id="tempDisplay">--°</div>
-    <div style="text-align: center; color: #99e5ff;" id="weatherDesc">Yuklanmoqda...</div>
+  <div class="panel iss-panel" id="issPanel">
+    <h3>🛰️ ISS Tracker</h3>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.8);">
+      Tezlik: <span id="issSpeed">--</span> km/h
+    </div>
+    <div class="iss-coords" id="issCoords">Yuklanmoqda...</div>
   </div>
 
-  <div class="country-label" id="countryLabel"></div>
-
-  <div class="distance-tool" id="distanceTool">
-    <div style="margin-bottom: 8px;">📏 Masofa: <span id="distanceValue">0 km</span></div>
-    <button class="btn" style="width: 100%; height: auto; border-radius: 10px; padding: 8px;"
-      onclick="clearDistance()">Tozalash</button>
+  <div class="panel weather-panel" id="weatherPanel">
+    <h3>🌤️ Ob-havo</h3>
+    <div class="temp-large" id="tempDisplay">--°</div>
+    <div class="weather-info" id="weatherDesc">...</div>
+    <div class="weather-info" id="weatherExtra"></div>
   </div>
 
+  <div class="panel favorites-panel" id="favoritesPanel">
+    <h3>⭐ Sevimlilar</h3>
+    <div id="favoritesList"></div>
+  </div>
+
+  <div class="panel distance-panel" id="distancePanel">
+    <h3>📏 Masofa</h3>
+    <div class="distance-value" id="distanceValue">0 km</div>
+    <div class="distance-info" id="distanceInfo">Ikki nuqta orasidagi masofa</div>
+    <button class="popup-btn" style="width: 100%; margin-top: 12px;" onclick="clearDistance()">Tozalash</button>
+  </div>
+
+  <div class="panel history-panel" id="historyPanel">
+    <h3>📜 Tarix</h3>
+    <div id="historyList"></div>
+  </div>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
   <script type="module" src="src/main.js"></script>
 </body>
 
