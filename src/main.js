@@ -61,6 +61,45 @@ function initMap() {
   });
 }
 
+const menuToggleBtn = document.querySelector(".menu-toggle");
+const controls = document.querySelector(".controls");
+const btnGroup = document.querySelector(".btn-group");
+const searchContainer = document.querySelector(".search-container");
+
+menuToggleBtn.addEventListener("click", () => {
+  const buttons = btnGroup.querySelectorAll(".btn");
+  const searchContainer = document.querySelector(".search-container");
+
+  if (controls.classList.contains("menu-expanded")) {
+    // Menu yopish
+    controls.classList.remove("menu-expanded");
+    menuToggleBtn.classList.remove("active"); // toggle button eski holat
+
+    btnGroup.classList.add("collapsing");
+    buttons.forEach((btn, i) => btn.style.transitionDelay = `${i * 0.05}s`);
+    btnGroup.addEventListener("transitionend", () => {
+      btnGroup.classList.remove("collapsing");
+      buttons.forEach(btn => btn.style.transitionDelay = "");
+    }, { once: true });
+
+    // Search container markazga qaytadi
+    searchContainer.style.maxWidth = "590px";
+    searchContainer.style.transform = "translateX(-50%)";
+
+  } else {
+    // Menu ochish
+    controls.classList.add("menu-expanded");
+    menuToggleBtn.classList.add("active"); // toggle button ranglari o‘zgaradi
+
+    buttons.forEach((btn, i) => btn.style.transitionDelay = `${i * 0.05}s`);
+
+    // Search container chapga siljiydi
+    searchContainer.style.maxWidth = "490px";
+    searchContainer.style.transform = "translateX(-50%)";
+  }
+});
+
+
 // Fon aylanişini tuzat - faqat map aylansın, fon qolsın
 function applyMapVisuals() {
   map.setFog({

@@ -22,11 +22,12 @@ body {
 .search-container {
   position: fixed;
   top: 24px;
-  left: 50%;
+  left: 51%;
   transform: translateX(-50%);
+  transition: max-width 0.3s ease, transform 0.3s ease;
   z-index: 100;
   width: 90%;
-  max-width: 500px;
+  max-width: 590px;
 }
 
 #searchInput {
@@ -94,44 +95,123 @@ body {
 .controls {
   position: fixed;
   top: 24px;
-  right: 24px;
-  z-index: 100;
+  right: 50%;
+  transform: translateX(894px);
+  /* search yonida turishi uchun */
   display: flex;
+  align-items: center;
+  background-color: transparent;
   gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  z-index: 101;
 }
 
-.btn {
+.menu-toggle,
+.btn.search {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: none;
+  background: rgba(100, 200, 255, 0.2);
+  border: 1px solid rgba(100, 200, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  flex-shrink: 0;
+}
+
+/* Tugmalar boshlang'ich holat: ekrandan o'ng tomondan chiqqandek */
+.btn-group {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-group .btn {
+  opacity: 0;
+  transform: translateX(20px) scale(0.8);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Ochilganda ketma-ket chiqish */
+.controls.menu-expanded .btn-group {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.controls.menu-expanded .btn-group .btn {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.controls.menu-expanded .btn-group .btn:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.controls.menu-expanded .btn-group .btn:nth-child(2) {
+  transition-delay: 0.02s;
+}
+
+.controls.menu-expanded .btn-group .btn:nth-child(3) {
+  transition-delay: 0.7s;
+}
+
+.controls.menu-expanded .btn-group .btn:nth-child(4) {
+  transition-delay: 0.12s;
+}
+
+/* Yopilish: chapdan o'ngga ketma-ket yo'qolish */
+.btn-group.collapsing .btn {
+  opacity: 0;
+  transform: translateX(20px) scale(0.8);
+}
+
+.menu-toggle.active {
+  color: #fff;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateX(10px);
+}
+
+.btn {
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
   color: #fff;
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: transform 0.5s ease;
+  flex-shrink: 0;
 }
 
-.btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(100, 200, 255, 0.3);
+.controls.menu-expanded .btn-group {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+/* Bu selektor menyu ochilganda va tugma faol bo'lganda transformni 
+   to'g'ri o'rnatish uchun .controls.menu-expanded .btn dan kuchliroq */
+.controls.menu-expanded .menu-toggle.active {
+  transform: translateX(15px);
+}
+
+.controls.menu-expanded .btn {
+  transition-delay: calc(var(--btn-index) * 50ms);
+  transform: translateX(0) translateY(0);
 }
 
 .btn:active {
   transform: scale(0.95);
+  background-color: rgba(255, 255, 255, 0.08);
+
 }
 
-.btn.active {
-  background: rgba(100, 200, 255, 0.2);
-  border-color: rgba(100, 200, 255, 0.5);
+.controls.menu-expanded~.search-container {
+  max-width: 490px;
+  transform: translateX(-40%);
+  /* o‘ng tomonga biroz siljish */
 }
 
 .panel {
