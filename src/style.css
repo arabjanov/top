@@ -34,6 +34,7 @@ body {
   width: 100%;
   padding: 16px 24px;
   border-radius: 50px;
+  /* Boshlang'ich holat dumaloq */
   border: none;
   outline: none;
   font-size: 15px;
@@ -41,8 +42,36 @@ body {
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Border radius transition */
+  transition:
+    border-radius 0.15s ease-out,
+    max-width 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.menu-toggle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  /* Boshlang'ich background ochroq */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Boshlang'ich border ochroq */
+  cursor: pointer;
+  flex-shrink: 0;
+  /* Barcha transitionlar */
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease, border-color 0.4s ease;
+}
+
+/* Menyu ochilganda - faqat o'ng tomon oval */
+.controls.menu-expanded~.search-container #searchInput {
+  border-radius: 50px 25px 25px 50px;
+  /* chap: 50px dumaloq, o'ng: 25px oval */
 }
 
 #searchInput:focus {
@@ -92,15 +121,20 @@ body {
   padding-left: 24px;
 }
 
+.menu-toggle i {
+  transform: translateY(1.5px);
+}
+
 .controls {
   position: fixed;
   top: 24px;
   right: 50%;
-  transform: translateX(894px);
-  /* search yonida turishi uchun */
+  transform: translateX(722px);
   display: flex;
-  align-items: center;
-  background-color: transparent;
+  /* align-items: center; */
+  /* Buni o'zgartiramiz... */
+  align-items: flex-start;
+  /* ...chunki endi tugmalar bir necha qator bo'lishi mumkin */
   gap: 8px;
   z-index: 101;
 }
@@ -117,52 +151,33 @@ body {
   flex-shrink: 0;
 }
 
-/* Tugmalar boshlang'ich holat: ekrandan o'ng tomondan chiqqandek */
+
 .btn-group {
   display: flex;
   gap: 8px;
-  opacity: 0;
-  pointer-events: none;
+  flex-wrap: wrap;
+  /* <<-- QO'SHILDI: Tugmalarga yangi qatorga o'tishga ruxsat beradi */
+  width: 405px;
+  /* <<-- QO'SHILDI: 7 ta tugma sig'adigan kenglik */
+  /* (7 * 51px) + (6 * 8px) = 357 + 48 = 405px */
 }
 
 .btn-group .btn {
   opacity: 0;
-  transform: translateX(20px) scale(0.8);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: translateX(30px) scale(0.7);
+  /* MUHIM: transition har doim yozilgan bo'lishi kerak */
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
 }
 
-/* Ochilganda ketma-ket chiqish */
-.controls.menu-expanded .btn-group {
-  opacity: 1;
-  pointer-events: auto;
-}
-
+/* Ochilganda */
 .controls.menu-expanded .btn-group .btn {
   opacity: 1;
   transform: translateX(0) scale(1);
+  pointer-events: auto;
 }
 
-.controls.menu-expanded .btn-group .btn:nth-child(1) {
-  transition-delay: 0s;
-}
-
-.controls.menu-expanded .btn-group .btn:nth-child(2) {
-  transition-delay: 0.02s;
-}
-
-.controls.menu-expanded .btn-group .btn:nth-child(3) {
-  transition-delay: 0.7s;
-}
-
-.controls.menu-expanded .btn-group .btn:nth-child(4) {
-  transition-delay: 0.12s;
-}
-
-/* Yopilish: chapdan o'ngga ketma-ket yo'qolish */
-.btn-group.collapsing .btn {
-  opacity: 0;
-  transform: translateX(20px) scale(0.8);
-}
+/* Yopilishda ham transition ishlashi kerak - lekin biz faqat delay o'zgartirамиз */
 
 .menu-toggle.active {
   color: #fff;
@@ -183,35 +198,21 @@ body {
   cursor: pointer;
   transition: transform 0.5s ease;
   flex-shrink: 0;
-}
-
-.controls.menu-expanded .btn-group {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(0) scale(1);
-}
-
-/* Bu selektor menyu ochilganda va tugma faol bo'lganda transformni 
-   to'g'ri o'rnatish uchun .controls.menu-expanded .btn dan kuchliroq */
-.controls.menu-expanded .menu-toggle.active {
-  transform: translateX(15px);
-}
-
-.controls.menu-expanded .btn {
-  transition-delay: calc(var(--btn-index) * 50ms);
-  transform: translateX(0) translateY(0);
+  vertical-align: middle;
 }
 
 .btn:active {
   transform: scale(0.95);
   background-color: rgba(255, 255, 255, 0.08);
+}
 
+.controls.menu-expanded .menu-toggle.active {
+  transform: translateX(15px);
 }
 
 .controls.menu-expanded~.search-container {
   max-width: 490px;
   transform: translateX(-40%);
-  /* o‘ng tomonga biroz siljish */
 }
 
 .panel {

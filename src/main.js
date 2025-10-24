@@ -66,39 +66,137 @@ const controls = document.querySelector(".controls");
 const btnGroup = document.querySelector(".btn-group");
 const searchContainer = document.querySelector(".search-container");
 
+let isAnimating = false;
+
 menuToggleBtn.addEventListener("click", () => {
+  if (isAnimating) return;
+
+  isAnimating = true;
   const buttons = btnGroup.querySelectorAll(".btn");
-  const searchContainer = document.querySelector(".search-container");
+  const searchInput = document.querySelector("#searchInput");
 
   if (controls.classList.contains("menu-expanded")) {
-    // Menu yopish
-    controls.classList.remove("menu-expanded");
-    menuToggleBtn.classList.remove("active"); // toggle button eski holat
+    // ====== YOPISH ======
 
-    btnGroup.classList.add("collapsing");
-    buttons.forEach((btn, i) => btn.style.transitionDelay = `${i * 0.05}s`);
-    btnGroup.addEventListener("transitionend", () => {
-      btnGroup.classList.remove("collapsing");
+    // Tugmalar teskari tartibda yopilsin
+    buttons.forEach((btn, i) => {
+      const reverseIndex = buttons.length - 1 - i;
+      btn.style.transitionDelay = `${reverseIndex * 0.04}s`;
+    });
+
+    setTimeout(() => {
+      controls.classList.remove("menu-expanded");
+      menuToggleBtn.classList.remove("active");
+
+      // Search input o'rniga QAYTISH
+      searchContainer.style.maxWidth = "590px";
+      searchContainer.style.transform = "translateX(-50%)";
+
+      // SEARCH - O'ng tomoni tebranadi (itarilganidan keyin qaytish)
+      searchInput.style.transition = "border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease";
+
+      searchInput.style.borderTopRightRadius = "35px";
+      searchInput.style.borderBottomRightRadius = "35px";
+
+      setTimeout(() => {
+        searchInput.style.borderTopRightRadius = "30px";
+        searchInput.style.borderBottomRightRadius = "30px";
+      }, 100);
+
+      setTimeout(() => {
+        searchInput.style.borderTopRightRadius = "50px";
+        searchInput.style.borderBottomRightRadius = "50px";
+        searchInput.style.transition = "border-radius 0.15s ease-out, max-width 0.3s ease, transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease";
+      }, 300);
+
+      // MENYU TUGMASI - Chap tomoni tebranadi
+      menuToggleBtn.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease, border-color 0.4s ease, border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
+
+      menuToggleBtn.style.borderTopLeftRadius = "35px";
+      menuToggleBtn.style.borderBottomLeftRadius = "35px";
+
+      setTimeout(() => {
+        menuToggleBtn.style.borderTopLeftRadius = "65px";
+        menuToggleBtn.style.borderBottomLeftRadius = "65px";
+      }, 100);
+
+      setTimeout(() => {
+        menuToggleBtn.style.borderTopLeftRadius = "50%";
+        menuToggleBtn.style.borderBottomLeftRadius = "50%";
+
+        // Background va border ASTA-SEKIN yo'qolsin
+        setTimeout(() => {
+          menuToggleBtn.style.background = "transparent";
+          menuToggleBtn.style.borderColor = "transparent";
+        }, 200);
+      }, 300);
+
+    }, 50);
+
+    setTimeout(() => {
       buttons.forEach(btn => btn.style.transitionDelay = "");
-    }, { once: true });
-
-    // Search container markazga qaytadi
-    searchContainer.style.maxWidth = "590px";
-    searchContainer.style.transform = "translateX(-50%)";
+      isAnimating = false;
+    }, 1000);
 
   } else {
-    // Menu ochish
-    controls.classList.add("menu-expanded");
-    menuToggleBtn.classList.add("active"); // toggle button ranglari o‘zgaradi
+    // ====== OCHISH ======
 
-    buttons.forEach((btn, i) => btn.style.transitionDelay = `${i * 0.05}s`);
+    // Menyu tugmasi background va border TEZDA paydo bo'lsin
+    menuToggleBtn.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, border-color 0.2s ease, border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    menuToggleBtn.style.background = "rgba(255, 255, 255, 0.08)";
+    menuToggleBtn.style.borderColor = "rgba(255, 255, 255, 0.1)";
 
-    // Search container chapga siljiydi
-    searchContainer.style.maxWidth = "490px";
-    searchContainer.style.transform = "translateX(-50%)";
+    setTimeout(() => {
+      controls.classList.add("menu-expanded");
+      menuToggleBtn.classList.add("active");
+
+      // Tugmalar ketma-ket ochilsin
+      buttons.forEach((btn, i) => {
+        btn.style.transitionDelay = `${i * 0.05}s`;
+      });
+
+      // Search input CHAPGA SILJIYDI
+      searchContainer.style.maxWidth = "490px";
+      searchContainer.style.transform = "translateX(-52%)";
+
+      // SEARCH - O'ng tomoni siqiladi (menyu tomonidan itilganday)
+      searchInput.style.transition = "border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease";
+
+      searchInput.style.borderTopRightRadius = "15px";
+      searchInput.style.borderBottomRightRadius = "15px";
+
+      setTimeout(() => {
+        searchInput.style.borderTopRightRadius = "35px";
+        searchInput.style.borderBottomRightRadius = "35px";
+      }, 150);
+
+      setTimeout(() => {
+        searchInput.style.borderTopRightRadius = "50px";
+        searchInput.style.borderBottomRightRadius = "50px";
+        searchInput.style.transition = "border-radius 0.15s ease-out, max-width 0.3s ease, transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease";
+      }, 350);
+
+      // MENYU TUGMASI - O'ng tomoni kengayadi (searchni itarayotgandek)
+      menuToggleBtn.style.borderTopRightRadius = "11px";
+      menuToggleBtn.style.borderBottomRightRadius = "11px";
+
+      setTimeout(() => {
+        menuToggleBtn.style.borderTopRightRadius = "65px";
+        menuToggleBtn.style.borderBottomRightRadius = "65px";
+      }, 20);
+
+      setTimeout(() => {
+        menuToggleBtn.style.borderTopRightRadius = "50%";
+        menuToggleBtn.style.borderBottomRightRadius = "50%";
+      }, 140);
+
+    }, 50);
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 1000);
   }
 });
-
 
 // Fon aylanişini tuzat - faqat map aylansın, fon qolsın
 function applyMapVisuals() {

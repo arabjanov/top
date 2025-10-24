@@ -7,6 +7,7 @@
   <title>3D Globe Pro - O'zbekiston</title>
   <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="src/style.css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
 </head>
@@ -15,29 +16,30 @@
   <div id='map'></div>
 
   <div class="search-container">
-    <input type="text" id="searchInput" placeholder="🔍 Shahar yoki viloyat qidiring...">
+    <input type="text" id="searchInput" placeholder="       Shahar yoki viloyat qidiring...">
+    <dotlottie-wc src="https://lottie.host/388ce4ef-9513-4c4e-93e4-a246df8ca8f2/rTg4Q1Y4pl.lottie"
+      style="width: 60px; height: 60px; top: -55px; " autoplay loop></dotlottie-wc>
     <div id="searchResult"></div>
   </div>
 
   <div class="controls">
-    <button class="btn menu-toggle" id="menuToggleBtn" title="Menyu">☰</button>
+    <button class="btn menu-toggle" id="menuToggleBtn" title="Menyu"><i class='bx bx-menu'></i></button>
     <div class="btn-group" id="btnGroup">
-      <button class="btn" id="issBtn" title="ISS Tracker">🛰️</button>
-      <button class="btn" id="terrainBtn" title="3D Terrain">⛰️</button>
-      <button class="btn" id="historyBtn" title="Tarix">📜</button>
-      <button class="btn" id="favBtn" title="Sevimlilar">⭐</button>
-      <button class="btn" id="locBtn" title="Joylashuv">📍</button>
-      <button class="btn" id="distanceBtn" title="Masofa">📏</button>
-      <button class="btn" id="clearMarkersBtn" title="O'chirish">🗑️</button>
-      <button class="btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
-      <button class="btn" id="modeBtn" title="Rejim">🌓</button>
-      <button class="btn" id="resetBtn" title="Reset">🔄</button>
+      <button class="btn" id="issBtn" title="ISS Tracker"><i class='bx bx-planet'></i></button>
+      <button class="btn" id="terrainBtn" title="3D Terrain"><i class='bx bx-cube'></i></button>
+      <button class="btn" id="historyBtn" title="Tarix"><i class='bx bx-history'></i></button>
+      <button class="btn" id="favBtn" title="Sevimlilar"><i class='bx bx-star'></i></button>
+      <button class="btn" id="locBtn" title="Joylashuv"><i class='bx bx-current-location'></i></button>
+      <button class="btn" id="distanceBtn" title="Masofa"><i class='bx bx-trip'></i></button>
+      <button class="btn" id="clearMarkersBtn" title="O'chirish"><i class='bx bx-trash-alt'></i></button>
+      <button class="btn" id="fullscreenBtn" title="Fullscreen"><i class='bx bx-fullscreen'></i></button>
+      <button class="btn" id="modeBtn" title="Rejim"><i class='bx bx-moon'></i></button>
+      <button class="btn" id="resetBtn" title="Reset"><i class='bx bx-reset'></i></button>
     </div>
   </div>
 
-
   <div class="panel stats-panel">
-    <h3>📊 Statistika</h3>
+    <h3><i class='bx bx-stats'></i> Statistika</h3>
     <div class="stat-row">
       <span class="stat-label">Markerlar</span>
       <span class="stat-value" id="markerCount">0</span>
@@ -69,29 +71,30 @@
   </div>
 
   <div class="panel weather-panel" id="weatherPanel">
-    <h3>🌤️ Ob-havo</h3>
+    <h3><i class='bx bx-sun'></i> Ob-havo</h3>
     <div class="temp-large" id="tempDisplay">--°</div>
     <div class="weather-info" id="weatherDesc">...</div>
     <div class="weather-info" id="weatherExtra"></div>
   </div>
 
   <div class="panel favorites-panel" id="favoritesPanel">
-    <h3>⭐ Sevimlilar</h3>
+    <h3><i class='bx bx-star'></i> Sevimlilar</h3>
     <div id="favoritesList"></div>
   </div>
 
   <div class="panel distance-panel" id="distancePanel">
-    <h3>📏 Masofa</h3>
+    <h3><i class='bx bx-trip'></i> Masofa</h3>
     <div class="distance-value" id="distanceValue">0 km</div>
     <div class="distance-info" id="distanceInfo">Ikki nuqta orasidagi masofa</div>
     <button class="popup-btn" style="width: 100%; margin-top: 12px;" onclick="clearDistance()">Tozalash</button>
   </div>
 
   <div class="panel history-panel" id="historyPanel">
-    <h3>📜 Tarix</h3>
+    <h3><i class='bx bx-history'></i> Tarix</h3>
     <div id="historyList"></div>
   </div>
 
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
   <script type="module" src="src/main.js"></script>
 </body>
