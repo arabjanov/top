@@ -66,7 +66,22 @@ const controls = document.querySelector(".controls");
 const btnGroup = document.querySelector(".btn-group");
 const searchContainer = document.querySelector(".search-container");
 
+const lottieIcon = document.querySelector(".search-container dotlottie-wc");
 let isAnimating = false;
+
+// yozuv paytida lottie yo‘qoladi
+searchInput.addEventListener("input", () => {
+  if (searchInput.value.trim() !== "") {
+    lottieIcon.style.opacity = "0";
+    lottieIcon.style.transform = "translateY(-10px)";
+    lottieIcon.style.pointerEvents = "none";
+  } else {
+    lottieIcon.style.opacity = "1";
+    lottieIcon.style.transform = "translateY(0)";
+    lottieIcon.style.pointerEvents = "auto";
+  }
+});
+
 
 menuToggleBtn.addEventListener("click", () => {
   if (isAnimating) return;
@@ -77,11 +92,23 @@ menuToggleBtn.addEventListener("click", () => {
 
   if (controls.classList.contains("menu-expanded")) {
     // ====== YOPISH ======
+    buttons.forEach(btn => {
+      btn.style.background = "transparent";
+      btn.style.border = "none";
+    });
 
     // Tugmalar teskari tartibda yopilsin
     buttons.forEach((btn, i) => {
       const reverseIndex = buttons.length - 1 - i;
       btn.style.transitionDelay = `${reverseIndex * 0.04}s`;
+    });
+    buttons.forEach(btn => {
+      btn.style.transition = "all 0.5s ease";
+      btn.style.borderRadius = "50%";
+      setTimeout(() => {
+        btn.style.background = "transparent";
+        btn.style.border = "none";
+      }, 400);
     });
 
     setTimeout(() => {
@@ -140,6 +167,11 @@ menuToggleBtn.addEventListener("click", () => {
 
   } else {
     // ====== OCHISH ======
+    buttons.forEach(btn => {
+      btn.style.background = "rgba(255, 255, 255, 0.08)";
+      btn.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+    });
+
 
     // Menyu tugmasi background va border TEZDA paydo bo'lsin
     menuToggleBtn.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, border-color 0.2s ease, border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -610,6 +642,7 @@ function updateStats() {
 // =======================
 let searchIndex = -1;
 let currentResults = [];
+
 
 searchInput.addEventListener('input', onSearchInput);
 searchInput.addEventListener('keydown', onSearchKeyDown);

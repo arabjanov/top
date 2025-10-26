@@ -129,7 +129,7 @@ body {
   position: fixed;
   top: 24px;
   right: 50%;
-  transform: translateX(722px);
+  transform: translateX(678px);
   display: flex;
   /* align-items: center; */
   /* Buni o'zgartiramiz... */
@@ -151,15 +151,20 @@ body {
   flex-shrink: 0;
 }
 
-
 .btn-group {
   display: flex;
+  margin-left: 15px;
   gap: 8px;
   flex-wrap: wrap;
   /* <<-- QO'SHILDI: Tugmalarga yangi qatorga o'tishga ruxsat beradi */
-  width: 405px;
+  width: 346px;
   /* <<-- QO'SHILDI: 7 ta tugma sig'adigan kenglik */
   /* (7 * 51px) + (6 * 8px) = 357 + 48 = 405px */
+}
+
+.btn menu-toggle {
+  border: none;
+  background: transparent;
 }
 
 .btn-group .btn {
@@ -191,8 +196,8 @@ body {
   width: 51px;
   height: 51px;
   border-radius: 50%;
-  border: none;
   background: transparent;
+  border: none;
   color: #fff;
   font-size: 20px;
   cursor: pointer;
