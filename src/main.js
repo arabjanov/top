@@ -170,6 +170,7 @@ menuToggleBtn.addEventListener("click", () => {
     buttons.forEach(btn => {
       btn.style.background = "rgba(255, 255, 255, 0.08)";
       btn.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+      btn.style.backdropFilter = "blur(20px)";
     });
 
 
@@ -797,7 +798,6 @@ async function trackISS() {
     const data = await res.json();
     if (issMarker) issMarker.remove();
     const el = document.createElement('div');
-    el.className = 'iss-marker';
     issMarker = new mapboxgl.Marker({ element: el }).setLngLat([data.longitude, data.latitude]).addTo(map);
     document.getElementById('issSpeed').textContent = Math.round(data.velocity);
     document.getElementById('issCoords').textContent = `${data.latitude.toFixed(4)}, ${data.longitude.toFixed(4)}`;
@@ -931,8 +931,19 @@ function setupControls() {
     const isShown = panel.style.display === 'block';
     panel.style.display = isShown ? 'none' : 'block';
     this.classList.toggle('active', !isShown);
-    if (!isShown) renderFavorites();
+
+    if (!isShown) {
+      renderFavorites();
+
+      // 🔥 8 soniyadan keyin panelni yopish
+      clearTimeout(panel.hideTimer);
+      panel.hideTimer = setTimeout(() => {
+        panel.style.display = 'none';
+        document.getElementById('favBtn').classList.remove('active');
+      }, 8000);
+    }
   };
+
 
   // History
   document.getElementById('historyBtn').onclick = function () {
@@ -940,14 +951,27 @@ function setupControls() {
     const isShown = panel.style.display === 'block';
     panel.style.display = isShown ? 'none' : 'block';
     this.classList.toggle('active', !isShown);
+
     if (!isShown) {
       const list = document.getElementById('historyList');
-      if (searchHistory.length === 0) list.innerHTML = '<div style="text-align:center;padding:20px;color:rgba(255,255,255,0.5)">Tarix bo\'sh</div>';
-      else list.innerHTML = searchHistory.map(name => `<div class="history-item" data-name="${name}">${escapeHtml(name)}</div>`).join('');
+      if (searchHistory.length === 0)
+        list.innerHTML = '<div style="text-align:center;padding:20px;color:rgba(255,255,255,0.5)">Tarix bo\'sh</div>';
+      else
+        list.innerHTML = searchHistory
+          .map(name => `<div class="history-item" data-name="${name}">${escapeHtml(name)}</div>`)
+          .join('');
+
       document.querySelectorAll('#historyList .history-item').forEach(it => {
         it.addEventListener('click', () => { const name = it.dataset.name; goToPlace(name); });
       });
-    }
+
+      // 🔥 10 soniyadan keyin panelni yopish:
+      setTimeout(() => {
+        panel.style.display = 'none';
+        document.getElementById('historyBtn').classList.remove('active');
+      }, 8000);
+    };
+
   };
 
   // Fullscreen
@@ -959,6 +983,14 @@ function setupControls() {
       document.exitFullscreen();
       showNotification('⛶ Oddiy rejim');
     }
+  };
+
+  // Stats
+  document.getElementById('statsBtn').onclick = function () {
+    const panel = document.querySelector('.stats-panel');
+    const isShown = panel.style.display === 'block';
+    panel.style.display = isShown ? 'none' : 'block';
+    this.classList.toggle('active', !isShown);
   };
 }
 

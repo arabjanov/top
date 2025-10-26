@@ -220,6 +220,65 @@ body {
   transform: translateX(-40%);
 }
 
+/* Chap tomondagi panellar uchun konteyner */
+#panel-container-left {
+  position: fixed;
+  top: 100px;
+  left: 24px;
+  z-index: 90;
+
+  /* Sevimlilar panelining kengligini olamiz */
+  width: 320px;
+
+  /* Panellarni tagma-tag joylash uchun */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Panellar orasidagi masofa */
+
+  /* Konteynerning bo'sh joyi bosilishini orqaga (xaritaga) o'tkazadi */
+  pointer-events: none;
+}
+
+/* Chap tomondagi panellar uchun konteyner */
+#panel-container-left {
+  position: fixed;
+  top: 100px;
+  left: 24px;
+  z-index: 90;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+/* Konteyner ichidagi panellar */
+#panel-container-left .panel {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: auto;
+  animation: slideInFromLeft 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 🔥 Chapdan o‘ngga chiqadigan animatsiya */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-110vw);
+    /* chapdan chiqadi */
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
 .panel {
   position: fixed;
   z-index: 90;
@@ -242,6 +301,7 @@ body {
 }
 
 .stats-panel {
+  display: none;
   bottom: 24px;
   right: 24px;
 }
@@ -269,7 +329,7 @@ body {
 }
 
 .iss-panel {
-  top: 100px;
+  top: 450px;
   right: 24px;
   display: none;
 }
@@ -497,15 +557,6 @@ body {
 
 .history-item:hover {
   background: rgba(255, 255, 255, 0.1);
-}
-
-.iss-marker {
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, #ff6b6b, #ff0000);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
 }
 
 @keyframes pulse {

@@ -35,6 +35,7 @@
       <button class="btn" id="fullscreenBtn" title="Fullscreen"><i class='bx bx-fullscreen'></i></button>
       <button class="btn" id="modeBtn" title="Rejim"><i class='bx bx-moon'></i></button>
       <button class="btn" id="resetBtn" title="Reset"><i class='bx bx-reset'></i></button>
+      <button class="btn" id="statsBtn"><i class='bx bx-stats'></i></button>
     </div>
   </div>
 
@@ -70,18 +71,6 @@
     <div class="iss-coords" id="issCoords">Yuklanmoqda...</div>
   </div>
 
-  <div class="panel weather-panel" id="weatherPanel">
-    <h3><i class='bx bx-sun'></i> Ob-havo</h3>
-    <div class="temp-large" id="tempDisplay">--°</div>
-    <div class="weather-info" id="weatherDesc">...</div>
-    <div class="weather-info" id="weatherExtra"></div>
-  </div>
-
-  <div class="panel favorites-panel" id="favoritesPanel">
-    <h3><i class='bx bx-star'></i> Sevimlilar</h3>
-    <div id="favoritesList"></div>
-  </div>
-
   <div class="panel distance-panel" id="distancePanel">
     <h3><i class='bx bx-trip'></i> Masofa</h3>
     <div class="distance-value" id="distanceValue">0 km</div>
@@ -89,11 +78,27 @@
     <button class="popup-btn" style="width: 100%; margin-top: 12px;" onclick="clearDistance()">Tozalash</button>
   </div>
 
-  <div class="panel history-panel" id="historyPanel">
-    <h3><i class='bx bx-history'></i> Tarix</h3>
-    <div id="historyList"></div>
-  </div>
+  <div id="panel-container-left">
+    <div class="panel weather-panel" id="weatherPanel">
+      <dotlottie-wc src="https://lottie.host/a6ee0193-8fbb-47b1-8e2e-e7554f4c26d6/Pe2CchZO1j.lottie"
+        style="width: 100px;height: 50px; top: 20px;" autoplay loop></dotlottie-wc>
+      <h3> Ob-havo</h3>
+      <div class="temp-large" id="tempDisplay">--°</div>
+      <div class="weather-info" id="weatherDesc">...</div>
+      <div class="weather-info" id="weatherExtra"></div>
+    </div>
 
+    <div class="panel favorites-panel" id="favoritesPanel">
+      <h3><i class='bx bx-star'></i> Sevimlilar</h3>
+      <div id="favoritesList"></div>
+    </div>
+
+    <div class="panel history-panel" id="historyPanel">
+      <h3><i class='bx bx-history'></i> Tarix</h3>
+      <div id="historyList"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
   <script type="module" src="src/main.js"></script>
