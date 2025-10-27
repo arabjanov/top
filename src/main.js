@@ -367,40 +367,130 @@ function addMarker(name, coords, color = '#64c8ff', data = {}, removable = true,
   return marker;
 }
 
+// Panel yaratish
+const infoPanel = document.createElement('div');
+infoPanel.id = 'infoPanel';
+document.body.appendChild(infoPanel);
+
+// Gemini API sozlamalari
+const GEMINI_API_KEY = "AIzaSyBlT6uzgAS3qPU8E6OAVHAPmbmV2uWFjgM";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent";
+
+// Typing effekti (chatgpt uslubida, fon yo‘q)
+async function typeFormattedText(element, text, speed = 10) {
+  element.innerHTML = "";
+  const pre = document.createElement("div");
+  pre.style.whiteSpace = "pre-wrap";
+  pre.style.fontFamily = "system-ui, sans-serif";
+  pre.style.fontSize = "1em";
+  pre.style.lineHeight = "1.6";
+  pre.style.color = "#e4e4e4";
+  element.appendChild(pre);
+
+  // Matnni tozalash va muhim so‘zlarni qalin qilish
+  const formattedText = text
+    .replace(/\*+/g, "") // yulduzchalarni olib tashlaydi
+    .replace(/\b(muhim|diqqat|asosiy|e'tibor|fact|important)\b/gi, (m) => `<b>${m}</b>`);
+
+  // HTML bilan typing effekti
+  for (let i = 0; i < formattedText.length; i++) {
+    pre.innerHTML = formattedText.slice(0, i + 1);
+    await new Promise(r => setTimeout(r, speed));
+  }
+}
+
+
+// Formatlash funksiyasi
+function formatGeminiText(text) {
+  return text
+    .split("\n")
+    .filter(line => line.trim() !== "")
+    .map(line => line.trim())
+    .join("\n");
+}
+
+// Panelni ko‘rsatish
+async function showInfoPanel(data) {
+  infoPanel.innerHTML = `
+    <h2 style="font-size:1em;">Joy haqida qisqacha ma’lumot!</h2>
+    <div id="geminiResponse">⏳ Ma’lumot yuklanmoqda...</div>
+    <button class="search-btn" id="searchPanelBtn" style="font-size:1em;">Batafsil ma'lumot</button>
+    <button class="close-btn" id="closePanelBtn" style="font-size:1em;">Yopish</button>
+  `;
+  infoPanel.classList.add('active');
+
+  const closeBtn = document.getElementById('closePanelBtn');
+  if (closeBtn) closeBtn.addEventListener('click', hideInfoPanel);
+
+  const cityName = data.name || "noma’lum joy";
+  const message = `Shu joy haqida juda qisqa (faqat 2-3 gapli) va tushunarli ma'lumot yoz. 
+Faqat eng muhim faktlarni ayt. 
+Shahar: ${cityName}, koordinata: ${data.lat}, ${data.lng}. 
+Agar aniq ma'lumot topa olmasang, yon-atrofdagi joy haqida xuddi shunday qisqa ma'lumot ber.`;
+
+  const responseText = await getGeminiData(message);
+  const formatted = formatGeminiText(responseText || "❌ Ma'lumot topilmadi.");
+  const responseEl = document.getElementById("geminiResponse");
+  await typeFormattedText(responseEl, formatted);
+}
+
+// Gemini so‘rov funksiyasi
+async function getGeminiData(prompt) {
+  try {
+    const res = await fetch("http://localhost:4000/api/gemini", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt }),
+    });
+    const data = await res.json();
+    return data.text;
+  } catch (err) {
+    console.error("Backend bilan aloqa xatosi:", err);
+    return "Xatolik yuz berdi yoki backend ishlamayapti.";
+  }
+}
+
+
+// Panelni yopish
+function hideInfoPanel() {
+  infoPanel.classList.remove('active');
+}
+
+// Popup yaratish
 function createPopup(name, coordsArr, data = {}, removable = true) {
   const [lng, lat] = coordsArr;
   const content = document.createElement('div');
   const nameSafe = escapeHtml(name);
   content.innerHTML = `
     <div class="popup-title">${nameSafe}</div>
-    ${data.region ? `<div class="popup-subtitle">📍 ${escapeHtml(data.region)}</div>` : ''}
-    ${data.country ? `<div class="popup-subtitle">🏳️ ${escapeHtml(data.country)}</div>` : ''}
-    <div class="popup-subtitle">📌 ${lat.toFixed(4)}, ${lng.toFixed(4)}</div>
+    ${data.region ? `<div class="popup-subtitle"><i class='bx bxs-map-pin'></i> ${escapeHtml(data.region)}</div>` : ''}
+    ${data.country ? `<div class="popup-subtitle"><i class='bx bx-flag'></i> ${escapeHtml(data.country)}</div>` : ''}
+    <div class="popup-subtitle"><i class='bx bxs-pin'></i> ${lat.toFixed(4)}, ${lng.toFixed(4)}</div>
     <div class="popup-actions">
-      <button class="popup-btn" data-action="copy" data-lng="${lng}" data-lat="${lat}">📋 Nusxa</button>
-      <button class="popup-btn" data-action="fav" data-name="${encodeURIComponent(nameSafe)}" data-lng="${lng}" data-lat="${lat}">⭐ Saqlash</button>
-      <button class="popup-btn" data-action="weather" data-lng="${lng}" data-lat="${lat}">🌤️ Ob-havo</button>
-      ${removable ? `<button class="popup-btn delete" data-action="remove" data-lng="${lng}" data-lat="${lat}">🗑️ O'chirish</button>` : ''}
+      <button class="popup-btn" data-action="copy" data-lng="${lng}" data-lat="${lat}"><i class='bx bx-copy'></i> Nusxa</button>
+      <button class="popup-btn" data-action="fav" data-name="${encodeURIComponent(nameSafe)}" data-lng="${lng}" data-lat="${lat}"><i class='bx bx-save'></i> Saqlash</button>
+      <button class="popup-btn" data-action="weather" data-lng="${lng}" data-lat="${lat}"><i class='bx bx-sun'></i> Ob-havo</button>
+      <button class="popup-btn" data-action="ai" data-lng="${lng}" data-lat="${lat}"><i class='bx bx-info-circle'></i> Ma'lumot</button>
+      ${removable ? `<button class="popup-btn delete" data-action="remove" data-lng="${lng}" data-lat="${lat}"><i class='bx bxs-trash-alt'></i> O'chirish</button>` : ''}
     </div>
   `;
-
   setTimeout(() => {
     const buttons = content.querySelectorAll('.popup-btn');
-    buttons.forEach(btn => btn.addEventListener('click', (ev) => {
+    buttons.forEach(btn => btn.addEventListener('click', () => {
       const action = btn.dataset.action;
       const lng = parseFloat(btn.dataset.lng);
       const lat = parseFloat(btn.dataset.lat);
       const pname = decodeURIComponent(btn.dataset.name || nameSafe);
-
       if (action === 'copy') copyCoords(lng, lat);
       else if (action === 'fav') addFavorite(pname, lng, lat, data);
       else if (action === 'weather') getWeather(lat, lng);
       else if (action === 'remove') removeMarkerByCoords(lng, lat);
+      else if (action === 'ai') showInfoPanel({ name: pname, lat, lng, ...data });
     }));
   }, 50);
-
   return new mapboxgl.Popup({ closeButton: true, offset: 25 }).setDOMContent(content);
 }
+
 
 function findMarkerIndexByCoords(lng, lat) {
   return markers.findIndex(m => {
@@ -413,20 +503,20 @@ function removeMarkerByCoords(lng, lat) {
   const idx = findMarkerIndexByCoords(lng, lat);
   if (idx === -1) return;
   if (!markers[idx].removable) {
-    showNotification("❌ Bu marker o'chilib bo'lmaydi");
+    showNotification("Bu marker o'chilib bo'lmaydi");
     return;
   }
   markers[idx].marker.remove();
   markers.splice(idx, 1);
   updateStats();
-  showNotification("🗑️ Marker o'chirildi");
+  showNotification("Marker o'chirildi");
 }
 
 function clearAllMarkers() {
   markers.forEach(m => { if (m.removable) m.marker.remove(); });
   markers = markers.filter(m => !m.removable);
   updateStats();
-  showNotification("🗑️ Barcha markerlar o'chirildi");
+  showNotification("Barcha markerlar o'chirildi");
 }
 
 // =======================
@@ -448,23 +538,23 @@ function showMarkerContextMenu(ev, markerObj) {
   contextMenuEl.style.border = '1px solid rgba(255,255,255,0.06)';
 
   contextMenuEl.innerHTML = `
-    <div style="padding:8px 6px;font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;">
+    < div style = "padding:8px 6px;font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;" >
       ${escapeHtml(markerObj.name)}
-    </div>
-    <div class="ctx-item" data-act="copy">📋 Nusxa</div>
-    <div class="ctx-item" data-act="fav">⭐ Sevimlilarga qo'shish</div>
-    <div class="ctx-item" data-act="weather">🌤️ Ob-havo</div>
-    ${markerObj.removable ? '<div class="ctx-item ctx-delete" data-act="remove">🗑️ O\'chirish</div>' : ''}
-    <div class="ctx-item" data-act="rename">✏️ Nom berish</div>
+    </ >
+    <div class="ctx-item" data-act="copy"><i class='bx bxs-copy' ></i> Nusxa</div>
+    <div class="ctx-item" data-act="fav"><i class='bx bxs-paste' ></i> Sevimlilarga qo'shish</div>
+    <div class="ctx-item" data-act="weather"><i class='bx bxs-sun' ></i> Ob-havo</div>
+    ${markerObj.removable ? `<div class="ctx-item ctx-delete" data-act="remove">${a} O\'chirish</div>` : ''}
+  <div class="ctx-item" data-act="rename"><i class='bx bx-pencil'></i> Nom berish</div>
   `;
 
+  const a = `
+    < i class='bx bxs-edit-alt' ></ >
+      `
+
   document.body.appendChild(contextMenuEl);
-  contextMenuEl.style.left = `${ev.clientX}px`;
-  contextMenuEl.style.top = `${ev.clientY}px`;
-
-
-
-
+  contextMenuEl.style.left = `${ev.clientX} px`;
+  contextMenuEl.style.top = `${ev.clientY} px`;
   contextMenuEl.querySelectorAll('.ctx-item').forEach(it => {
     it.style.padding = '8px';
     it.style.cursor = 'pointer';
@@ -513,7 +603,7 @@ function renameMarker(marker, newName) {
   markers[idx].name = newName;
   const coords = markers[idx].coords;
   marker.setPopup(createPopup(newName, coords, markers[idx].data, markers[idx].removable));
-  showNotification('✏️ Marker nomi yangilandi');
+  showNotification('✅ Marker nomi yangilandi');
 }
 
 // =======================
@@ -523,14 +613,14 @@ function addFavorite(name, lng, lat, data = {}) {
   favorites[name] = { coords: [lng, lat], data };
   updateFavCount();
   renderFavorites();
-  showNotification("⭐ Sevimlilarga qo'shildi");
+  showNotification("Sevimlilarga qo'shildi");
 }
 
 function deleteFavorite(name) {
   delete favorites[name];
   updateFavCount();
   renderFavorites();
-  showNotification("🗑️ Sevimlilardan o'chirildi");
+  showNotification("Sevimlilardan o'chirildi");
 }
 
 function updateFavCount() {
@@ -543,7 +633,7 @@ function renderFavorites() {
   if (!list) return;
   const entries = Object.entries(favorites);
   if (entries.length === 0) {
-    list.innerHTML = `<div style="text-align:center;padding:20px;color:rgba(255,255,255,0.5)">Sevimlilar yo'q</div>`;
+    list.innerHTML = `< div style = "text-align:center;padding:20px;color:rgba(255,255,255,0.5)" > Sevimlilar yo'q</>`;
     return;
   }
   list.innerHTML = entries.map(([name, fav]) => {
@@ -611,7 +701,7 @@ async function getWeather(lat, lng) {
 function copyCoords(lng, lat) {
   const text = `${lng.toFixed(6)}, ${lat.toFixed(6)}`;
   navigator.clipboard.writeText(text).then(() => {
-    showNotification('📋 Koordinatalar nusxalandi!');
+    showNotification('✅ Koordinatalar nusxalandi!');
   }).catch(() => {
     showNotification('❌ Nusxalashda xatolik');
   });

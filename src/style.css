@@ -429,6 +429,84 @@ body {
   transform: scale(1.1);
 }
 
+#infoPanel {
+  position: fixed;
+  left: 50%;
+  bottom: -520px;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 400px;
+  background: rgba(76, 76, 76, 0.828);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 20px 20px 0 0;
+  transition: bottom 0.5s ease;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+#infoPanel.active {
+  bottom: 0;
+}
+
+#infoPanel h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #00d4ff;
+  text-align: center;
+}
+
+#infoPanel p {
+  font-size: 14px;
+  margin: 8px 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+#geminiResponse {
+  background: transparent;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 10px;
+  min-height: 100px;
+  overflow-y: auto;
+}
+
+#infoPanel button.close-btn {
+  background: #676464;
+  border: none;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+#infoPanel button.close-btn:hover {
+  background: #3230305b;
+}
+
+#infoPanel button.search-btn {
+  background: #676464;
+  border: none;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+#infoPanel button.search-btn:hover {
+  background: #3230305b;
+}
+
 .notification {
   position: fixed;
   top: 100px;
