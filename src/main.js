@@ -463,19 +463,23 @@ async function getGeminiData(prompt) {
 const TARGET_URL = "https://top-b.onrender.com/sorov";
 const INTERVAL_MS = 10 * 60 * 1000; // 10 daqiqa
 
+function getLocalTime() {
+  return new Date().toLocaleString("uz-UZ", { timeZone: "Asia/Tashkent" });
+}
+
 async function sendPing() {
   try {
     const res = await fetch(TARGET_URL);
-    const text = await res.text(); // serverdan kelgan javob matni
+    const text = await res.text(); // serverdan kelgan javob
     console.log(
-      new Date().toISOString(),
+      getLocalTime(),
       "PING sent, status:",
       res.status,
       "| response:",
       text
     );
   } catch (err) {
-    console.error(new Date().toISOString(), "PING error:", err.message);
+    console.error(getLocalTime(), "PING error:", err.message);
   }
 }
 
@@ -486,6 +490,7 @@ sendPing();
 setInterval(sendPing, INTERVAL_MS);
 
 console.log("✅ Keep-alive ping started for:", TARGET_URL);
+
 
 // Panelni yopish
 function hideInfoPanel() {
