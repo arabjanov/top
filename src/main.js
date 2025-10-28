@@ -372,10 +372,6 @@ const infoPanel = document.createElement('div');
 infoPanel.id = 'infoPanel';
 document.body.appendChild(infoPanel);
 
-// Gemini API sozlamalari
-const GEMINI_API_KEY = "AIzaSyBlT6uzgAS3qPU8E6OAVHAPmbmV2uWFjgM";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent";
-
 // Typing effekti (chatgpt uslubida, fon yo‘q)
 async function typeFormattedText(element, text, speed = 10) {
   element.innerHTML = "";
@@ -421,6 +417,19 @@ async function showInfoPanel(data) {
 
   const closeBtn = document.getElementById('closePanelBtn');
   if (closeBtn) closeBtn.addEventListener('click', hideInfoPanel);
+  const detailBtn = document.getElementById('searchPanelBtn');
+  if (detailBtn) detailBtn.addEventListener('click', async () => {
+    const detailMessage = `Shu joy haqida batafsil va tushunarli ma'lumot yoz. 
+Faqat eng muhim faktlarni va bir oz tarixini ayt. 
+Shahar: ${cityName}, koordinata: ${data.lat}, ${data.lng}. 
+Agar aniq ma'lumot topa olmasang, yon-atrofdagi joy haqida xuddi shunday qisqa ma'lumot ber.`;
+
+    const responseEl = document.getElementById("geminiResponse");
+    responseEl.innerHTML = "⏳ Batafsil ma’lumot yuklanmoqda...";
+    const detailedText = await getGeminiData(detailMessage);
+    const formattedDetail = formatGeminiText(detailedText || "❌ Batafsil ma'lumot topilmadi.");
+    await typeFormattedText(responseEl, formattedDetail);
+  });
 
   const cityName = data.name || "noma’lum joy";
   const message = `Shu joy haqida juda qisqa (faqat 2-3 gapli) va tushunarli ma'lumot yoz. 
@@ -437,7 +446,7 @@ Agar aniq ma'lumot topa olmasang, yon-atrofdagi joy haqida xuddi shunday qisqa m
 // Gemini so‘rov funksiyasi
 async function getGeminiData(prompt) {
   try {
-    const res = await fetch("http://localhost:4000/api/gemini", {
+    const res = await fetch("https://top-b.onrender.com", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
