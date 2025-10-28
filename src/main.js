@@ -461,22 +461,31 @@ async function getGeminiData(prompt) {
 
 // ping-keepalive.js
 const TARGET_URL = "https://top-b.onrender.com/sorov";
-const INTERVAL_MS = 10 * 60 * 1000;
+const INTERVAL_MS = 10 * 60 * 1000; // 10 daqiqa
 
 async function sendPing() {
   try {
     const res = await fetch(TARGET_URL);
-    console.log(new Date().toISOString(), "PING sent, status:", res.status);
+    const text = await res.text(); // serverdan kelgan javob matni
+    console.log(
+      new Date().toISOString(),
+      "PING sent, status:",
+      res.status,
+      "| response:",
+      text
+    );
   } catch (err) {
     console.error(new Date().toISOString(), "PING error:", err.message);
   }
 }
 
+// Dastlabki ping
 sendPing();
+
+// Har 10 daqiqada yuborish
 setInterval(sendPing, INTERVAL_MS);
 
 console.log("✅ Keep-alive ping started for:", TARGET_URL);
-
 
 // Panelni yopish
 function hideInfoPanel() {
