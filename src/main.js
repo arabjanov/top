@@ -459,6 +459,24 @@ async function getGeminiData(prompt) {
   }
 }
 
+// ping-keepalive.js
+const TARGET_URL = "https://top-b.onrender.com/sorov";
+const INTERVAL_MS = 10 * 60 * 1000;
+
+async function sendPing() {
+  try {
+    const res = await fetch(TARGET_URL);
+    console.log(new Date().toISOString(), "PING sent, status:", res.status);
+  } catch (err) {
+    console.error(new Date().toISOString(), "PING error:", err.message);
+  }
+}
+
+sendPing();
+setInterval(sendPing, INTERVAL_MS);
+
+console.log("✅ Keep-alive ping started for:", TARGET_URL);
+
 
 // Panelni yopish
 function hideInfoPanel() {
