@@ -446,7 +446,7 @@ Agar aniq ma'lumot topa olmasang, yon-atrofdagi joy haqida xuddi shunday qisqa m
 // Gemini so‘rov funksiyasi
 async function getGeminiData(prompt) {
   try {
-    const res = await fetch("https://top-b.onrender.com", {
+    const res = await fetch("https://top-b.onrender.com/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
