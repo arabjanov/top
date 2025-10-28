@@ -1277,10 +1277,105 @@ export const places = [
     { name: "Berry Islands", type: "orol_guruhi", country: "Bagama orollari", center: [-77.850, 25.760] },
     { name: "Great Harbour Cay", type: "orol", country: "Bagama orollari", region: "Berry Islands", center: [-77.850, 25.760] },
 
+    // -------------------------------------------------------17------------------------------------------------------ //
+
+    // Davlat Bahrayn
+
+    { name: "Bahrayn", type: "davlat", country: "Bahrayn", center: [50.5577, 26.0667] },
+
+    // Poytaxt
+    { name: "Manama", type: "poytaxt", country: "Bahrayn", center: [50.5857, 26.2279] },
+
+    // Viloyatlar (Governorates)
+    { name: "Capital Governorate", type: "viloyat", country: "Bahrayn", center: [50.5822, 26.2235] },
+    { name: "Muharraq Governorate", type: "viloyat", country: "Bahrayn", center: [50.6167, 26.2500] },
+    { name: "Northern Governorate", type: "viloyat", country: "Bahrayn", center: [50.4877, 26.1915] },
+    { name: "Southern Governorate", type: "viloyat", country: "Bahrayn", center: [50.5472, 26.0897] },
+
+    // Shaharlar va Qishloqlar
+
+    // Capital Governorate
+    { name: "Manama", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5857, 26.2279] },
+    { name: "Juffair", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.6011, 26.2111] },
+    { name: "Sanabis", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5459, 26.2266] },
+    { name: "Gudaibiya", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5822, 26.2235] },
+    { name: "Adliya", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5822, 26.2235] },
+    { name: "Hoora", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5822, 26.2235] },
+    { name: "Zinj", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5822, 26.2235] },
+    { name: "Tubli", type: "shahar", country: "Bahrayn", region: "Capital Governorate", center: [50.5559, 26.1900] },
+
+    // Muharraq Governorate
+    { name: "Muharraq", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6119, 26.2572] },
+    { name: "Al Hidd", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6542, 26.2456] },
+    { name: "Arad", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6322, 26.2561] },
+    { name: "Busaiteen", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6094, 26.2732] },
+    { name: "Galali", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6612, 26.2703] },
+    { name: "Samaheej", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6353, 26.2817] },
+    { name: "Al Dair", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6240, 26.2850] },
+    { name: "Amwaj Islands", type: "shahar", country: "Bahrayn", region: "Muharraq Governorate", center: [50.6612, 26.2703] },
+
+    // Northern Governorate
+    { name: "Hamad Town", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.5139, 26.1128] },
+    { name: "A'ali", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.5161, 26.1637] },
+    { name: "Jidhafs", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.5330, 26.2199] },
+    { name: "Budaiya", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4489, 26.2109] },
+    { name: "Saar", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4877, 26.1915] },
+    { name: "Diraz", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4756, 26.2186] },
+    { name: "Barbar", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4773, 26.2276] },
+    { name: "Bani Jamra", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4644, 26.2111] },
+    { name: "Al Jasra", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4567, 26.1616] },
+    { name: "Karzakan", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4748, 26.1106] },
+    { name: "Hamala", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.4773, 26.1387] },
+    { name: "Dar Kulaib", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.5006, 26.0696] },
+    { name: "Salmabad", type: "shahar", country: "Bahrayn", region: "Northern Governorate", center: [50.5822, 26.2235] },
+
+    // Southern Governorate  
+    { name: "Riffa", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.5343, 26.1226] },
+    { name: "Isa Town", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.5523, 26.1656] },
+    { name: "Sitra", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.6275, 26.1628] },
+    { name: "Awali", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.5472, 26.0897] },
+    { name: "Zallaq", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.4833, 26.0500] },
+    { name: "Nuwaidrat", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.5938, 26.1346] },
+    { name: "Askar", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.6158, 26.0563] },
+    { name: "Jaww", type: "shahar", country: "Bahrayn", region: "Southern Governorate", center: [50.6158, 26.0500] },
+
+    // -------------------------------------------------------18------------------------------------------------------ //
+
+    // Davlat Bangladesh
+    { name: "Bangladesh", type: "davlat", country: "Bangladesh", center: [90.412521, 23.810331] },
+
+    // Poytaxt
+    { name: "Dhaka shahri", type: "poytaxt_hudud", country: "Bangladesh", center: [90.412521, 23.810331] },
+
+    // Shaharlar va Viloyatlar
+
+    { name: "Gazipur", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.420273, 23.999941] },
+    { name: "Sonargaon", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.598434, 23.644480] },
+    { name: "Narayanganj", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.499794, 23.622641] },
+    { name: "Chuadanga", type: "shahar", country: "Bangladesh", region: "Khulna", center: [88.855637, 23.643999] },
+    { name: "Pabna", type: "shahar", country: "Bangladesh", region: "Rajshahi", center: [89.249298, 24.006355] },
+    { name: "Saidpur", type: "shahar", country: "Bangladesh", region: "Rangpur", center: [88.897377, 25.778522] },
+    { name: "Panchagarh", type: "shahar", country: "Bangladesh", region: "Rangpur", center: [88.551697, 26.335377] },
+    { name: "Satkhira", type: "shahar", country: "Bangladesh", region: "Khulna", center: [89.075127, 22.723406] },
+    { name: "Sherpur", type: "shahar", country: "Bangladesh", region: "Mymensingh", center: [90.013733, 25.019405] },
+    { name: "Jamalpur", type: "shahar", country: "Bangladesh", region: "Mymensingh", center: [89.950111, 24.923025] },
+    { name: "Chandpur", type: "shahar", country: "Bangladesh", region: "Chittagong", center: [90.663078, 23.232100] },
+    { name: "Dinajpur", type: "shahar", country: "Bangladesh", region: "Rangpur", center: [88.636322, 25.636574] },
+    { name: "Fatulla", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.483269, 23.637569] },
+    { name: "Narsingdi", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.718811, 23.920717] },
+    { name: "Palash", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.648849, 23.987967] },
+    { name: "Joydebpur", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.418167, 23.989014] },
+    { name: "Savar", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.266670, 23.858334] },
+    { name: "Feni", type: "shahar", country: "Bangladesh", region: "Chittagong", center: [91.397583, 23.015913] },
+    { name: "Meherpur", type: "shahar", country: "Bangladesh", region: "Khulna", center: [88.631371, 23.772125] },
+    { name: "Chattogram", type: "shahar", country: "Bangladesh", region: "Chittagong", center: [91.815536, 22.341900] },
+    { name: "Sylhet", type: "shahar", country: "Bangladesh", region: "Sylhet", center: [91.869034, 24.894802] },
+    { name: "Bajitpur", type: "shahar", country: "Bangladesh", region: "Dhaka", center: [90.952202, 24.213799] },
+    { name: "Kurigram", type: "shahar", country: "Bangladesh", region: "Rangpur", center: [89.648697, 25.810347] },
+    { name: "Comilla", type: "shahar", country: "Bangladesh", region: "Chittagong", center: [91.199997, 23.450001] },
+    { name: "Shyamnagar", type: "shahar", country: "Bangladesh", region: "Khulna", center: [89.108650, 22.337299] },
 
     // Chet el!
-    { name: "Bahrayn", type: "davlat", country: "Bahrayn", center: [50.637772, 25.930414] },
-    { name: "Bangladesh", type: "davlat", country: "Bangladesh", center: [90.356331, 23.684994] },
     { name: "Barbados", type: "davlat", country: "Barbados", center: [-59.543198, 13.193887] },
     { name: "Belarus", type: "davlat", country: "Belarus", center: [27.953389, 53.709807] },
     { name: "Belgiya", type: "davlat", country: "Belgiya", center: [4.469936, 50.503887] },
