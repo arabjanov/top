@@ -55,10 +55,6 @@ if (!SpeechRecognition) {
   };
 
   recog.onresult = (ev) => {
-    if (geminiSpeaking || !isAiActive) {
-      console.log('🚫 Ignore qilindi (Gemini gapirmoqda yoki AI o\'chiq)');
-      return;
-    }
 
     // Gapirayotganini aniqladik
     aiBtn.classList.add('ai-strong-animation'); // Kuchli animatsiyani yoqish
@@ -101,7 +97,6 @@ if (!SpeechRecognition) {
   recog.onend = () => {
     listening = false;
     clearTimeout(speechStopTimer);
-    console.log('🎤 Mikrofon to\'xtadi. Gemini gapirmoqda:', geminiSpeaking);
     aiBtn.classList.remove('ai-weak-animation', 'ai-strong-animation');
     aiBtn.style.transform = aiBaseTransform; // To'liq reset
 
@@ -111,14 +106,10 @@ if (!SpeechRecognition) {
         if (!listening && !geminiSpeaking && isAiActive) {
           try {
             recog.start();
-            console.log('✅ Mikrofon qayta ishga tushdi');
           } catch (e) {
-            console.log('⚠️ Mic qayta ishga tushmadi:', e.message);
           }
         }
       }, 300);
-    } else {
-      console.log('🚫 Mic qayta ishga tushmaydi (AI o\'chiq yoki Gemini gapirmoqda)');
     }
   };
 
@@ -210,7 +201,6 @@ if (!SpeechRecognition) {
       try {
         recog.start();
       } catch (e) {
-        console.log('Mic yoqishda xato (balki ruxsat yo\'qdir)');
         statusEl.textContent = 'Mikrofonga ruxsat bering';
         isAiActive = false;
         return;
@@ -255,10 +245,6 @@ if (!SpeechRecognition) {
 }
 
 async function sendToGemini(text) {
-  if (!text || geminiSpeaking || !isAiActive) {
-    console.log('🚫 Send blocked:', { text, geminiSpeaking, isAiActive });
-    return;
-  }
 
   geminiSpeaking = true;
   statusEl.textContent = '⏳ O‘ylayapman...';
@@ -266,7 +252,6 @@ async function sendToGemini(text) {
   aiBtn.classList.add('ai-weak-animation'); // "O'ylash" vaqti kuchsiz animatsiya
   aiBtn.classList.remove('ai-strong-animation');
   aiBtn.style.transform = aiBaseTransform; // Scaleni olib tashlash
-  console.log('📤 Gemini ga yuborilmoqda, geminiSpeaking =', geminiSpeaking);
 
   const contents = [];
   chatHistory.forEach(msg => {
@@ -287,7 +272,6 @@ async function sendToGemini(text) {
       body: JSON.stringify(body)
     });
     const data = await res.json();
-    console.log(data);
     const replyRaw = data.candidates?.[0]?.content?.parts?.[0]?.text || "Javob topilmadi.";
 
     const coordRegex = /__COORD__\(([^)]+)\)/;
@@ -325,12 +309,10 @@ async function sendToGemini(text) {
         // Marker qo'yish (biroz kechiktirib, animatsiya tugagandan keyin)
         setTimeout(() => {
           addMarker('🎯 AI topdi', [lng, lat], '#ff0000ff', {}, true, true);
-          console.log("📍 Karta yangilandi:", coords);
         }, 1500);
       }
     }
 
-    console.log('📥 Javob olindi:', replyClean.substring(0, 50) + '...');
     chatHistory.push({ user: text, ai: replyClean });
 
     speakText(replyClean);
@@ -346,9 +328,7 @@ async function sendToGemini(text) {
       if (recog && isAiActive) {
         try {
           recog.start();
-          console.log('✅ Mic YOQILDI (API xato)');
         } catch (e) {
-          console.log('⚠️ Mic yoqishda xato');
         }
       }
     }, 500);
@@ -366,13 +346,11 @@ function speakText(text) {
   if (recog && listening) {
     recog.stop();
     listening = false;
-    console.log('🔇 Mic TO\'XTATILDI (Gemini gapirmoqda)');
   }
 
   // geminiEl.classList.add('speaking'); // Olib tashlandi
   statusEl.textContent = '🔊 Gapirmoqdaman...';
   statusEl.classList.add('speaking-status');
-  console.log('🔊 TTS boshlandi, geminiSpeaking =', geminiSpeaking);
 
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
@@ -396,11 +374,9 @@ function speakText(text) {
     aiBtn.classList.add('ai-strong-animation'); // AI gapirganda KUCHLI animatsiya
     aiBtn.classList.remove('ai-weak-animation');
     aiBtn.style.transform = `${aiBaseTransform} scale(1.1)`; // POZITSIYANI SAQLAGAN HOLDA KATTALASHTIRISH
-    console.log('▶️ TTS haqiqatda boshlandi, geminiSpeaking =', geminiSpeaking);
   };
 
   utterance.onend = () => {
-    console.log('✅ TTS tugadi');
     geminiSpeaking = false;
     aiBtn.classList.remove('ai-strong-animation');
     // geminiEl.classList.remove('speaking'); // Olib tashlandi
@@ -412,19 +388,14 @@ function speakText(text) {
       aiBtn.style.transform = aiBaseTransform;
       statusEl.textContent = 'Holat: o\'chirildi';
     }
-    console.log('🔊 TTS tugadi, geminiSpeaking =', geminiSpeaking);
 
     // Faqat AI hali ham aktiv bo'lsa micni yoqamiz
     setTimeout(() => {
       if (!geminiSpeaking && recog && isAiActive) {
         try {
           recog.start();
-          console.log('✅ Mic YOQILDI (TTS tugagandan keyin)');
         } catch (e) {
-          console.log('⚠️ Mic yoqishda xato:', e.message);
         }
-      } else {
-        console.log('🚫 Mic yoqilmadi (AI aktiv emas)');
       }
     }, 1000); // Kichik pauza
   };
@@ -447,9 +418,7 @@ function speakText(text) {
       if (recog && isAiActive) {
         try {
           recog.start();
-          console.log('✅ Mic YOQILDI (TTS xato)');
         } catch (e) {
-          console.log('⚠️ Mic yoqishda xato');
         }
       }
     }, 500);
@@ -1188,7 +1157,6 @@ function fetchWithTimeout(url, options = {}, timeout = 8000) {
 async function checkBackendStatus() {
   // Agar allaqachon tekshirilayotgan bo'lsa, qayta ishga tushirmaymiz
   if (isChecking) {
-    console.log(getLocalTime(), "⏳ Backend allaqachon tekshirilmoqda...");
     return false;
   }
 
@@ -1211,7 +1179,6 @@ async function checkBackendStatus() {
       throw new Error('Internet ulanishi yo\'q');
     }
 
-    console.log(getLocalTime(), `🔄 Backend tekshirilmoqda... (${checkAttempt}/${MAX_RETRIES})`);
 
     const res = await fetchWithTimeout(TARGET_URL, {
       method: 'GET',
@@ -1222,7 +1189,6 @@ async function checkBackendStatus() {
     }, 8000);
 
     if (res.ok && res.status === 200) {
-      console.log(getLocalTime(), "✅ Backend tayyor! Status:", res.status);
       updateStatus('Xush kelibsiz!', 'success');
 
       // Animatsiyani muvaffaqiyatli holatga o'tkazish
@@ -1266,7 +1232,6 @@ async function checkBackendStatus() {
 
     // Agar maksimal urinishlar tugamagan bo'lsa, qayta urinish
     if (checkAttempt < MAX_RETRIES) {
-      console.log(getLocalTime(), `🔄 ${RETRY_DELAY / 1000} soniyadan keyin qayta uriniladi...`);
 
       // Eski timeout ni tozalash
       if (retryTimeout) {
@@ -1289,7 +1254,6 @@ async function checkBackendStatus() {
 // Keep-alive ping
 async function sendKeepAlivePing() {
   try {
-    console.log(getLocalTime(), "📡 PING yuborilmoqda...");
 
     const res = await fetchWithTimeout(TARGET_URL, {
       method: 'GET',
@@ -1298,19 +1262,14 @@ async function sendKeepAlivePing() {
 
     if (res.ok) {
       const text = await res.text();
-      console.log(getLocalTime(), "✅ PING muvaffaqiyatli, status:", res.status, "| javob:", text.substring(0, 50));
-    } else {
-      console.warn(getLocalTime(), "⚠️ PING xato status:", res.status);
     }
   } catch (err) {
-    console.error(getLocalTime(), "❌ PING xato:", err.message);
   }
 }
 
 // Internet ulanishini kuzatish
 function setupNetworkMonitoring() {
   window.addEventListener('online', () => {
-    console.log(getLocalTime(), "🌐 Internet qayta ulandi");
     if (!keepAliveInterval) {
       checkAttempt = 0;
       showLoadingOverlay();
@@ -1319,7 +1278,6 @@ function setupNetworkMonitoring() {
   });
 
   window.addEventListener('offline', () => {
-    console.log(getLocalTime(), "📵 Internet ulanishi yo'qoldi");
   });
 }
 
@@ -1333,14 +1291,11 @@ function cleanup() {
     clearTimeout(retryTimeout);
     retryTimeout = null;
   }
-  console.log(getLocalTime(), "🧹 Tozalash amalga oshirildi");
 }
 
 window.addEventListener('beforeunload', cleanup);
 
 // Dastlabki ishga tushirish
-console.log("🚀 Backend Checker ishga tushirildi");
-console.log(`⚙️ Sozlamalar: MAX_RETRIES=${MAX_RETRIES}, RETRY_DELAY=${RETRY_DELAY}ms, PING_INTERVAL=${INTERVAL_MS}ms`);
 
 setupNetworkMonitoring();
 showLoadingOverlay();
