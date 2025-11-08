@@ -4,7 +4,7 @@
 
 import { places } from './places.js';
 
-fetch("http://localhost:4000/api/mapbox-token")
+fetch("https://top-b.onrender.com/api/mapbox-token")
   .then(res => res.json())
   .then(data => {
     mapboxgl.accessToken = data.token;
@@ -281,7 +281,7 @@ async function sendToGemini(text) {
   const body = { contents };
 
   try {
-    const res = await fetch("http://localhost:4000/api/gemini/ai", {
+    const res = await fetch("https://top-b.onrender.com/api/gemini/ai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body)
