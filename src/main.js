@@ -4,7 +4,464 @@
 
 import { places } from './places.js';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibmFqaW1vdiIsImEiOiJjbTBnbWJ3ZGwwMXdqMnFyMXlxY3FsaTJ6In0.TWo-dOdTkiREW-ugZQevpw';
+fetch("http://localhost:4000/api/mapbox-token")
+  .then(res => res.json())
+  .then(data => {
+    mapboxgl.accessToken = data.token;
+    initMap();
+  });
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const statusEl = document.getElementById('status');
+// logEl va geminiEl elementlari saqlanib qoladi, lekin ular CSS orqali yashirilgan
+const logEl = document.getElementById('log');
+const geminiEl = document.getElementById('gemini');
+const aiBtn = document.getElementById('aiBtn');
+const SYSTEM_PROMPT = `
+You are a model that helps users find different places on the map, so make sure to provide accurate coordinates.You engage in short, topic - relevant conversations with the user.Strictly follow the rules below:
+1. If the user asks about a place, address, or city: reply with a short text(up to 1–2 lines).Do not include coordinates in the text.Send coordinates separately in a trigger format like: __COORD__(latitude, longitude) Example: __COORD__(41.3111, 69.2797) Do not include any numbers in the reply text; if you must mention numbers, write them as words (e.g., one, two, three).
+2. If the user asks about coding, programming, or technical tasks: you cannot write code.Simply say that you can only help find coordinates of cities, countries, or locations.
+3. Never talk about the following topics: religious, sexual(gay, obscene), or violent content.If such requests appear, say that you cannot respond to them.
+4. If the user asks your name, say it’s “Robbi”; if they ask your model name, say it’s “Robbus - v”.
+5. Every response must be short, clear, within 1–2 lines, and end by reminding the user that they can ask more questions if they want.
+6. Speak naturally, as if talking to the user, not just writing.
+7. You must talk like a close friend and always present information in the Uzbek language!
+8. If you receive unclear messages or random numbers, just don’t reply and do nothing!
+9. If the user says 'robbi uxla', add the trigger OFF_AI, but make sure it’s not visible in the text!
+`;
+
+let recog, silenceTimer, finalTranscript = '', chatHistory = [], listening = false;
+let geminiSpeaking = false;
+let isAiActive = false; // Yordamchining umumiy holati
+let aiBaseTransform = 'translateX(0)'; // <-- QO'SHILDI: Tugmaning asosiy pozitsiyasini saqlash uchun
+let speechStopTimer;
+
+if (!SpeechRecognition) {
+  statusEl.textContent = 'Brauzeringiz SpeechRecognition ni qo\'llab-quvvatlamaydi.';
+  aiBtn.disabled = true;
+} else {
+  recog = new SpeechRecognition();
+  recog.lang = 'uz-UZ';
+  recog.interimResults = true;
+  recog.continuous = true;
+
+  recog.onstart = () => {
+    if (!isAiActive) return; // Agar AI o'chirilgan bo'lsa, boshlamaymiz
+    listening = true;
+    statusEl.textContent = '🎤 Holat: tinglanmoqda…';
+    aiBtn.classList.add('ai-weak-animation'); // Kuchsiz animatsiyani yoqish
+    aiBtn.classList.remove('ai-strong-animation');
+    aiBtn.style.transform = aiBaseTransform;
+  };
+
+  recog.onresult = (ev) => {
+    if (geminiSpeaking || !isAiActive) {
+      console.log('🚫 Ignore qilindi (Gemini gapirmoqda yoki AI o\'chiq)');
+      return;
+    }
+
+    // Gapirayotganini aniqladik
+    aiBtn.classList.add('ai-strong-animation'); // Kuchli animatsiyani yoqish
+    aiBtn.classList.remove('ai-weak-animation');
+    aiBtn.style.transform = `${aiBaseTransform} scale(1.1)`; // POZITSIYANI SAQLAGAN HOLDA KATTALASHTIRISH
+
+    clearTimeout(silenceTimer);
+    let interim = '';
+    let hasFinal = false;
+
+    for (let i = ev.resultIndex; i < ev.results.length; i++) {
+      const res = ev.results[i];
+      if (res.isFinal) {
+        const transcript = res[0].transcript.trim();
+        if (transcript.length > 2 && transcript !== finalTranscript) {
+          finalTranscript = transcript;
+          hasFinal = true;
+        }
+      } else {
+        interim += res[0].transcript;
+      }
+    }
+
+    if (hasFinal && finalTranscript && !geminiSpeaking) {
+      // logEl.textContent = '👤 Siz: ' + finalTranscript; // Olib tashlandi
+      sendToGemini(finalTranscript);
+    }
+
+    speechStopTimer = setTimeout(() => {
+      aiBtn.classList.remove('ai-strong-animation');
+      if (isAiActive) aiBtn.classList.add('ai-weak-animation');
+      aiBtn.style.transform = aiBaseTransform; // Scaleni olib tashlash
+    }, 1000); // 1 sekund jimlikdan keyin
+
+    silenceTimer = setTimeout(() => {
+      // Hech narsa qilmaymiz, faqat kutamiz
+    }, 2500);
+  };
+
+  recog.onend = () => {
+    listening = false;
+    clearTimeout(speechStopTimer);
+    console.log('🎤 Mikrofon to\'xtadi. Gemini gapirmoqda:', geminiSpeaking);
+    aiBtn.classList.remove('ai-weak-animation', 'ai-strong-animation');
+    aiBtn.style.transform = aiBaseTransform; // To'liq reset
+
+    // Faqat AI aktiv bo'lsa va Gemini gapirmayotgan bo'lsa qayta ishga tushiramiz
+    if (!geminiSpeaking && isAiActive) {
+      setTimeout(() => {
+        if (!listening && !geminiSpeaking && isAiActive) {
+          try {
+            recog.start();
+            console.log('✅ Mikrofon qayta ishga tushdi');
+          } catch (e) {
+            console.log('⚠️ Mic qayta ishga tushmadi:', e.message);
+          }
+        }
+      }, 300);
+    } else {
+      console.log('🚫 Mic qayta ishga tushmaydi (AI o\'chiq yoki Gemini gapirmoqda)');
+    }
+  };
+
+  recog.onerror = (e) => {
+    console.error('SpeechRecognition xato', e);
+    clearTimeout(speechStopTimer);
+    aiBtn.classList.remove('ai-weak-animation', 'ai-strong-animation');
+    aiBtn.style.transform = aiBaseTransform; // To'liq reset
+    if (e.error !== 'no-speech' && e.error !== 'aborted') {
+      statusEl.textContent = '⚠️ Xato: ' + (e.error || 'noma\'lum');
+    }
+  };
+
+  // Yagona tugma logikasi
+  aiBtn.onclick = () => {
+    const otherBtns = Array.from(btnGroup.querySelectorAll('.btn')).filter(btn => btn !== aiBtn);
+
+    if (isAiActive) {
+      // AI ni o'chirish - aiBtn eski joyiga qaytadi
+      isAiActive = false;
+      listening = false;
+      geminiSpeaking = false;
+      clearTimeout(speechStopTimer);
+
+      try {
+        recog.stop();
+      } catch (e) { }
+      speechSynthesis.cancel();
+
+      chatHistory = [];
+      finalTranscript = '';
+
+      statusEl.textContent = 'Holat: o\'chirildi';
+      aiBtn.classList.remove('active');
+      aiBtn.classList.remove('ai-on'); // <-- O'ZGARDI: .ai-processing o'rniga
+      aiBtn.classList.remove('ai-active-animation'); // <-- QO'SHILDI: Animatsiyani to'xtatish
+      statusEl.classList.remove('speaking-status');
+
+      // aiBtn eski joyiga qaytish
+      aiBaseTransform = 'translateX(0)'; // Asosiy pozitsiyani reset qilish
+      aiBtn.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      aiBtn.style.transform = aiBaseTransform; // Asosiy pozitsiyaga qaytish
+      aiBtn.style.opacity = '1';
+
+      // Menu button qaytib kelishi
+      setTimeout(() => {
+        menuToggleBtn.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        menuToggleBtn.style.opacity = '1';
+        // Uni 'translateX(20px) scale(0.8)' holatidan to'liq 'translateX(0) scale(1)' holatiga qaytaramiz
+        menuToggleBtn.style.transform = 'translateX(0) scale(1)';
+        menuToggleBtn.style.pointerEvents = 'auto';
+
+        // MUHIM: Animatsiya tugagandan so'ng (600ms), 'transform' uslubini butunlay olib tashlaymiz.
+        // Shunda CSS classlari (masalan, .active) uni qayta boshqara oladi.
+        setTimeout(() => {
+          menuToggleBtn.style.removeProperty('transform');
+          menuToggleBtn.style.borderTopRightRadius = "11px";
+          menuToggleBtn.style.borderBottomRightRadius = "11px";
+
+          setTimeout(() => {
+            menuToggleBtn.style.borderTopRightRadius = "65px";
+            menuToggleBtn.style.borderBottomRightRadius = "65px";
+          }, 20);
+
+          setTimeout(() => {
+            menuToggleBtn.style.borderTopRightRadius = "50%";
+            menuToggleBtn.style.borderBottomRightRadius = "50%";
+          }, 140);
+        }, 600); // 600ms yuqoridagi 'all 0.6s' transition vaqtiga mos keladi
+      }, 100);
+
+      // Boshqa tugmalarni qaytarish (faqat menyu ochiq bo'lsa)
+      if (controls.classList.contains("menu-expanded")) {
+        setTimeout(() => {
+          otherBtns.forEach((btn, i) => {
+            setTimeout(() => {
+              btn.style.transition = 'all 0.3s ease';
+              btn.style.opacity = '1';
+              btn.style.transform = 'scale(1)';
+              btn.style.pointerEvents = 'auto';
+            }, i * 50);
+          });
+        }, 300);
+      }
+
+    } else {
+      // AI ni yoqish - aiBtn menu button o'rniga o'tadi
+      isAiActive = true;
+      try {
+        recog.start();
+      } catch (e) {
+        console.log('Mic yoqishda xato (balki ruxsat yo\'qdir)');
+        statusEl.textContent = 'Mikrofonga ruxsat bering';
+        isAiActive = false;
+        return;
+      }
+      statusEl.textContent = 'Holat: ishga tushmoqda...';
+      aiBtn.classList.add('active');
+      aiBtn.classList.add('ai-on');
+
+      // Menu button yo'qolishi
+      menuToggleBtn.style.transition = 'all 0.5s ease';
+      menuToggleBtn.style.opacity = '0';
+      menuToggleBtn.style.transform = 'translateX(20px) scale(0.8)';
+      menuToggleBtn.style.pointerEvents = 'none';
+
+      // aiBtn menu button joyiga siljiydi
+      setTimeout(() => {
+        const menuRect = menuToggleBtn.getBoundingClientRect();
+        const aiRect = aiBtn.getBoundingClientRect();
+        const distance = menuRect.left - aiRect.left;
+
+        aiBaseTransform = `translateX(${distance}px)`; // Yangi asosiy pozitsiyani saqlash
+        aiBtn.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        aiBtn.style.transform = aiBaseTransform;
+
+      }, 100);
+
+      // Boshqa tugmalarni yashirish (faqat menyu ochiq bo'lsa)
+      if (controls.classList.contains("menu-expanded")) {
+        setTimeout(() => {
+          otherBtns.forEach((btn, i) => {
+            setTimeout(() => {
+              btn.style.transition = 'all 0.3s ease';
+              btn.style.opacity = '0';
+              btn.style.transform = 'scale(0.8)';
+              btn.style.pointerEvents = 'none';
+            }, i * 50);
+          });
+        }, 200);
+      }
+    }
+  };
+}
+
+async function sendToGemini(text) {
+  if (!text || geminiSpeaking || !isAiActive) {
+    console.log('🚫 Send blocked:', { text, geminiSpeaking, isAiActive });
+    return;
+  }
+
+  geminiSpeaking = true;
+  statusEl.textContent = '⏳ O‘ylayapman...';
+  clearTimeout(speechStopTimer); // Taymerni tozalash
+  aiBtn.classList.add('ai-weak-animation'); // "O'ylash" vaqti kuchsiz animatsiya
+  aiBtn.classList.remove('ai-strong-animation');
+  aiBtn.style.transform = aiBaseTransform; // Scaleni olib tashlash
+  console.log('📤 Gemini ga yuborilmoqda, geminiSpeaking =', geminiSpeaking);
+
+  const contents = [];
+  chatHistory.forEach(msg => {
+    contents.push({ role: "user", parts: [{ text: msg.user }] });
+    contents.push({ role: "model", parts: [{ text: msg.ai }] });
+  });
+  contents.push({
+    role: "user",
+    parts: [{ text: SYSTEM_PROMPT + "\n\n" + text }]
+  });
+
+  const body = { contents };
+
+  try {
+    const res = await fetch("http://localhost:4000/api/gemini/ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    console.log(data);
+    const replyRaw = data.candidates?.[0]?.content?.parts?.[0]?.text || "Javob topilmadi.";
+
+    const coordRegex = /__COORD__\(([^)]+)\)/;
+    const closeGeminiRegex = /OFF_AI/;
+    const coordMatch = replyRaw.match(coordRegex);
+    let replyClean = replyRaw;
+
+    if (closeGeminiRegex.test(replyRaw)) {
+      replyClean = replyRaw.replace(closeGeminiRegex, "").trim();
+      if (isAiActive) {
+        aiBtn.click(); // AI ni o‘chirish
+      }
+    }
+
+    if (coordMatch) {
+      const coords = coordMatch[1];
+      replyClean = replyRaw.replace(coordRegex, "").trim();
+
+      // Karta logikasini bu yerga qo'shishingiz mumkin 
+      if (typeof mapboxgl !== 'undefined' && typeof map !== 'undefined') {
+        const [lat, lng] = coords.split(',').map(Number);
+
+        // Avvalgi auto rotate ni to'xtatish
+        autoRotate = false;
+
+        // Birinchi xaritani joyga fly qilish
+        map.flyTo({
+          center: [lng, lat],
+          zoom: 14,
+          pitch: 60,
+          duration: 5000,
+          essential: true
+        });
+
+        // Marker qo'yish (biroz kechiktirib, animatsiya tugagandan keyin)
+        setTimeout(() => {
+          addMarker('🎯 AI topdi', [lng, lat], '#ff0000ff', {}, true, true);
+          console.log("📍 Karta yangilandi:", coords);
+        }, 1500);
+      }
+    }
+
+    console.log('📥 Javob olindi:', replyClean.substring(0, 50) + '...');
+    chatHistory.push({ user: text, ai: replyClean });
+
+    speakText(replyClean);
+    finalTranscript = '';
+
+  } catch (err) {
+    console.error('❌ API xato:', err);
+    statusEl.textContent = '❌ API xatosi';
+    geminiSpeaking = false;
+
+    // Xatolikdan keyin micni qayta yoqish (agar AI hali ham aktiv bo'lsa)
+    setTimeout(() => {
+      if (recog && isAiActive) {
+        try {
+          recog.start();
+          console.log('✅ Mic YOQILDI (API xato)');
+        } catch (e) {
+          console.log('⚠️ Mic yoqishda xato');
+        }
+      }
+    }, 500);
+  }
+}
+
+function speakText(text) {
+  if (!text || !isAiActive) {
+    geminiSpeaking = false; // Agar AI o'chiq bo'lsa, gapirmaymiz
+    return;
+  }
+
+  geminiSpeaking = true;
+
+  if (recog && listening) {
+    recog.stop();
+    listening = false;
+    console.log('🔇 Mic TO\'XTATILDI (Gemini gapirmoqda)');
+  }
+
+  // geminiEl.classList.add('speaking'); // Olib tashlandi
+  statusEl.textContent = '🔊 Gapirmoqdaman...';
+  statusEl.classList.add('speaking-status');
+  console.log('🔊 TTS boshlandi, geminiSpeaking =', geminiSpeaking);
+
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  const voices = speechSynthesis.getVoices();
+  const indonesianVoice = voices.find(v => v.lang === 'id-ID' && v.name.includes('Google'));
+  if (indonesianVoice) {
+    utterance.voice = indonesianVoice;
+  } else {
+    const anyIndonesian = voices.find(v => v.lang === 'id-ID');
+    if (anyIndonesian) utterance.voice = anyIndonesian;
+  }
+
+  utterance.lang = 'id-ID';
+  utterance.pitch = 0.6;
+  utterance.rate = 1.2;
+
+  utterance.onstart = () => {
+    geminiSpeaking = true;
+    geminiSpeaking = true;
+    aiBtn.classList.add('ai-strong-animation'); // AI gapirganda KUCHLI animatsiya
+    aiBtn.classList.remove('ai-weak-animation');
+    aiBtn.style.transform = `${aiBaseTransform} scale(1.1)`; // POZITSIYANI SAQLAGAN HOLDA KATTALASHTIRISH
+    console.log('▶️ TTS haqiqatda boshlandi, geminiSpeaking =', geminiSpeaking);
+  };
+
+  utterance.onend = () => {
+    console.log('✅ TTS tugadi');
+    geminiSpeaking = false;
+    aiBtn.classList.remove('ai-strong-animation');
+    // geminiEl.classList.remove('speaking'); // Olib tashlandi
+    statusEl.classList.remove('speaking-status');
+    if (isAiActive) {
+      statusEl.textContent = '🎤 Holat: tinglanmoqda…';
+      aiBtn.classList.add('ai-weak-animation');
+    } else {
+      aiBtn.style.transform = aiBaseTransform;
+      statusEl.textContent = 'Holat: o\'chirildi';
+    }
+    console.log('🔊 TTS tugadi, geminiSpeaking =', geminiSpeaking);
+
+    // Faqat AI hali ham aktiv bo'lsa micni yoqamiz
+    setTimeout(() => {
+      if (!geminiSpeaking && recog && isAiActive) {
+        try {
+          recog.start();
+          console.log('✅ Mic YOQILDI (TTS tugagandan keyin)');
+        } catch (e) {
+          console.log('⚠️ Mic yoqishda xato:', e.message);
+        }
+      } else {
+        console.log('🚫 Mic yoqilmadi (AI aktiv emas)');
+      }
+    }, 1000); // Kichik pauza
+  };
+
+  utterance.onerror = (e) => {
+    console.error('❌ TTS xato:', e);
+    geminiSpeaking = false;
+    aiBtn.classList.remove('ai-strong-animation');
+    statusEl.classList.remove('speaking-status');
+    if (isAiActive) {
+      statusEl.textContent = '🎤 Holat: tinglanmoqda…';
+      aiBtn.classList.add('ai-weak-animation');
+    } else {
+      aiBtn.style.transform = aiBaseTransform;
+      statusEl.textContent = 'Holat: o\'chirildi';
+    }
+
+    // Xatodan keyin micni yoqish (agar AI aktiv bo'lsa)
+    setTimeout(() => {
+      if (recog && isAiActive) {
+        try {
+          recog.start();
+          console.log('✅ Mic YOQILDI (TTS xato)');
+        } catch (e) {
+          console.log('⚠️ Mic yoqishda xato');
+        }
+      }
+    }, 500);
+  };
+
+  speechSynthesis.speak(utterance);
+}
+
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = () => { };
+}
+
 
 // =======================
 // Global holatlar
@@ -82,33 +539,25 @@ searchInput.addEventListener("input", () => {
   }
 });
 
-
 menuToggleBtn.addEventListener("click", () => {
   if (isAnimating) return;
 
   isAnimating = true;
   const buttons = btnGroup.querySelectorAll(".btn");
   const searchInput = document.querySelector("#searchInput");
+  const otherBtns = Array.from(buttons).filter(btn => btn !== aiBtn);
 
   if (controls.classList.contains("menu-expanded")) {
     // ====== YOPISH ======
-    buttons.forEach(btn => {
-      btn.style.background = "transparent";
-      btn.style.border = "none";
-    });
 
-    // Tugmalar teskari tartibda yopilsin
+    // Barcha tugmalarni yopish
     buttons.forEach((btn, i) => {
       const reverseIndex = buttons.length - 1 - i;
-      btn.style.transitionDelay = `${reverseIndex * 0.04}s`;
-    });
-    buttons.forEach(btn => {
-      btn.style.transition = "all 0.5s ease";
-      btn.style.borderRadius = "50%";
       setTimeout(() => {
-        btn.style.background = "transparent";
-        btn.style.border = "none";
-      }, 400);
+        btn.style.transition = "all 0.4s ease";
+        btn.style.opacity = "0";
+        btn.style.transform = "scale(0.8)";
+      }, reverseIndex * 40);
     });
 
     setTimeout(() => {
@@ -158,21 +607,14 @@ menuToggleBtn.addEventListener("click", () => {
         }, 200);
       }, 300);
 
-    }, 50);
+    }, 500);
 
     setTimeout(() => {
-      buttons.forEach(btn => btn.style.transitionDelay = "");
       isAnimating = false;
     }, 1000);
 
   } else {
     // ====== OCHISH ======
-    buttons.forEach(btn => {
-      btn.style.background = "rgba(255, 255, 255, 0.08)";
-      btn.style.border = "1px solid rgba(255, 255, 255, 0.1)";
-      btn.style.backdropFilter = "blur(20px)";
-    });
-
 
     // Menyu tugmasi background va border TEZDA paydo bo'lsin
     menuToggleBtn.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, border-color 0.2s ease, border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
@@ -182,11 +624,6 @@ menuToggleBtn.addEventListener("click", () => {
     setTimeout(() => {
       controls.classList.add("menu-expanded");
       menuToggleBtn.classList.add("active");
-
-      // Tugmalar ketma-ket ochilsin
-      buttons.forEach((btn, i) => {
-        btn.style.transitionDelay = `${i * 0.05}s`;
-      });
 
       // Search input CHAPGA SILJIYDI
       searchContainer.style.maxWidth = "490px";
@@ -223,12 +660,73 @@ menuToggleBtn.addEventListener("click", () => {
         menuToggleBtn.style.borderBottomRightRadius = "50%";
       }, 140);
 
+      // Tugmalarni ko'rsatish
+      setTimeout(() => {
+        if (isAiActive) {
+          // Agar AI aktiv bo'lsa, faqat aiBtn ni ko'rsat
+          aiBtn.style.transition = "all 0.4s ease";
+          aiBtn.style.background = "rgba(255, 255, 255, 0.08)";
+          aiBtn.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+          aiBtn.style.opacity = "1";
+          aiBtn.style.transform = "scale(1)";
+          aiBtn.style.pointerEvents = "auto";
+
+          // Qolganlarini yashir
+          otherBtns.forEach(btn => {
+            btn.style.opacity = "0";
+            btn.style.transform = "scale(0.8)";
+            btn.style.pointerEvents = "none";
+          });
+        } else {
+          // AI aktiv bo'lmasa, barcha tugmalarni ko'rsat
+          buttons.forEach((btn, i) => {
+            setTimeout(() => {
+              btn.style.transition = "all 0.4s ease";
+              btn.style.background = "rgba(255, 255, 255, 0.08)";
+              btn.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+              btn.style.opacity = "1";
+              btn.style.transform = "scale(1)";
+              btn.style.pointerEvents = "auto";
+            }, i * 50);
+          });
+        }
+      }, 100);
+
     }, 50);
 
     setTimeout(() => {
       isAnimating = false;
     }, 1000);
   }
+});
+
+document.querySelectorAll(".btn-group .btn").forEach(btn => {
+  // aiBtn ni butunlay e'tiborsiz qoldirish
+  if (btn.id === 'aiBtn') {
+    return; // aiBtn uchun hech narsa qilmaymiz
+  }
+
+  btn.addEventListener("click", () => {
+    // Bosilgan effekt
+    const currentTransform = btn.style.transform || '';
+
+    if (currentTransform.includes('translateX')) {
+      // Agar translateX bor bo'lsa (AI menyusi ochiq)
+      btn.style.transform = currentTransform + ' scale(0.9)';
+    } else {
+      // Oddiy holat
+      btn.style.transform = 'scale(0.9)';
+    }
+
+    // 150ms dan keyin asl holatga qaytarish
+    setTimeout(() => {
+      if (currentTransform.includes('translateX')) {
+        btn.style.transform = currentTransform; // translateX saqlanadi
+      } else {
+        btn.style.transform = 'scale(1)';
+      }
+    }, 150);
+  });
 });
 
 // Fon aylanişini tuzat - faqat map aylansın, fon qolsın
@@ -386,7 +884,7 @@ async function typeFormattedText(element, text, speed = 10) {
   // Matnni tozalash va muhim so‘zlarni qalin qilish
   const formattedText = text
     .replace(/\*+/g, "") // yulduzchalarni olib tashlaydi
-    .replace(/\b(muhim|diqqat|asosiy|e'tibor|fact|important)\b/gi, (m) => `<b>${m}</b>`);
+    .replace(/\b(muhim|diqqat|asosiy|e'tibor|fact|important)\b/gi, (m) => `< b > ${m}</ > `);
 
   // HTML bilan typing effekti
   for (let i = 0; i < formattedText.length; i++) {
@@ -405,36 +903,43 @@ function formatGeminiText(text) {
     .join("\n");
 }
 
+const hg = `<dotlottie-wc
+  src="https://lottie.host/040c693a-fff0-4e95-9451-a8d3eea5309e/cVjuGPs9w2.lottie"
+  style="width: 600px; height: 230px; right: 80px"
+  autoplay
+  loop
+></dotlottie-wc>`;
+
 // Panelni ko‘rsatish
 async function showInfoPanel(data) {
   infoPanel.innerHTML = `
-    <h2 style="font-size:1em;">Joy haqida qisqacha ma’lumot!</h2>
-    <div id="geminiResponse">⏳ Ma’lumot yuklanmoqda...</div>
+    <h2 style = "font-size:1em;" > Joy haqida qisqacha ma’lumot!</h2 >
+    <div id="geminiResponse">${hg}</div>
     <button class="search-btn" id="searchPanelBtn" style="font-size:1em;">Batafsil ma'lumot</button>
     <button class="close-btn" id="closePanelBtn" style="font-size:1em;">Yopish</button>
-  `;
+`;
   infoPanel.classList.add('active');
 
   const closeBtn = document.getElementById('closePanelBtn');
   if (closeBtn) closeBtn.addEventListener('click', hideInfoPanel);
   const detailBtn = document.getElementById('searchPanelBtn');
   if (detailBtn) detailBtn.addEventListener('click', async () => {
-    const detailMessage = `Shu joy haqida batafsil va tushunarli ma'lumot yoz. 
-Faqat eng muhim faktlarni va bir oz tarixini ayt. 
-Shahar: ${cityName}, koordinata: ${data.lat}, ${data.lng}. 
+    const detailMessage = `Shu kordinatada joylashgan joy haqida batafsil va tushunarli ma'lumot yoz. 
+Faqat eng muhim faktlarni va bir oz tarixini ayt.
+  Shahar: ${cityName}, koordinata: ${data.lat}, ${data.lng}. 
 Agar aniq ma'lumot topa olmasang, yon-atrofdagi joy haqida xuddi shunday qisqa ma'lumot ber.`;
 
     const responseEl = document.getElementById("geminiResponse");
-    responseEl.innerHTML = "⏳ Batafsil ma’lumot yuklanmoqda...";
+    responseEl.innerHTML = `${hg}`;
     const detailedText = await getGeminiData(detailMessage);
     const formattedDetail = formatGeminiText(detailedText || "❌ Batafsil ma'lumot topilmadi.");
     await typeFormattedText(responseEl, formattedDetail);
   });
 
   const cityName = data.name || "noma’lum joy";
-  const message = `Shu joy haqida juda qisqa (faqat 2-3 gapli) va tushunarli ma'lumot yoz. 
-Faqat eng muhim faktlarni ayt. 
-Shahar: ${cityName}, koordinata: ${data.lat}, ${data.lng}. 
+  const message = `Shu kordinatada joylashgan joy haqida juda qisqa(faqat 2 - 3 gapli) va tushunarli ma'lumot yoz. 
+Faqat eng muhim faktlarni ayt.
+  Shahar: ${cityName}, koordinata: ${data.lat}, ${data.lng}. 
 Agar aniq ma'lumot topa olmasang, yon-atrofdagi joy haqida xuddi shunday qisqa ma'lumot ber.`;
 
   const responseText = await getGeminiData(message);
@@ -459,38 +964,387 @@ async function getGeminiData(prompt) {
   }
 }
 
-// ping-keepalive.js
 const TARGET_URL = "https://top-b.onrender.com/sorov";
 const INTERVAL_MS = 10 * 60 * 1000; // 10 daqiqa
+const MAX_RETRIES = 10; // Maksimal urinishlar soni
+const RETRY_DELAY = 3000; // 3 soniya
+
+// Intervallar va timeoutlarni kuzatish uchun
+let keepAliveInterval = null;
+let retryTimeout = null;
+let checkAttempt = 0;
+let isChecking = false;
 
 function getLocalTime() {
   return new Date().toLocaleString("uz-UZ", { timeZone: "Asia/Tashkent" });
 }
 
-async function sendPing() {
-  try {
-    const res = await fetch(TARGET_URL);
-    const text = await res.text(); // serverdan kelgan javob
-    console.log(
-      getLocalTime(),
-      "PING sent, status:",
-      res.status,
-      "| response:",
-      text
-    );
-  } catch (err) {
-    console.error(getLocalTime(), "PING error:", err.message);
+// Loading overlay ko'rsatish
+function showLoadingOverlay() {
+  // Avvalgi overlay borligini tekirish
+  const existingOverlay = document.getElementById('backendCheckOverlay');
+  if (existingOverlay) {
+    return; // Agar mavjud bo'lsa, yangi ochmaymiz
+  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'backendCheckOverlay';
+  overlay.innerHTML = `
+    <div style="text-align: center; max-width: 400px; padding: 20px;">
+      
+      <div id="backendSpinner321" class="spinner-loader"></div>
+      
+      <h3 style="color: #64c8ff; font-size: 22px; margin-bottom: 12px;">TOP-GL</h3>
+      <p id="backendStatus321" style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 8px;">Backend tekshirilmoqda...</p>
+      <p id="backendAttempt321" style="color: rgba(255,255,255,0.5); font-size: 12px;">Urinish: 1/${MAX_RETRIES}</p>
+      <div id="backendError321" style="display: none; margin-top: 15px; padding: 10px; background: rgba(255,107,107,0.1); border-radius: 8px; color: #ff6b6b; font-size: 12px;"></div>
+    </div>
+  `;
+
+  // CSS qo'shish
+  const style = document.createElement('style');
+  style.id = 'backendCheckStyle';
+  style.textContent = `
+    #backendCheckOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0e27;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    /* KUCHLI PULS ANIMATSIYASI */
+
+    .spinner-loader {
+      width: 80px; 
+      height: 80px; 
+      border-radius: 50%; 
+      margin: 0 auto 20px; 
+      position: relative;
+      background: transparent;
+      
+      /* Boshlang'ich holat */
+      border: 6px solid rgba(100, 200, 255, 0.7);
+      
+      /* Silliq o'tishlar */
+      transition: border-color 0.3s ease-in, background-color 0.3s ease-in, transform 0.3s ease, opacity 0.3s ease;
+      
+      /* Kuchli "nafas olish" (pulsing) animatsiyasi */
+      animation: pulse321 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse321 {
+      0% {
+        transform: scale(0.85);
+        opacity: 0.5;
+        border-color: rgba(100, 200, 255, 0.5);
+        box-shadow: 0 0 0 0 rgba(100, 200, 255, 0.4);
+      }
+      50% {
+        transform: scale(1.15);
+        opacity: 1;
+        border-color: rgba(100, 200, 255, 1);
+        box-shadow: 0 0 20px 10px rgba(100, 200, 255, 0.3);
+      }
+      100% {
+        transform: scale(0.85);
+        opacity: 0.5;
+        border-color: rgba(100, 200, 255, 0.5);
+        box-shadow: 0 0 0 0 rgba(100, 200, 255, 0.4);
+      }
+    }
+    
+    /* Checkmark (tasdiq belgisi) qismlari */
+    .spinner-loader::before,
+    .spinner-loader::after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 3px;
+      
+      opacity: 0;
+      transform: scaleX(0);
+      transition: transform 0.25s ease-out, opacity 0.1s ease-out;
+    }
+
+    /* Checkmark (chap qismi) */
+    .spinner-loader::before {
+      top: 42px; left: 22px;
+      width: 25px; height: 8px;
+      transform-origin: right top;
+      transform: rotate(-45deg) scaleX(0);
+      transition-delay: 0.3s;
+    }
+
+    /* Checkmark (o'ng qismi) */
+    .spinner-loader::after {
+      top: 36px; left: 42px;
+      width: 35px; height: 8px;
+      transform-origin: left top;
+      transform: rotate(45deg) scaleX(0);
+      transition-delay: 0.5s;
+    }
+
+    /* MUVAFFAQIYATLI HOLAT */
+
+    .spinner-loader.success {
+      animation: none;
+      transform: scale(1);
+      opacity: 1;
+      border-color: #4ade80;
+      background-color: #4ade80;
+      box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+    }
+    
+    /* Checkmarkni chizish */
+    .spinner-loader.success::before,
+    .spinner-loader.success::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* Overlay yopilish animatsiyasi */
+    @keyframes fadeOut321 {
+      to { opacity: 0; visibility: hidden; }
+    }
+  `;
+
+  document.head.appendChild(style);
+  document.body.appendChild(overlay);
+}
+
+// Overlay ni olib tashlash
+function hideLoadingOverlay() {
+  const overlay = document.getElementById('backendCheckOverlay');
+  const style = document.getElementById('backendCheckStyle');
+
+  if (overlay) {
+    overlay.style.animation = 'fadeOut321 0.5s ease forwards';
+    setTimeout(() => {
+      overlay.remove();
+      if (style) style.remove();
+    }, 500);
   }
 }
 
-// Dastlabki ping
-sendPing();
+// Status va xatolarni yangilash
+function updateStatus(message, type = 'info') {
+  const statusEl = document.getElementById('backendStatus321');
+  const attemptEl = document.getElementById('backendAttempt321');
+  const errorEl = document.getElementById('backendError321');
 
-// Har 10 daqiqada yuborish
-setInterval(sendPing, INTERVAL_MS);
+  if (statusEl) {
+    statusEl.textContent = message;
+    if (type === 'success') {
+      statusEl.style.color = '#4ade80';
+    } else if (type === 'error') {
+      statusEl.style.color = '#ff6b6b';
+    } else {
+      statusEl.style.color = 'rgba(255,255,255,0.7)';
+    }
+  }
 
-console.log("✅ Keep-alive ping started for:", TARGET_URL);
+  if (attemptEl) {
+    attemptEl.textContent = `Urinish: ${checkAttempt}/${MAX_RETRIES}`;
+    attemptEl.style.display = checkAttempt <= MAX_RETRIES ? 'block' : 'none';
+  }
 
+  if (errorEl && type === 'error') {
+    errorEl.style.display = 'block';
+    errorEl.innerHTML = `
+      <strong>Xatolik:</strong><br>
+      ${message}<br>
+      <span style="opacity: 0.7; font-size: 11px;">Internet ulanishini tekshiring yoki keyinroq urinib ko'ring.</span>
+    `;
+  }
+}
+
+// Fetch timeout uchun yordamchi funksiya (eski brauzerlar uchun)
+function fetchWithTimeout(url, options = {}, timeout = 8000) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error('Timeout: Server javob berish vaqti tugadi'));
+    }, timeout);
+
+    fetch(url, options)
+      .then(response => {
+        clearTimeout(timer);
+        resolve(response);
+      })
+      .catch(err => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
+// Backend tekshirish
+async function checkBackendStatus() {
+  // Agar allaqachon tekshirilayotgan bo'lsa, qayta ishga tushirmaymiz
+  if (isChecking) {
+    console.log(getLocalTime(), "⏳ Backend allaqachon tekshirilmoqda...");
+    return false;
+  }
+
+  isChecking = true;
+  checkAttempt++;
+
+  // Maksimal urinishlarni tekshirish
+  if (checkAttempt > MAX_RETRIES) {
+    console.error(getLocalTime(), "❌ Maksimal urinishlar soni tugadi!");
+    updateStatus('Server topilmadi. Sahifani yangilang.', 'error');
+    isChecking = false;
+    return false;
+  }
+
+  updateStatus('TOP-GL loyihasini sizdek inson kashf etgan!', 'info');
+
+  try {
+    // Internet ulanishini tekshirish
+    if (!navigator.onLine) {
+      throw new Error('Internet ulanishi yo\'q');
+    }
+
+    console.log(getLocalTime(), `🔄 Backend tekshirilmoqda... (${checkAttempt}/${MAX_RETRIES})`);
+
+    const res = await fetchWithTimeout(TARGET_URL, {
+      method: 'GET',
+      cache: 'no-cache',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+      }
+    }, 8000);
+
+    if (res.ok && res.status === 200) {
+      console.log(getLocalTime(), "✅ Backend tayyor! Status:", res.status);
+      updateStatus('Xush kelibsiz!', 'success');
+
+      // Animatsiyani muvaffaqiyatli holatga o'tkazish
+      const spinner = document.getElementById('backendSpinner321');
+      if (spinner) {
+        spinner.classList.add('success');
+      }
+
+      // Silliq animatsiya tugashi uchun vaqt (1.5 soniya)
+      setTimeout(() => {
+        hideLoadingOverlay();
+        isChecking = false;
+      }, 1500);
+
+      // Eski intervalni tozalash
+      if (keepAliveInterval) {
+        clearInterval(keepAliveInterval);
+        keepAliveInterval = null;
+      }
+
+      // Yangi interval o'rnatish
+      keepAliveInterval = setInterval(sendKeepAlivePing, INTERVAL_MS);
+
+      // Dastlabki ping yuborish
+      setTimeout(sendKeepAlivePing, 1000);
+
+      return true;
+    } else {
+      throw new Error(`Server xato javobi: ${res.status} ${res.statusText}`);
+    }
+  } catch (err) {
+    console.error(getLocalTime(), "❌ Backend xato:", err.message);
+
+    const errorMessage = err.message.includes('Internet')
+      ? 'Internet ulanishi yo\'q'
+      : err.message.includes('Timeout')
+        ? 'Server javob berish vaqti tugadi'
+        : 'Server bilan bog\'lanib bo\'lmadi';
+
+    updateStatus(`⚠️ ${errorMessage}`, 'error');
+
+    // Agar maksimal urinishlar tugamagan bo'lsa, qayta urinish
+    if (checkAttempt < MAX_RETRIES) {
+      console.log(getLocalTime(), `🔄 ${RETRY_DELAY / 1000} soniyadan keyin qayta uriniladi...`);
+
+      // Eski timeout ni tozalash
+      if (retryTimeout) {
+        clearTimeout(retryTimeout);
+      }
+
+      retryTimeout = setTimeout(() => {
+        isChecking = false;
+        checkBackendStatus();
+      }, RETRY_DELAY);
+    } else {
+      isChecking = false;
+      updateStatus('Server topilmadi. Sahifani yangilang.', 'error');
+    }
+
+    return false;
+  }
+}
+
+// Keep-alive ping
+async function sendKeepAlivePing() {
+  try {
+    console.log(getLocalTime(), "📡 PING yuborilmoqda...");
+
+    const res = await fetchWithTimeout(TARGET_URL, {
+      method: 'GET',
+      cache: 'no-cache'
+    }, 5000);
+
+    if (res.ok) {
+      const text = await res.text();
+      console.log(getLocalTime(), "✅ PING muvaffaqiyatli, status:", res.status, "| javob:", text.substring(0, 50));
+    } else {
+      console.warn(getLocalTime(), "⚠️ PING xato status:", res.status);
+    }
+  } catch (err) {
+    console.error(getLocalTime(), "❌ PING xato:", err.message);
+  }
+}
+
+// Internet ulanishini kuzatish
+function setupNetworkMonitoring() {
+  window.addEventListener('online', () => {
+    console.log(getLocalTime(), "🌐 Internet qayta ulandi");
+    if (!keepAliveInterval) {
+      checkAttempt = 0;
+      showLoadingOverlay();
+      checkBackendStatus();
+    }
+  });
+
+  window.addEventListener('offline', () => {
+    console.log(getLocalTime(), "📵 Internet ulanishi yo'qoldi");
+  });
+}
+
+// Sahifa yopilganda tozalash
+function cleanup() {
+  if (keepAliveInterval) {
+    clearInterval(keepAliveInterval);
+    keepAliveInterval = null;
+  }
+  if (retryTimeout) {
+    clearTimeout(retryTimeout);
+    retryTimeout = null;
+  }
+  console.log(getLocalTime(), "🧹 Tozalash amalga oshirildi");
+}
+
+window.addEventListener('beforeunload', cleanup);
+
+// Dastlabki ishga tushirish
+console.log("🚀 Backend Checker ishga tushirildi");
+console.log(`⚙️ Sozlamalar: MAX_RETRIES=${MAX_RETRIES}, RETRY_DELAY=${RETRY_DELAY}ms, PING_INTERVAL=${INTERVAL_MS}ms`);
+
+setupNetworkMonitoring();
+showLoadingOverlay();
+checkBackendStatus();
 
 // Panelni yopish
 function hideInfoPanel() {
@@ -503,7 +1357,7 @@ function createPopup(name, coordsArr, data = {}, removable = true) {
   const content = document.createElement('div');
   const nameSafe = escapeHtml(name);
   content.innerHTML = `
-    <div class="popup-title">${nameSafe}</div>
+<div class="popup-title">${nameSafe}</div>
     ${data.region ? `<div class="popup-subtitle"><i class='bx bxs-map-pin'></i> ${escapeHtml(data.region)}</div>` : ''}
     ${data.country ? `<div class="popup-subtitle"><i class='bx bx-flag'></i> ${escapeHtml(data.country)}</div>` : ''}
     <div class="popup-subtitle"><i class='bx bxs-pin'></i> ${lat.toFixed(4)}, ${lng.toFixed(4)}</div>
@@ -514,7 +1368,7 @@ function createPopup(name, coordsArr, data = {}, removable = true) {
       <button class="popup-btn" data-action="ai" data-lng="${lng}" data-lat="${lat}"><i class='bx bx-info-circle'></i> Ma'lumot</button>
       ${removable ? `<button class="popup-btn delete" data-action="remove" data-lng="${lng}" data-lat="${lat}"><i class='bx bxs-trash-alt'></i> O'chirish</button>` : ''}
     </div>
-  `;
+`;
   setTimeout(() => {
     const buttons = content.querySelectorAll('.popup-btn');
     buttons.forEach(btn => btn.addEventListener('click', () => {
@@ -579,23 +1433,23 @@ function showMarkerContextMenu(ev, markerObj) {
   contextMenuEl.style.border = '1px solid rgba(255,255,255,0.06)';
 
   contextMenuEl.innerHTML = `
-    < div style = "padding:8px 6px;font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;" >
-      ${escapeHtml(markerObj.name)}
+  < div style = "padding:8px 6px;font-size:13px;color:rgba(255,255,255,0.9);font-weight:600;" >
+    ${escapeHtml(markerObj.name)}
     </ >
-    <div class="ctx-item" data-act="copy"><i class='bx bxs-copy' ></i> Nusxa</div>
-    <div class="ctx-item" data-act="fav"><i class='bx bxs-paste' ></i> Sevimlilarga qo'shish</div>
-    <div class="ctx-item" data-act="weather"><i class='bx bxs-sun' ></i> Ob-havo</div>
-    ${markerObj.removable ? `<div class="ctx-item ctx-delete" data-act="remove">${a} O\'chirish</div>` : ''}
-  <div class="ctx-item" data-act="rename"><i class='bx bx-pencil'></i> Nom berish</div>
-  `;
-
-  const a = `
-    < i class='bx bxs-edit-alt' ></ >
-      `
+    <div class="ctx-item" data-act="copy"><i class='bx bxs-copy'></i> Nusxa</div>
+    <div class="ctx-item" data-act="fav"><i class='bx bxs-paste'></i> Sevimlilarga qo'shish</div>
+    <div class="ctx-item" data-act="weather"><i class='bx bxs-sun'></i> Ob-havo</div>
+    ${markerObj.removable ? `<div class="ctx-item ctx-delete" data-act="remove"><i class='bx bxs-edit-alt'></i> O'chirish</div>` : ''}
+<div class="ctx-item" data-act="rename"><i class='bx bx-pencil'></i> Nom berish</div>
+`;
 
   document.body.appendChild(contextMenuEl);
-  contextMenuEl.style.left = `${ev.clientX} px`;
-  contextMenuEl.style.top = `${ev.clientY} px`;
+
+  const x = Math.min(window.innerWidth - 200, ev.clientX);
+  const y = Math.min(window.innerHeight - 200, ev.clientY);
+  contextMenuEl.style.left = x + 'px';
+  contextMenuEl.style.top = y + 'px';
+
   contextMenuEl.querySelectorAll('.ctx-item').forEach(it => {
     it.style.padding = '8px';
     it.style.cursor = 'pointer';
@@ -605,13 +1459,8 @@ function showMarkerContextMenu(ev, markerObj) {
     it.onmouseleave = () => it.style.background = 'transparent';
   });
 
-  const x = Math.min(window.innerWidth - 200, ev.clientX);
-  const y = Math.min(window.innerHeight - 200, ev.clientY);
-  contextMenuEl.style.left = x + 'px';
-  contextMenuEl.style.top = y + 'px';
-
   contextMenuEl.addEventListener('click', (e) => {
-    const act = e.target.dataset.act;
+    const act = e.target.closest('.ctx-item')?.dataset.act;
     if (!act) return;
     if (act === 'copy') {
       copyCoords(markerObj.coords.lng, markerObj.coords.lat);
@@ -674,18 +1523,18 @@ function renderFavorites() {
   if (!list) return;
   const entries = Object.entries(favorites);
   if (entries.length === 0) {
-    list.innerHTML = `< div style = "text-align:center;padding:20px;color:rgba(255,255,255,0.5)" > Sevimlilar yo'q</>`;
+    list.innerHTML = `<div style="text-align:center; padding:20px; color:rgba(255,255,255,0.5);">Sevimlilar yo'q</div>`;
     return;
   }
   list.innerHTML = entries.map(([name, fav]) => {
-    const safe = name.replace(/'/g, "\\'");
+    // encodeURIComponent o'rniga textContent ishlatamiz
     return `
       <div class="fav-item">
         <div class="fav-info" data-lng="${fav.coords[0]}" data-lat="${fav.coords[1]}">
           <div class="fav-name">${escapeHtml(name)}</div>
           <div class="fav-coords">${fav.coords[1].toFixed(4)}, ${fav.coords[0].toFixed(4)}</div>
         </div>
-        <button class="fav-delete" data-name="${safe}">×</button>
+        <button class="fav-delete" data-name="${escapeHtml(name)}">×</button>
       </div>
     `;
   }).join('');
@@ -697,8 +1546,10 @@ function renderFavorites() {
       goToCoords(lng, lat);
     });
   });
+
   list.querySelectorAll('.fav-delete').forEach(b => {
     b.addEventListener('click', () => {
+      // dataset.name dan to'g'ridan-to'g'ri olamiz
       deleteFavorite(b.dataset.name);
     });
   });
@@ -779,17 +1630,35 @@ let currentResults = [];
 searchInput.addEventListener('input', onSearchInput);
 searchInput.addEventListener('keydown', onSearchKeyDown);
 
+function normalizeText(text) {
+  return text
+    .toLowerCase()
+    .replace(/ʻ|ʼ|'|'/g, '') // Apostrof va qo'shtirnoqlarni olib tashlash
+    .replace(/o'/g, 'o')      // O' -> O
+    .replace(/g'/g, 'g')      // G' -> G
+    .replace(/sh/g, 's')      // Sh -> S (agar kerak bo'lsa)
+    .replace(/ch/g, 'c')      // Ch -> C (agar kerak bo'lsa)
+    .trim();
+}
+
 function onSearchInput(e) {
   const q = e.target.value.toLowerCase().trim();
   if (q.length < 2) {
     hideSearchResults();
     return;
   }
-  const found = places.filter(p =>
-    p.name.toLowerCase().includes(q) ||
-    (p.region && p.region.toLowerCase().includes(q)) ||
-    (p.type && p.type.toLowerCase().includes(q))
-  ).slice(0, 20);
+
+  // Qidiruv so'zini normallashtiramiz
+  const normalizedQuery = normalizeText(q);
+
+  const found = places.filter(p => {
+    // Har bir maydonni normallashtirib, qidiramiz
+    const nameMatch = normalizeText(p.name).includes(normalizedQuery);
+    const regionMatch = p.region && normalizeText(p.region).includes(normalizedQuery);
+    const typeMatch = p.type && normalizeText(p.type).includes(normalizedQuery);
+
+    return nameMatch || regionMatch || typeMatch;
+  }).slice(0, 20);
 
   currentResults = found;
   searchIndex = -1;
@@ -1153,14 +2022,11 @@ window.goToPlace = function (name) {
 // Utilities
 // =======================
 function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
 }
 
 function escapeRegExp(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
-
-// =======================
-// BOSHLASH
-// =======================
-initMap();

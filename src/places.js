@@ -24,7 +24,6 @@ export const places = [
     { name: "Keles", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [69.2067, 41.4033] },
     { name: "Oqqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [69.0453, 40.8764] },
     { name: "Piskent", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [69.35056, 40.89722] },
-    { name: "To'ytepa", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [69.3583, 41.0403] },
     { name: "Chinoz", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [68.7578, 40.9375] },
     { name: "Yangiobod", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [70.0942, 41.1192] },
     { name: "G'azalkent", type: "shahar", country: "O'zbekiston", region: "Toshkent viloyati", center: [69.7750, 41.5625] },
@@ -34,7 +33,6 @@ export const places = [
     { name: "Andijon", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [72.3441, 40.7833] },
     { name: "Asaka", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [72.2389, 40.6419] },
     { name: "Xo'jaobod", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [72.5600, 40.6700] },
-    { name: "Uchqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [72.0833, 41.1167] },
     { name: "Poytug'", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [71.9167, 40.0167] },
     { name: "Jalolquduq", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [72.6667, 40.7333] },
     { name: "Paxtaobod", type: "shahar", country: "O'zbekiston", region: "Andijon viloyati", center: [72.5000, 40.9333] },
@@ -53,6 +51,7 @@ export const places = [
     { name: "To'raqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Namangan viloyati", center: [71.5119, 40.9958] },
     { name: "Chust", type: "shahar", country: "O'zbekiston", region: "Namangan viloyati", center: [71.2330, 41.0000] },
     { name: "Kosonsoy", type: "shahar", country: "O'zbekiston", region: "Namangan viloyati", center: [71.5500, 41.2500] },
+    { name: "Uchqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Namangan viloyati", center: [72.0833, 41.1167] }, // Andijondan ko'chirildi
 
     // Farg'ona
     { name: "Farg'ona viloyati", type: "viloyat", country: "O'zbekiston", center: [71.2874, 40.4568] },
@@ -66,7 +65,8 @@ export const places = [
     { name: "Dang'ara", type: "shahar", country: "O'zbekiston", region: "Farg'ona viloyati", center: [70.9167, 40.5833] },
     { name: "Oltiariq", type: "shahar", country: "O'zbekiston", region: "Farg'ona viloyati", center: [71.4742, 40.3919] },
     { name: "Quvasoy", type: "shahar", country: "O'zbekiston", region: "Farg'ona viloyati", center: [72.0670, 40.3000] },
-    { name: "Hamza", type: "shahar", country: "O'zbekiston", region: "Farg'ona viloyati", center: [71.49556, 40.42639] },
+    { name: "Tinchlik", type: "shahar", country: "O'zbekiston", region: "Farg'ona viloyati", center: [71.49556, 40.42639] }, // "Hamza" nomi o'zgartirildi
+    { name: "Bag'dod", type: "shahar", country: "O'zbekiston", region: "Farg'ona viloyati", center: [70.83, 40.47] }, // Sirdaryodan ko'chirildi va koordinatalar tuzatildi
 
     // Sirdaryo
     { name: "Sirdaryo viloyati", type: "viloyat", country: "O'zbekiston", center: [68.7155, 40.3864] },
@@ -76,9 +76,7 @@ export const places = [
     { name: "Baxt", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [68.9333, 40.7333] },
     { name: "Sayxun", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [68.8667, 40.7167] },
     { name: "Gulbahor", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [68.7833, 40.4500] },
-    { name: "Bag'dod", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [65.2167, 40.4000] },
-    { name: "G'allaorol", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [69.9617, 40.8458] },
-    { name: "Do'stlik", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [68.0369, 40.5244] },
+    { name: "Shirin", type: "shahar", country: "O'zbekiston", region: "Sirdaryo viloyati", center: [68.66, 40.21] }, // Surxondaryodan ko'chirildi va koordinatalar tuzatildi
 
     // Jizzax
     { name: "Jizzax viloyati", type: "viloyat", country: "O'zbekiston", center: [67.5708, 40.4706] },
@@ -86,17 +84,15 @@ export const places = [
     { name: "Gagarin", type: "shahar", country: "O'zbekiston", region: "Jizzax viloyati", center: [68.17722, 40.66444] },
     { name: "Paxtakor", type: "shahar", country: "O'zbekiston", region: "Jizzax viloyati", center: [67.95611, 40.31083] },
     { name: "Zarbdor", type: "shahar", country: "O'zbekiston", region: "Jizzax viloyati", center: [68.16833, 40.07472] },
+    { name: "G'allaorol", type: "shahar", country: "O'zbekiston", region: "Jizzax viloyati", center: [67.58, 40.02] }, // Sirdaryodan ko'chirildi va koordinatalar tuzatildi
+    { name: "Do'stlik", type: "shahar", country: "O'zbekiston", region: "Jizzax viloyati", center: [68.0369, 40.5244] }, // Sirdaryodan ko'chirildi
 
     // Samarqand
     { name: "Samarqand viloyati", type: "viloyat", country: "O'zbekiston", center: [66.9750, 39.6270] },
     { name: "Samarqand", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [66.9597, 39.6542] },
     { name: "Kattaqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [66.2569, 39.9000] },
-    { name: "Shahrisabz", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [66.8333, 39.0500] },
-    { name: "Koson", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [65.5850, 39.0375] },
     { name: "Urgut", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [67.2500, 39.4000] },
     { name: "Oqtosh", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [65.9333, 39.9167] },
-    { name: "Kitob", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [66.8667, 39.1167] },
-    { name: "Qumqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Samarqand viloyati", center: [67.8333, 39.4000] },
 
     // Buxoro
     { name: "Buxoro viloyati", type: "viloyat", country: "O'zbekiston", center: [63.2032, 40.2504] },
@@ -126,8 +122,6 @@ export const places = [
     { name: "Qashqadaryo viloyati", type: "viloyat", country: "O'zbekiston", center: [66.0464, 38.8986] },
     { name: "Qarshi", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [65.7848, 38.8616] },
     { name: "Dehqonobod", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [66.6667, 38.3333] },
-    { name: "Uzun", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [66.2333, 38.3500] },
-    { name: "Bandixon", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [67.1000, 40.2833] },
     { name: "Muborak", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [65.1500, 39.2553] },
     { name: "Nishon", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [65.6833, 38.6333] },
     { name: "Yakkabog'", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [66.6833, 38.9667] },
@@ -137,12 +131,14 @@ export const places = [
     { name: "Qamashi", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [66.4500, 38.8167] },
     { name: "Mirishkor", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [65.1667, 38.9667] },
     { name: "Tallimarjon", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [65.55333, 38.29667] },
+    { name: "Shahrisabz", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [66.8333, 39.0500] }, // Samarqanddan ko'chirildi
+    { name: "Koson", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [65.5850, 39.0375] }, // Samarqanddan ko'chirildi
+    { name: "Kitob", type: "shahar", country: "O'zbekiston", region: "Qashqadaryo viloyati", center: [66.8667, 39.1167] }, // Samarqanddan ko'chirildi
 
     // Surxondaryo
     { name: "Surxondaryo viloyati", type: "viloyat", country: "O'zbekiston", center: [67.5709, 37.9409] },
     { name: "Termiz", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.2729, 37.2243] },
     { name: "Denov", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.9000, 38.2667] },
-    { name: "Shirin", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [69.4639, 37.1958] },
     { name: "Jarqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.4167, 37.5167] },
     { name: "Muzrabot", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [66.6833, 37.2667] },
     { name: "Sariosiyo", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [66.8333, 38.4167] },
@@ -152,6 +148,8 @@ export const places = [
     { name: "Qumqo'rg'on", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.81306, 37.60361] },
     { name: "Shargun", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.96694, 38.46000] },
     { name: "Angor", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.19306, 37.45500] },
+    { name: "Uzun", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.45, 38.11] }, // Qashqadaryodan ko'chirildi va koordinatalar tuzatildi
+    { name: "Bandixon", type: "shahar", country: "O'zbekiston", region: "Surxondaryo viloyati", center: [67.46, 37.89] }, // Qashqadaryodan ko'chirildi va koordinatalar tuzatildi
 
     // Xorazm
     { name: "Xorazm viloyati", type: "viloyat", country: "O'zbekiston", center: [60.8567, 41.3565] },
@@ -159,7 +157,7 @@ export const places = [
     { name: "Xiva", type: "shahar", country: "O'zbekiston", region: "Xorazm viloyati", center: [60.3644, 41.3775] },
     { name: "Hazorasp", type: "shahar", country: "O'zbekiston", region: "Xorazm viloyati", center: [61.08917, 41.30028] },
     { name: "Pitnak", type: "shahar", country: "O'zbekiston", region: "Xorazm viloyati", center: [61.30667, 41.22222] },
-    { name: "Qoraoʻzak", type: "shahar", country: "O'zbekiston", region: "Xorazm viloyati", center: [60.30000, 42.75000] },
+    { name: "Xonqa", type: "shahar", country: "O'zbekiston", region: "Xorazm viloyati", center: [60.8670, 41.4330] }, // Qoraqalpog'istondan ko'chirildi
 
     // Qoraqalpog'iston
     { name: "Qoraqalpog'iston Respublikasi", type: "avtonom_respublika", country: "O'zbekiston", center: [59.4458, 43.8041] },
@@ -167,7 +165,6 @@ export const places = [
     { name: "Xo'jayli", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [59.4600, 42.4000] },
     { name: "Beruniy", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [60.7525, 41.6911] },
     { name: "To'rtko'l", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [61.0000, 41.5500] },
-    { name: "Xonqa", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [60.8670, 41.4330] },
     { name: "Chimboy", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [59.7830, 42.7000] },
     { name: "Mang'it", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [60.0600, 42.1156] },
     { name: "Qo'ng'irot", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [58.85417, 43.04972] },
@@ -175,6 +172,7 @@ export const places = [
     { name: "Mo'ynoq", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [59.02028, 43.75556] },
     { name: "Bo'ston", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [60.93333, 41.85000] },
     { name: "Kegeyli", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [59.60778, 42.77667] },
+    { name: "Qoraoʻzak", type: "shahar", country: "O'zbekiston", region: "Qoraqalpog'iston Respublikasi", center: [59.40, 42.96] }, // Xorazmdan ko'chirildi va koordinatalar tuzatildi
 
     // -------------------------------------------------------2------------------------------------------------------- //
 
@@ -217,16 +215,13 @@ export const places = [
     { name: "Embi", type: "shahar", country: "Qozog'iston", region: "Aqtobe viloyati", center: [58.15, 48.83333] },
     { name: "Shalkar", type: "shahar", country: "Qozog'iston", region: "Aqtobe viloyati", center: [59.61667, 47.83333] },
 
-    // Almaty viloyati
-    { name: "Almaty viloyati", type: "viloyat", country: "Qozog'iston", center: [78.37389, 45.01556] },
-    { name: "Taldykorgan", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [78.37389, 45.01556] },
-    { name: "Kapchagay", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [77.04, 43.88] },
+    // Almaty viloyati (Markazi - Konaev)
+    { name: "Almaty viloyati", type: "viloyat", country: "Qozog'iston", center: [77.04, 43.88] }, // Markaz Konaevga o'zgardi
+    { name: "Konaev", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [77.04, 43.88] }, // Kapchagay nomi o'zgardi
     { name: "Tekeli", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [78.76667, 44.86667] },
     { name: "Zharkent", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [79.998322, 44.16349] },
     { name: "Ushtobe", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [77.98333, 45.25] },
     { name: "Bakanas", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [76.21667, 44.21667] },
-    { name: "Sarkand", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [79.91667, 45.41667] },
-    { name: "Panfilov", type: "shahar", country: "Qozog'iston", region: "Almaty viloyati", center: [80.21667, 44.28333] },
 
     // Atyraw viloyati
     { name: "Atyraw viloyati", type: "viloyat", country: "Qozog'iston", center: [51.88333, 47.11667] },
@@ -243,7 +238,6 @@ export const places = [
     { name: "Altay", type: "shahar", country: "Qozog'iston", region: "Sharqiy Qozog'iston viloyati", center: [84.25416, 49.73626] },
     { name: "Kurchatov", type: "shahar", country: "Qozog'iston", region: "Sharqiy Qozog'iston viloyati", center: [78.56667, 50.75] },
     { name: "Zaysan", type: "shahar", country: "Qozog'iston", region: "Sharqiy Qozog'iston viloyati", center: [84.86667, 47.46667] },
-    { name: "Ayagoz", type: "shahar", country: "Qozog'iston", region: "Sharqiy Qozog'iston viloyati", center: [80.43333, 47.96667] },
 
     // Abay viloyati (2022-yilda yangi tashkil etilgan)
     { name: "Abay viloyati", type: "viloyat", country: "Qozog'iston", center: [80.27, 50.43] },
@@ -258,7 +252,6 @@ export const places = [
     { name: "Karatau", type: "shahar", country: "Qozog'iston", region: "Jambyl viloyati", center: [70.46667, 43.2] },
     { name: "Zhanatas", type: "shahar", country: "Qozog'iston", region: "Jambyl viloyati", center: [68.88333, 43.55] },
     { name: "Shu", type: "shahar", country: "Qozog'iston", region: "Jambyl viloyati", center: [68.75, 43.6] },
-    { name: "Saryagash", type: "shahar", country: "Qozog'iston", region: "Jambyl viloyati", center: [68.48333, 41.45] },
     { name: "Moyynkum", type: "shahar", country: "Qozog'iston", region: "Jambyl viloyati", center: [70.11667, 43.81667] },
 
     // Jetisu viloyati (2022-yilda yangi tashkil etilgan)
@@ -341,7 +334,6 @@ export const places = [
     { name: "G'arbiy Qozog'iston viloyati", type: "viloyat", country: "Qozog'iston", center: [51.36667, 51.23333] },
     { name: "Oral", type: "shahar", country: "Qozog'iston", region: "G'arbiy Qozog'iston viloyati", center: [51.36667, 51.23333] },
     { name: "Aksay", type: "shahar", country: "Qozog'iston", region: "G'arbiy Qozog'iston viloyati", center: [53.0, 51.16667] },
-    { name: "Uralsk", type: "shahar", country: "Qozog'iston", region: "G'arbiy Qozog'iston viloyati", center: [51.36667, 51.23333] },
     { name: "Kaztalovka", type: "shahar", country: "Qozog'iston", region: "G'arbiy Qozog'iston viloyati", center: [49.88333, 50.75] },
     { name: "Chingirlau", type: "shahar", country: "Qozog'iston", region: "G'arbiy Qozog'iston viloyati", center: [50.26667, 51.0] },
 
@@ -369,11 +361,10 @@ export const places = [
     { name: "Istaravshan", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.0030, 39.9140] },
     { name: "Konibodom", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [70.4310, 40.2940] },
     { name: "Khujand", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.6220, 40.2830] },
-    { name: "Qayroqqum", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.7960, 40.2660] },
     { name: "Buston", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.6950, 40.2340] },
     { name: "Panjakent", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [67.6090, 39.4950] },
     { name: "Istiqlol", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.0000, 40.0000] },
-    { name: "Guliston", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.7960, 40.2660] },
+    { name: "Guliston", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.7960, 40.2660] }, // Qayroqqumning yangi nomi
     { name: "Nov", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.5000, 40.5000] },
     { name: "Shaydon", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.5000, 40.3000] },
     { name: "Adrasmon", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.2000, 40.4000] },
@@ -382,16 +373,15 @@ export const places = [
     { name: "Ghonchi", type: "shahar", country: "Tojikiston", region: "So'g'd viloyati", center: [69.5000, 40.5000] },
 
     // Xatlon viloyati shaharlari
-    { name: "Qurg'onteppa", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.7780, 37.8370] },
     { name: "Kulob", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.7850, 37.9150] },
-    { name: "Bokhtar", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.7780, 37.8370] },
+    { name: "Bokhtar", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.7780, 37.8370] }, // Qurg'onteppaning yangi nomi
     { name: "Norak", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.3000, 38.4000] },
     { name: "Danghara", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.3000, 38.1000] },
     { name: "Yovon", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.1000, 38.3000] },
     { name: "Vose'", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.6500, 38.1500] },
     { name: "Farkhor", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.4000, 37.5000] },
     { name: "Chubek", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.2000, 37.6000] },
-    { name: "Kolkhozobod", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.4000, 38.0000] },
+    { name: "Jaloliddin Balkhi", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.61, 37.66] }, // Kolkhozobod nomi va koordinatalari tuzatildi
     { name: "Vakhsh", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.8000, 37.7000] },
     { name: "Shahritus", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [68.5000, 37.2000] },
     { name: "Mu'minobod", type: "shahar", country: "Tojikiston", region: "Xatlon viloyati", center: [69.3000, 38.2000] },
@@ -492,12 +482,11 @@ export const places = [
     { name: "Kara-Suu", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.8667, 40.7046] },
     { name: "Nookat", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.6183, 40.2660] },
     { name: "Aravan", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.4667, 40.6167] },
-    { name: "Kuva", type: "shahar", country: "Qirg'iziston", region: "Osh viloyati", center: [72.4833, 40.6167] },
 
     // Batken viloyati
     { name: "Batken viloyati", type: "viloyat", country: "Qirg'iziston", center: [70.5, 40.0] },
     { name: "Batken", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [70.8167, 40.0667] },
-    { name: "Isfana", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [69.5333, 39.8372] },
+    { name: "Razzaqov", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [69.5333, 39.8372] }, // Isfana nomi o'zgartirildi
     { name: "Kyzyl-Kiya", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [72.1300, 40.2600] },
     { name: "Suluktu", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [69.5600, 39.9400] },
     { name: "Kadamjay", type: "shahar", country: "Qirg'iziston", region: "Batken viloyati", center: [71.7236, 40.1267] },
@@ -521,7 +510,7 @@ export const places = [
     { name: "Ahal viloyati", type: "viloyat", country: "Turkmaniston", center: [58.5, 38.5] },
     { name: "Annau", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.5333, 37.8833] },
     { name: "Tejen", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [60.5054, 37.3833] },
-    { name: "Abadan", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.1972, 38.0539] },
+    // { name: "Abadan", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.1972, 38.0539] }, // Ashgabat tarkibiga kirgan (Büzmeýin)
     { name: "Kaka", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [59.6167, 37.3500] },
     { name: "Baharly", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [57.4333, 38.4333] },
     { name: "Gökdepe", type: "shahar", country: "Turkmaniston", region: "Ahal viloyati", center: [58.1833, 38.1500] },
@@ -533,23 +522,23 @@ export const places = [
     { name: "Mary", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [61.8303, 37.5938] },
     { name: "Bayramaly", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.1671, 37.6185] },
     { name: "Yoloten", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.3500, 37.3000] },
-    { name: "Seydi", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9137, 39.4816] },
-    { name: "Saýat", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9000, 39.4667] },
     { name: "Murgab", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [61.9714, 37.4966] },
-    { name: "Tagta", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.9333, 37.3833] },
+    { name: "Tagtabazar", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.74, 35.86] }, // 'Tagta' aniqlashtirildi
     { name: "Serhetabat", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.3438, 35.2799] },
     { name: "Oguzhan", type: "shahar", country: "Turkmaniston", region: "Mary viloyati", center: [62.1000, 37.7000] },
 
     // Lebap viloyati
     { name: "Lebap viloyati", type: "viloyat", country: "Turkmaniston", center: [63.5, 38.5] },
     { name: "Turkmenabat", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.5780, 39.0733] },
-    { name: "Gowurdak", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [66.0466, 37.8124] },
+    { name: "Magdanly", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [66.0466, 37.8124] }, // Gowurdak nomi o'zgartirildi
     { name: "Atamyrat", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.8833, 37.8333] },
     { name: "Gazojak", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [61.4036, 41.1875] },
     { name: "Farap", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.5833, 39.1667] },
     { name: "Darganata", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [64.3500, 38.4000] },
     { name: "Köýtendag", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [66.2833, 37.8500] },
     { name: "Hojambaz", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [63.0000, 39.5000] },
+    { name: "Seydi", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [62.9137, 39.4816] }, // Marydan ko'chirildi
+    { name: "Saýat", type: "shahar", country: "Turkmaniston", region: "Lebap viloyati", center: [62.9000, 39.4667] }, // Marydan ko'chirildi
 
     // Dashoguz viloyati
     { name: "Dashoguz viloyati", type: "viloyat", country: "Turkmaniston", center: [59.5, 41.5] },
@@ -557,9 +546,8 @@ export const places = [
     { name: "Koneurgench", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.1500, 42.3233] },
     { name: "Akdepe", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.3788, 42.0551] },
     { name: "Boldumsaz", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6667, 42.1333] },
-    { name: "Yylanly", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6326, 41.8639] },
     { name: "Shasenem", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [60.1167, 42.1500] },
-    { name: "Gurbansoltan eje", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.5000, 41.5000] },
+    { name: "Gurbansoltan eje", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.6326, 41.8639] }, // Yylanlyning yangi nomi
     { name: "Ruhubelent", type: "shahar", country: "Turkmaniston", region: "Dashoguz viloyati", center: [59.5000, 42.0000] },
 
     // Balkan viloyati
@@ -735,7 +723,7 @@ export const places = [
     { name: "Tirana shahri", type: "poytaxt_hudud", country: "Albaniya", center: [41.3275, 19.8189] },
 
     // Shaharlar va Hududlar
-
+    { name: "Tirana", type: "shahar", country: "Albaniya", region: "Tirana", center: [41.3275, 19.8189] }, // Poytaxtni shahar sifatida qo'shish
     { name: "Durres", type: "shahar", country: "Albaniya", region: "Durres", center: [41.3231, 19.4414] },
     { name: "Vlore", type: "shahar", country: "Albaniya", region: "Vlore", center: [40.4667, 19.4899] },
     { name: "Shkoder", type: "shahar", country: "Albaniya", region: "Shkoder", center: [42.0681, 19.5090] },
@@ -752,6 +740,7 @@ export const places = [
     { name: "Krujë", type: "shahar", country: "Albaniya", region: "Durrës", center: [41.5139, 19.7911] },
     { name: "Laç", type: "shahar", country: "Albaniya", region: "Lezhë", center: [41.6317, 19.7156] },
     { name: "Patos", type: "shahar", country: "Albaniya", region: "Fier", center: [40.6867, 19.6053] },
+    { name: "Sarandë", type: "shahar", country: "Albaniya", region: "Vlore", center: [39.8756, 20.0050] }, // QO'SHILDI
 
     // -------------------------------------------------------8------------------------------------------------------- //
 
@@ -762,6 +751,7 @@ export const places = [
     { name: "Aljir shahri", type: "poytaxt_hudud", country: "Jazoir", region: "Aljir", center: [36.7538, 3.0588] },
 
     // Shaharlar va Hududlar
+    { name: "Aljir", type: "shahar", country: "Jazoir", region: "Aljir", center: [36.7538, 3.0588] }, // Poytaxtni shahar sifatida qo'shish
     { name: "Oran", type: "shahar", country: "Jazoir", region: "Oran", center: [35.6971, -0.6417] },
     { name: "Constantine", type: "shahar", country: "Jazoir", region: "Constantine", center: [36.3650, 6.6147] },
     { name: "Annaba", type: "shahar", country: "Jazoir", region: "Annaba", center: [36.9000, 7.7667] },
@@ -778,6 +768,9 @@ export const places = [
     { name: "Tebessa", type: "shahar", country: "Jazoir", region: "Tebessa", center: [35.4000, 8.1250] },
     { name: "M'Sila", type: "shahar", country: "Jazoir", region: "M'Sila", center: [35.7000, 4.5333] },
     { name: "Mostaganem", type: "shahar", country: "Jazoir", region: "Mostaganem", center: [35.9333, 0.0833] },
+    { name: "Béjaïa", type: "shahar", country: "Jazoir", region: "Béjaïa", center: [36.7558, 5.0844] }, // QO'SHILDI
+    { name: "Tamanrasset", type: "shahar", country: "Jazoir", region: "Tamanrasset", center: [22.7850, 5.5228] }, // QO'SHILDI
+    { name: "Ouargla", type: "shahar", country: "Jazoir", region: "Ouargla", center: [31.9493, 5.3250] },
 
     // -------------------------------------------------------9------------------------------------------------------- //
 
@@ -785,11 +778,13 @@ export const places = [
     { name: "Andorra", type: "davlat", country: "Andorra", center: [42.5462, 1.6016] }, // Mamlakatning geografik markazi
 
     // Poytaxt (va parokiya)
-    { name: "Andorra la Vella", type: "poytaxt_parokiya", country: "Andorra", region: "Andorra la Vella", center: [42.5063, 1.5218] },
+    { name: "Andorra la Vella (parokiya)", type: "poytaxt_parokiya", country: "Andorra", region: "Andorra la Vella", center: [42.5063, 1.5218] },
+    { name: "Andorra la Vella", type: "shahar", country: "Andorra", region: "Andorra la Vella", center: [42.5063, 1.5218] }, // QO'SHILDI
 
     { name: "Canillo", type: "parokiya", country: "Andorra", region: "Canillo", center: [42.5667, 1.6000] },
     { name: "Encamp", type: "parokiya", country: "Andorra", region: "Encamp", center: [42.5361, 1.5833] },
     { name: "Escaldes-Engordany", type: "parokiya", country: "Andorra", region: "Escaldes-Engordany", center: [42.5095, 1.5404] },
+    { name: "Escaldes-Engordany", type: "shahar", country: "Andorra", region: "Escaldes-Engordany", center: [42.5095, 1.5404] }, // QO'SHILDI
     { name: "La Massana", type: "parokiya", country: "Andorra", region: "La Massana", center: [42.5450, 1.5144] },
     { name: "Ordino", type: "parokiya", country: "Andorra", region: "Ordino", center: [42.5562, 1.5332] },
     { name: "Sant Julià de Lòria", type: "parokiya", country: "Andorra", region: "Sant Julià de Lòria", center: [42.4637, 1.4912] },
@@ -801,6 +796,7 @@ export const places = [
 
     // Poytaxt
     { name: "Luanda shahri", type: "poytaxt", country: "Angola", region: "Luanda", center: [-8.8390, 13.2894] },
+    { name: "Luanda", type: "shahar", country: "Angola", region: "Luanda", center: [-8.8390, 13.2894] }, // QO'SHILDI
 
     { name: "Huambo shahri", type: "shahar", country: "Angola", region: "Huambo", center: [-12.7761, 15.7389] },
     { name: "Lobito shahri", type: "shahar", country: "Angola", region: "Benguela", center: [-12.3481, 13.5456] },
@@ -810,7 +806,7 @@ export const places = [
     { name: "Malanje shahri", type: "shahar", country: "Angola", region: "Malanje", center: [-9.5408, 16.3408] },
     { name: "Cabinda shahri", type: "shahar", country: "Angola", region: "Cabinda", center: [-5.5500, 12.2000] },
     { name: "Soyo shahri", type: "shahar", country: "Angola", region: "Zaire", center: [-6.1349, 12.3689] },
-    { name: "Moçâmedes shahri", type: "shahar", country: "Angola", region: "Namibe", center: [-15.1961, 12.1522] }, // Izoh: "Namibe" shahri nomi "Moçâmedes"ga o'zgartirilgan
+    { name: "Namibe shahri", type: "shahar", country: "Angola", region: "Namibe", center: [-15.1961, 12.1522] }, // TUZATILDI: Nomi "Moçâmedes"dan o'zgargan
     { name: "Saurimo shahri", type: "shahar", country: "Angola", region: "Lunda Sul", center: [-9.6615, 20.3916] },
     { name: "Uíge shahri", type: "shahar", country: "Angola", region: "Uíge", center: [-7.6087, 15.0613] },
     { name: "Sumbe shahri", type: "shahar", country: "Angola", region: "Cuanza Sul", center: [-11.2061, 13.8436] },
@@ -829,6 +825,7 @@ export const places = [
 
     // Poytaxt
     { name: "St. John's shahri", type: "poytaxt", country: "Antigua va Barbuda", region: "Saint John", center: [17.1210, -61.8447] },
+    { name: "St. John's", type: "shahar", country: "Antigua va Barbuda", region: "Saint John", center: [17.1210, -61.8447] }, // QO'SHILDI
 
     // Asosiy orollar va qaram hududlar
     { name: "Antigua oroli", type: "orol", country: "Antigua va Barbuda", center: [17.0705, -61.8195] },
@@ -857,7 +854,6 @@ export const places = [
 
     // Poytaxt
     { name: "Buenos Aires (Avtonomiya shahri)", type: "poytaxt_hudud", country: "Argentina", center: [-58.3816, -34.6037] },
-
     { name: "Buenos Aires", type: "shahar", country: "Argentina", region: "Buenos Aires (Avtonomiya shahri)", center: [-58.3816, -34.6037] },
 
     // Buenos Aires viloyati
@@ -902,15 +898,109 @@ export const places = [
     { name: "Villa Carlos Paz", type: "shahar", country: "Argentina", region: "Córdoba viloyati", center: [-64.4978, -31.4242] },
     { name: "Alta Gracia", type: "shahar", country: "Argentina", region: "Córdoba viloyati", center: [-64.4333, -31.65] },
 
+    // ------ Boshqa viloyatlar (QO'SHILDI) ------
+
+    // Santa Fe viloyati
+    { name: "Santa Fe viloyati", type: "viloyat", country: "Argentina", center: [-60.7132, -31.6107] },
+    { name: "Rosario", type: "shahar", country: "Argentina", region: "Santa Fe viloyati", center: [-60.6393, -32.9468] },
+    { name: "Santa Fe", type: "shahar", country: "Argentina", region: "Santa Fe viloyati", center: [-60.7132, -31.6107] },
+
+    // Mendoza viloyati
+    { name: "Mendoza viloyati", type: "viloyat", country: "Argentina", center: [-68.8458, -32.8895] },
+    { name: "Mendoza", type: "shahar", country: "Argentina", region: "Mendoza viloyati", center: [-68.8458, -32.8895] },
+    { name: "San Rafael", type: "shahar", country: "Argentina", region: "Mendoza viloyati", center: [-68.3301, -34.6177] },
+
+    // Tucumán viloyati
+    { name: "Tucumán viloyati", type: "viloyat", country: "Argentina", center: [-65.2072, -26.8083] },
+    { name: "San Miguel de Tucumán", type: "shahar", country: "Argentina", region: "Tucumán viloyati", center: [-65.2072, -26.8083] },
+
+    // Salta viloyati
+    { name: "Salta viloyati", type: "viloyat", country: "Argentina", center: [-65.4117, -24.7829] },
+    { name: "Salta", type: "shahar", country: "Argentina", region: "Salta viloyati", center: [-65.4117, -24.7829] },
+
+    // Entre Ríos viloyati
+    { name: "Entre Ríos viloyati", type: "viloyat", country: "Argentina", center: [-59.5376, -31.7570] },
+    { name: "Paraná", type: "shahar", country: "Argentina", region: "Entre Ríos viloyati", center: [-60.5238, -31.7319] },
+    { name: "Concordia", type: "shahar", country: "Argentina", region: "Entre Ríos viloyati", center: [-58.0210, -31.3929] },
+
+    // Chaco viloyati
+    { name: "Chaco viloyati", type: "viloyat", country: "Argentina", center: [-60.4389, -26.3847] },
+    { name: "Resistencia", type: "shahar", country: "Argentina", region: "Chaco viloyati", center: [-58.9839, -27.4606] },
+
+    // Corrientes viloyati
+    { name: "Corrientes viloyati", type: "viloyat", country: "Argentina", center: [-57.8085, -28.7753] },
+    { name: "Corrientes", type: "shahar", country: "Argentina", region: "Corrientes viloyati", center: [-58.8306, -27.4692] },
+
+    // Misiones viloyati
+    { name: "Misiones viloyati", type: "viloyat", country: "Argentina", center: [-54.6733, -26.8753] },
+    { name: "Posadas", type: "shahar", country: "Argentina", region: "Misiones viloyati", center: [-55.8969, -27.3671] },
+    { name: "Puerto Iguazú", type: "shahar", country: "Argentina", region: "Misiones viloyati", center: [-54.5736, -25.6025] },
+
+    // San Juan viloyati
+    { name: "San Juan viloyati", type: "viloyat", country: "Argentina", center: [-68.5364, -31.5375] },
+    { name: "San Juan", type: "shahar", country: "Argentina", region: "San Juan viloyati", center: [-68.5364, -31.5375] },
+
+    // Jujuy viloyati
+    { name: "Jujuy viloyati", type: "viloyat", country: "Argentina", center: [-65.2995, -24.1858] },
+    { name: "San Salvador de Jujuy", type: "shahar", country: "Argentina", region: "Jujuy viloyati", center: [-65.2995, -24.1858] },
+
+    // Río Negro viloyati
+    { name: "Río Negro viloyati", type: "viloyat", country: "Argentina", center: [-67.0423, -40.0630] },
+    { name: "Viedma", type: "shahar", country: "Argentina", region: "Río Negro viloyati", center: [-62.9967, -40.8135] },
+    { name: "San Carlos de Bariloche", type: "shahar", country: "Argentina", region: "Río Negro viloyati", center: [-71.3082, -41.1335] },
+
+    // Neuquén viloyati
+    { name: "Neuquén viloyati", type: "viloyat", country: "Argentina", center: [-68.0591, -38.9516] },
+    { name: "Neuquén", type: "shahar", country: "Argentina", region: "Neuquén viloyati", center: [-68.0591, -38.9516] },
+
+    // Formosa viloyati
+    { name: "Formosa viloyati", type: "viloyat", country: "Argentina", center: [-58.1756, -26.1775] },
+    { name: "Formosa", type: "shahar", country: "Argentina", region: "Formosa viloyati", center: [-58.1756, -26.1775] },
+
+    // Chubut viloyati
+    { name: "Chubut viloyati", type: "viloyat", country: "Argentina", center: [-68.7451, -43.9518] },
+    { name: "Rawson", type: "shahar", country: "Argentina", region: "Chubut viloyati", center: [-65.1023, -43.3002] },
+    { name: "Comodoro Rivadavia", type: "shahar", country: "Argentina", region: "Chubut viloyati", center: [-67.4966, -45.8641] },
+    { name: "Puerto Madryn", type: "shahar", country: "Argentina", region: "Chubut viloyati", center: [-65.0394, -42.7692] },
+
+    // San Luis viloyati
+    { name: "San Luis viloyati", type: "viloyat", country: "Argentina", center: [-66.3378, -33.2950] },
+    { name: "San Luis", type: "shahar", country: "Argentina", region: "San Luis viloyati", center: [-66.3378, -33.2950] },
+
+    // Catamarca viloyati
+    { name: "Catamarca viloyati", type: "viloyat", country: "Argentina", center: [-65.7795, -28.4696] },
+    { name: "San Fernando del Valle de Catamarca", type: "shahar", country: "Argentina", region: "Catamarca viloyati", center: [-65.7795, -28.4696] },
+
+    // La Rioja viloyati
+    { name: "La Rioja viloyati", type: "viloyat", country: "Argentina", center: [-66.8507, -29.4135] },
+    { name: "La Rioja", type: "shahar", country: "Argentina", region: "La Rioja viloyati", center: [-66.8507, -29.4135] },
+
+    // La Pampa viloyati
+    { name: "La Pampa viloyati", type: "viloyat", country: "Argentina", center: [-64.2830, -36.6167] },
+    { name: "Santa Rosa", type: "shahar", country: "Argentina", region: "La Pampa viloyati", center: [-64.2830, -36.6167] },
+
+    // Santiago del Estero viloyati
+    { name: "Santiago del Estero viloyati", type: "viloyat", country: "Argentina", center: [-64.2667, -27.7833] },
+    { name: "Santiago del Estero", type: "shahar", country: "Argentina", region: "Santiago del Estero viloyati", center: [-64.2667, -27.7833] },
+
+    // Santa Cruz viloyati
+    { name: "Santa Cruz viloyati", type: "viloyat", country: "Argentina", center: [-69.2181, -51.6226] },
+    { name: "Río Gallegos", type: "shahar", country: "Argentina", region: "Santa Cruz viloyati", center: [-69.2181, -51.6226] },
+
+    // Tierra del Fuego viloyati
+    { name: "Tierra del Fuego viloyati", type: "viloyat", country: "Argentina", center: [-68.3030, -54.8072] },
+    { name: "Ushuaia", type: "shahar", country: "Argentina", region: "Tierra del Fuego viloyati", center: [-68.3030, -54.8072] },
+    { name: "Río Grande", type: "shahar", country: "Argentina", region: "Tierra del Fuego viloyati", center: [-67.7020, -53.7885] },
+
     // -------------------------------------------------------13------------------------------------------------------ //
 
     { name: "Armaniston", type: "davlat", country: "Armaniston", center: [45.0382, 40.0691] },
 
     // Poytaxt
     { name: "Yerevan", type: "poytaxt_hudud", country: "Armaniston", center: [44.5152, 40.1811] },
+    { name: "Yerevan", type: "shahar", country: "Armaniston", region: "Yerevan", center: [44.5152, 40.1811] }, // QO'SHILDI
 
     // Shaharlar
-
     { name: "Gyumri", type: "shahar", country: "Armaniston", region: "Shirak", center: [43.8453, 40.7894] },
     { name: "Vanadzor", type: "shahar", country: "Armaniston", region: "Lori", center: [44.4939, 40.8128] },
     { name: "Vagharshapat (Etchmiadzin)", type: "shahar", country: "Armaniston", region: "Armavir", center: [44.2898, 40.1705] },
@@ -927,7 +1017,6 @@ export const places = [
     { name: "Charentsavan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.6438, 40.4097] },
     { name: "Sevan", type: "shahar", country: "Armaniston", region: "Gegharkunik", center: [44.9444, 40.5561] },
     { name: "Ashtarak", type: "shahar", country: "Armaniston", region: "Aragatsotn", center: [44.3621, 40.2991] },
-    { name: "Hrazdan", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.7703, 40.5097] },
     { name: "Alaverdi", type: "shahar", country: "Armaniston", region: "Lori", center: [44.6543, 41.0977] },
     { name: "Yeghvard", type: "shahar", country: "Armaniston", region: "Kotayk", center: [44.4814, 40.3226] },
     { name: "Spitak", type: "shahar", country: "Armaniston", region: "Lori", center: [44.2676, 40.8322] },
@@ -1375,10 +1464,215 @@ export const places = [
     { name: "Comilla", type: "shahar", country: "Bangladesh", region: "Chittagong", center: [91.199997, 23.450001] },
     { name: "Shyamnagar", type: "shahar", country: "Bangladesh", region: "Khulna", center: [89.108650, 22.337299] },
 
+    // -------------------------------------------------------19------------------------------------------------------ //
+
+    // Davlat Barbados
+
+    { name: "Barbados", type: "davlat", country: "Barbados", center: [13.1939, -59.5432] },
+
+    // Poytaxt
+    { name: "Bridgetown", type: "poytaxt", country: "Barbados", center: [13.10732, -59.62021] },
+
+    // Shaharlar
+    { name: "Speightstown", type: "shahar", country: "Barbados", region: "Saint Peter", center: [13.25072, -59.64396] },
+    { name: "Oistins", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.07067, -59.54637] },
+    { name: "Bathsheba", type: "shahar", country: "Barbados", region: "Saint Joseph", center: [13.21133, -59.52596] },
+    { name: "Holetown", type: "shahar", country: "Barbados", region: "Saint James", center: [13.18672, -59.63808] },
+    { name: "Crane", type: "shahar", country: "Barbados", region: "Saint Philip", center: [13.10487, -59.44861] },
+    { name: "Greenland", type: "shahar", country: "Barbados", region: "Saint Andrew", center: [13.25808, -59.57763] },
+    { name: "Checker Hall", type: "shahar", country: "Barbados", region: "Saint Lucy", center: [13.28445, -59.64223] },
+    { name: "Four Cross Roads", type: "shahar", country: "Barbados", region: "Saint George", center: [13.17018, -59.52186] },
+    { name: "Welchman Hall", type: "shahar", country: "Barbados", region: "Saint Thomas", center: [13.18676, -59.57663] },
+
+    // Qo'shimcha shaharlar
+    { name: "Black Rock", type: "shahar", country: "Barbados", region: "Saint Michael", center: [13.13, -59.64] },
+    { name: "Hastings", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.08, -59.60] },
+    { name: "Maxwell", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.10, -59.55] },
+    { name: "St. Lawrence", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.05, -59.58] },
+    { name: "Worthing", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.05, -59.60] },
+    { name: "Dover", type: "shahar", country: "Barbados", region: "Saint Philip", center: [13.17, -59.39] },
+    { name: "Seawell", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.08, -59.49] },
+    { name: "Rockley", type: "shahar", country: "Barbados", region: "Christ Church", center: [13.08, -59.59] },
+    { name: "Rendezvous", type: "shahar", country: "Barbados", region: "Saint James", center: [13.20, -59.68] },
+
+    // Parishi (Administrativ bo'linmalar)
+    { name: "Christ Church", type: "parrish", country: "Barbados", center: [13.08, -59.55] },
+    { name: "Saint Andrew", type: "parrish", country: "Barbados", center: [13.27, -59.55] },
+    { name: "Saint George", type: "parrish", country: "Barbados", center: [13.17, -59.57] },
+    { name: "Saint James", type: "parrish", country: "Barbados", center: [13.19, -59.65] },
+    { name: "Saint John", type: "parrish", country: "Barbados", center: [13.16, -59.50] },
+    { name: "Saint Joseph", type: "parrish", country: "Barbados", center: [13.23, -59.54] },
+    { name: "Saint Lucy", type: "parrish", country: "Barbados", center: [13.30, -59.63] },
+    { name: "Saint Michael", type: "parrish", country: "Barbados", center: [13.14, -59.63] },
+    { name: "Saint Peter", type: "parrish", country: "Barbados", center: [13.25, -59.64] },
+    { name: "Saint Philip", type: "parrish", country: "Barbados", center: [13.10, -59.43] },
+    { name: "Saint Thomas", type: "parrish", country: "Barbados", center: [13.18, -59.62] },
+
+    // -------------------------------------------------------20------------------------------------------------------ //
+
+    // Davlat Belarus
+
+    { name: "Belarus", type: "davlat", country: "Belarus", center: [53.709807, 27.953389] },
+
+    // Poytaxt
+    { name: "Minsk shahri", type: "poytaxt_hudud", country: "Belarus", center: [53.9, 27.567] },
+
+    // Shaharlar va Viloyatlar
+
+    // Minsk Shahar (Poytaxt)
+    { name: "Minsk", type: "shahar", country: "Belarus", region: "Minsk shahri", center: [53.9, 27.567] },
+
+    // Brest Viloyati
+    { name: "Brest viloyati", type: "viloyat", country: "Belarus", center: [52.52966, 25.46065] },
+    { name: "Brest", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.10969, 23.73405] },
+    { name: "Baranovichi", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [53.13253, 26.00774] },
+    { name: "Pinsk", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.12927, 26.07468] },
+    { name: "Kobryn", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.21667, 24.66667] },
+    { name: "Ivanava", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.60506, 25.76667] },
+    { name: "Pruzhany", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.55, 25.35] },
+    { name: "Zhabinka", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.19917, 26.68944] },
+    { name: "Drahichyn", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [52.05444, 25.31083] },
+    { name: "Byaroza", type: "shahar", country: "Belarus", region: "Brest viloyati", center: [51.97556, 25.29694] },
+
+    // Gomel Viloyati
+    { name: "Gomel viloyati", type: "viloyat", country: "Belarus", center: [52.16488, 29.13333] },
+    { name: "Gomel", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [52.43453, 30.97541] },
+    { name: "Mozyr", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [52.04178, 29.21667] },
+    { name: "Zhlobin", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [52.8926, 30.024] },
+    { name: "Rečitsa", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [52.3635, 30.3924] },
+    { name: "Svetlahorsk", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [52.633, 29.733] },
+    { name: "Khoyniki", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [51.68306, 31.18917] },
+    { name: "Dobrush", type: "shahar", country: "Belarus", region: "Gomel viloyati", center: [52.18333, 31.54333] },
+
+    // Grodno Viloyati
+    { name: "Grodno viloyati", type: "viloyat", country: "Belarus", center: [53.65999, 25.34486] },
+    { name: "Grodno", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [53.66835, 23.82581] },
+    { name: "Lida", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [53.88333, 25.3] },
+    { name: "Slonim", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [53.10139, 25.65639] },
+    { name: "Vawkavysk", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [53.80611, 24.73639] },
+    { name: "Smarhon", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [53.59944, 24.66389] },
+    { name: "Skidel", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [54.52806, 24.7325] },
+    { name: "Svislach", type: "shahar", country: "Belarus", region: "Grodno viloyati", center: [53.89722, 25.47611] },
+
+    // Minsk Viloyati
+    { name: "Minsk viloyati", type: "viloyat", country: "Belarus", center: [54.10679, 27.41292] },
+    { name: "Borisov", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [54.22788, 28.505] },
+    { name: "Zhodino", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [54.0985, 28.3331] },
+    { name: "Molodechno", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [54.48889, 26.85] },
+    { name: "Vilyeyka", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [53.89722, 28.43056] },
+    { name: "Slutsk", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [53.99806, 27.56111] },
+    { name: "Uzda", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [54.0, 26.83333] },
+    { name: "Salihorsk", type: "shahar", country: "Belarus", region: "Minsk viloyati", center: [52.800, 27.533] },
+
+    // Mogilev Viloyati
+    { name: "Mogilev viloyati", type: "viloyat", country: "Belarus", center: [53.51018, 30.40064] },
+    { name: "Mogilev", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [53.90669, 30.34495] },
+    { name: "Babruysk", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [53.14497, 29.2281] },
+    { name: "Orsha", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [54.50056, 30.41667] },
+    { name: "Bykhaw", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [54.26389, 31.23889] },
+    { name: "Krasnoe", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [53.84722, 31.26667] },
+    { name: "Mscislaw", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [54.61528, 30.63444] },
+    { name: "Horki", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [54.29667, 30.68889] },
+    { name: "Asipovichy", type: "shahar", country: "Belarus", region: "Mogilev viloyati", center: [53.3011, 28.6386] },
+
+    // Vitebsk Viloyati
+    { name: "Vitebsk viloyati", type: "viloyat", country: "Belarus", center: [55.29598, 28.75836] },
+    { name: "Vitebsk", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [55.19044, 30.20501] },
+    { name: "Polotsk", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [54.86083, 30.34417] },
+    { name: "Novopolotsk", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [54.87417, 30.36361] },
+    { name: "Lepel", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [54.49, 30.4] },
+    { name: "Chashniki", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [55.1, 31.09] },
+    { name: "Miory", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [55.27667, 27.85111] },
+    { name: "Novolukoml", type: "shahar", country: "Belarus", region: "Vitebsk viloyati", center: [54.65694, 29.15] },
+
+    // -------------------------------------------------------21------------------------------------------------------ //
+
+    // Davlat Belgiya
+
+    { name: "Belgiya", type: "davlat", country: "Belgiya", center: [4.5, 50.5] },
+
+    // Poytaxt
+    { name: "Bruxelles / Brussel", type: "poytaxt_hudud", country: "Belgiya", center: [4.35, 50.85] },
+
+    // Shaharlar va Viloyatlar - FLANDERS (Flamandiya)
+
+    // Antwerp (Antwerpen) Province
+    { name: "Antwerp viloyati", type: "viloyat", country: "Belgiya", center: [4.4, 51.22] },
+    { name: "Antwerp", type: "shahar", country: "Belgiya", region: "Antwerp viloyati", center: [4.40, 51.22] },
+    { name: "Mechelen", type: "shahar", country: "Belgiya", region: "Antwerp viloyati", center: [4.48, 51.03] },
+    { name: "Mortsel", type: "shahar", country: "Belgiya", region: "Antwerp viloyati", center: [4.46, 51.15] },
+    { name: "Hoboken", type: "shahar", country: "Belgiya", region: "Antwerp viloyati", center: [4.34, 51.18] },
+    { name: "Schoten", type: "shahar", country: "Belgiya", region: "Antwerp viloyati", center: [4.45, 51.30] },
+
+    // East Flanders (Oost-Vlaanderen) Province
+    { name: "East Flanders viloyati", type: "viloyat", country: "Belgiya", center: [3.72, 51.05] },
+    { name: "Gent", type: "shahar", country: "Belgiya", region: "East Flanders viloyati", center: [3.72, 51.05] },
+    { name: "Aalst", type: "shahar", country: "Belgiya", region: "East Flanders viloyati", center: [4.04, 50.94] },
+    { name: "Sint-Niklaas", type: "shahar", country: "Belgiya", region: "East Flanders viloyati", center: [4.14, 51.17] },
+    { name: "Lokeren", type: "shahar", country: "Belgiya", region: "East Flanders viloyati", center: [4.00, 51.10] },
+    { name: "Dendermonde", type: "shahar", country: "Belgiya", region: "East Flanders viloyati", center: [4.10, 51.03] },
+    { name: "Oudenaarde", type: "shahar", country: "Belgiya", region: "East Flanders viloyati", center: [3.60, 50.84] },
+
+    // West Flanders (West-Vlaanderen) Province
+    { name: "West Flanders viloyati", type: "viloyat", country: "Belgiya", center: [3.22, 51.21] },
+    { name: "Brugge", type: "shahar", country: "Belgiya", region: "West Flanders viloyati", center: [3.22, 51.21] },
+    { name: "Kortrijk", type: "shahar", country: "Belgiya", region: "West Flanders viloyati", center: [3.26, 50.83] },
+    { name: "Ostend", type: "shahar", country: "Belgiya", region: "West Flanders viloyati", center: [2.93, 51.22] },
+    { name: "Roeselare", type: "shahar", country: "Belgiya", region: "West Flanders viloyati", center: [3.12, 50.95] },
+    { name: "Ieper", type: "shahar", country: "Belgiya", region: "West Flanders viloyati", center: [2.88, 50.85] },
+    { name: "Knokke-Heist", type: "shahar", country: "Belgiya", region: "West Flanders viloyati", center: [3.29, 51.35] },
+
+    // Flemish Brabant (Vlaams-Brabant) Province
+    { name: "Flemish Brabant viloyati", type: "viloyat", country: "Belgiya", center: [4.70, 50.88] },
+    { name: "Leuven", type: "shahar", country: "Belgiya", region: "Flemish Brabant viloyati", center: [4.70, 50.88] },
+    { name: "Diest", type: "shahar", country: "Belgiya", region: "Flemish Brabant viloyati", center: [5.05, 50.98] },
+    { name: "Vilvoorde", type: "shahar", country: "Belgiya", region: "Flemish Brabant viloyati", center: [4.43, 50.94] },
+    { name: "Aalst", type: "shahar", country: "Belgiya", region: "Flemish Brabant viloyati", center: [4.04, 50.94] },
+
+    // Limburg Province
+    { name: "Limburg viloyati", type: "viloyat", country: "Belgiya", center: [5.34, 50.93] },
+    { name: "Hasselt", type: "shahar", country: "Belgiya", region: "Limburg viloyati", center: [5.34, 50.93] },
+    { name: "Genk", type: "shahar", country: "Belgiya", region: "Limburg viloyati", center: [5.50, 50.97] },
+    { name: "Sint-Truiden", type: "shahar", country: "Belgiya", region: "Limburg viloyati", center: [5.20, 50.80] },
+    { name: "Tongeren", type: "shahar", country: "Belgiya", region: "Limburg viloyati", center: [5.26, 50.77] },
+    { name: "Maasmechelen", type: "shahar", country: "Belgiya", region: "Limburg viloyati", center: [5.76, 50.79] },
+    { name: "Beringen", type: "shahar", country: "Belgiya", region: "Limburg viloyati", center: [5.40, 51.04] },
+
+
+    // Shaharlar va Viloyatlar - WALLONIA (Valloniya)
+
+    // Hainaut Province
+    { name: "Hainaut viloyati", type: "viloyat", country: "Belgiya", center: [3.95, 50.45] },
+    { name: "Mons", type: "shahar", country: "Belgiya", region: "Hainaut viloyati", center: [3.95, 50.45] },
+    { name: "Charleroi", type: "shahar", country: "Belgiya", region: "Hainaut viloyati", center: [4.44, 50.41] },
+    { name: "Tournai", type: "shahar", country: "Belgiya", region: "Hainaut viloyati", center: [3.39, 50.61] },
+    { name: "Mouscron", type: "shahar", country: "Belgiya", region: "Hainaut viloyati", center: [3.21, 50.75] },
+    { name: "La Louvière", type: "shahar", country: "Belgiya", region: "Hainaut viloyati", center: [4.19, 50.49] },
+
+    // Liège Province
+    { name: "Liège viloyati", type: "viloyat", country: "Belgiya", center: [5.57, 50.63] },
+    { name: "Liège", type: "shahar", country: "Belgiya", region: "Liège viloyati", center: [5.57, 50.63] },
+    { name: "Seraing", type: "shahar", country: "Belgiya", region: "Liège viloyati", center: [5.50, 50.58] },
+    { name: "Verviers", type: "shahar", country: "Belgiya", region: "Liège viloyati", center: [5.86, 50.59] },
+    { name: "Herstal", type: "shahar", country: "Belgiya", region: "Liège viloyati", center: [5.53, 50.58] },
+
+    // Namur Province
+    { name: "Namur viloyati", type: "viloyat", country: "Belgiya", center: [4.87, 50.47] },
+    { name: "Namur", type: "shahar", country: "Belgiya", region: "Namur viloyati", center: [4.87, 50.47] },
+
+    // Walloon Brabant (Brabant Wallon) Province
+    { name: "Walloon Brabant viloyati", type: "viloyat", country: "Belgiya", center: [4.52, 50.63] },
+    { name: "Wavre", type: "shahar", country: "Belgiya", region: "Walloon Brabant viloyati", center: [4.60, 50.73] },
+
+    // Luxembourg Province
+    { name: "Luxembourg viloyati", type: "viloyat", country: "Belgiya", center: [6.13, 49.82] },
+    { name: "Arlon", type: "shahar", country: "Belgiya", region: "Luxembourg viloyati", center: [5.81, 49.69] },
+
+    // BRUSSELS CAPITAL REGION (Bruxelles-Capitale / Brussel-Hoofdstedelijk Gewest)
+    { name: "Brussels Capital Region", type: "capital_region", country: "Belgiya", center: [4.35, 50.85] },
+    { name: "Brussels City", type: "shahar", country: "Belgiya", region: "Brussels Capital Region", center: [4.35, 50.85] },
+
     // Chet el!
-    { name: "Barbados", type: "davlat", country: "Barbados", center: [-59.543198, 13.193887] },
-    { name: "Belarus", type: "davlat", country: "Belarus", center: [27.953389, 53.709807] },
-    { name: "Belgiya", type: "davlat", country: "Belgiya", center: [4.469936, 50.503887] },
     { name: "Beliz", type: "davlat", country: "Beliz", center: [-88.49765, 17.189877] },
     { name: "Benin", type: "davlat", country: "Benin", center: [2.315834, 9.30769] },
     { name: "Butan", type: "davlat", country: "Butan", center: [90.433601, 27.514162] },
