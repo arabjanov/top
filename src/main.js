@@ -853,7 +853,7 @@ async function typeFormattedText(element, text, speed = 10) {
   // Matnni tozalash va muhim so‘zlarni qalin qilish
   const formattedText = text
     .replace(/\*+/g, "") // yulduzchalarni olib tashlaydi
-    .replace(/\b(muhim|diqqat|asosiy|e'tibor|fact|important)\b/gi, (m) => `< b > ${m}</ > `);
+    .replace(/\b(muhim|diqqat|asosiy|e'tibor|fact|important)\b/gi, (m) => `<b>${m}</b>`);
 
   // HTML bilan typing effekti
   for (let i = 0; i < formattedText.length; i++) {
